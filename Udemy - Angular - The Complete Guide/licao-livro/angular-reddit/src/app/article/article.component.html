@@ -1,0 +1,20 @@
+<div class="row" style="margin-top: 24px;">
+    <div class="views">
+        <div class="col-sm-6 col-md-2 ">
+            <div class="thumbnail value">
+                <div class="caption" style="text-align: center;">
+                    <h2>{{article.votes}} </h2> 
+                    <h3>points</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-2 ">
+            <div>
+                <h2>{{article.title}}</h2>
+                <h4>{{article.link}}</h4>
+            </div>
+            <a href="#" (click)="voteUp()"><i class="glyphicon glyphicon-arrow-up"></i> Upvote</a> 
+            <a href="#" (click)="voteDown()"><i class="glyphicon glyphicon-arrow-down"></i>Downvote</a>
+        </div>
+    </div>
+</div>
