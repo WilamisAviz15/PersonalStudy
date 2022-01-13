@@ -1,0 +1,8 @@
+npm install -g @angular/cli@latest
+ng new atv2
+ng serve
+http://localhost:4200
+npm install --save bootstrap@3
+ng g c recipes 
+ng g c recipes --skipTests true
+ng g c recipes/recipe-list --skipTests true
