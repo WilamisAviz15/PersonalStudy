@@ -1,0 +1,13 @@
+instalar python
+instalar virtualenv 	-> pip install virtualenv
+criar ambiente 		-> virtualenv nome_ambiente
+ativar 			-> nome_ambiente\scripts\activate
+desativar 		-> nome_ambiente\scripts\deactivate
+instalar django		-> pip install django
+ajuda			-> django-admin
+Criar proj django	-> django-admin startproject studybud
+Executar servidor 	-> python manage.py runserver
+			-> python manage.py startapp base
+			-> python manage.py migrate
+			-> python manage.py makemigrations
+			-> python manage.py createsuperuser
