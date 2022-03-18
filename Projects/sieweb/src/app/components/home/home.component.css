@@ -1,0 +1,57 @@
+.mat-card {
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.subtitle__periodo {
+  font-weight: 800;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-right: 3px;
+}
+
+.dashboard__ch-pagas {
+  text-align: center;
+  color: #fff;
+  background-color: #4992ff;
+  border-radius: 0px;
+  margin-right: 15px;
+}
+
+.dashboard__ch-a-pagar {
+  text-align: center;
+  color: #fff;
+  background-color: #7cffb2;
+  border-radius: 0px;
+}
+
+.dashboard__matriculadas {
+  text-align: center;
+  color: #fff;
+  background-color: #fddd60;
+  border-radius: 0px;
+  margin-right: 15px;
+}
+
+.dashboard__restantes {
+  text-align: center;
+  color: #fff;
+  background-color: #ff6e76;
+  border-radius: 0px;
+}
+
+.dashboard__ch-pagas__divider {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.dashboard__ch-pagas__divider__1 i {
+  font-size: 70px;
+}

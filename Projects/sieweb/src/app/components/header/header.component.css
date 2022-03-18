@@ -1,24 +1,52 @@
-.header{
-    display: flex;
-    align-items: center;
+.header {
+  /* display: flex;
+  align-items: center; */
+  background-color: #3f51b5;
+  justify-content: space-between;
 }
 
-.header .a{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+.header .a {
+  display: flex;
+  /* align-items: center; */
+  text-decoration: none;
 }
 
-.header .logo{
-    max-height: 42px;
+.header .logo {
+  max-height: 42px;
 }
 
-.mensagem-inicio{
-    padding-top:10px; 
-    padding-left:10px;
+.header-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
-.tipo-modulo{
-    margin-top: 5px;
-    font-size: 14px;
+.header-info-details {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.mat-toolbar,
+.mat-toolbar h1,
+.mat-toolbar h2,
+.mat-toolbar h3,
+.mat-toolbar h4,
+.mat-toolbar h5,
+.mat-toolbar h6 {
+  font: 0 20px/32px Roboto, 'Helvetica Neue', sans-serif !important;
+}
+
+.header__info__details__titulo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header__info__details__tipo-modulo {
+  font-size: 14px;
+  color: #fff;
+}
+
+.header-options {
+  color: #fff;
 }

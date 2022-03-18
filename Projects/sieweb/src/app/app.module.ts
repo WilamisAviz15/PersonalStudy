@@ -6,31 +6,47 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { IndexComponent } from './components/index/index.component';
 import { MatCardModule } from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavComponent } from './components/nav/nav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './components/home/home.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { CurriculumComponent } from './components/curriculum/curriculum.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    IndexComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavComponent,
+    HomeComponent,
+    EditProfileComponent,
+    PreferencesComponent,
+    CurriculumComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    MatCardModule, 
+    MatCardModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    MatExpansionModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

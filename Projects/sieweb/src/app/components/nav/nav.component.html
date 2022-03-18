@@ -1,0 +1,48 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    class="sidenav"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="64">
+    <div class="sidenav__content">
+      <mat-nav-list class="nav-list">
+        <a mat-list-item routerLink="/home">
+          <i class="material-icons">home</i>
+          Início
+        </a>
+        <a mat-list-item routerLink="/edit-profile">
+          <i class="material-icons">edit</i>
+          Editar dados pessoais
+        </a>
+        <a class="dropdown__a"
+          ><mat-expansion-panel class="dropdown__matricula">
+            <mat-expansion-panel-header
+              style="padding: 0 16px; display: flex; align-items: center">
+              <a><i class="material-icons">checklist</i> Matricula</a>
+            </mat-expansion-panel-header>
+            <a mat-list-item>Realizar Matrícula</a>
+            <a mat-list-item>Histórico Comum</a>
+            <a mat-list-item>Solicitar Form. Transpal</a>
+          </mat-expansion-panel></a
+        >
+        <mat-expansion-panel class="dropdown__matricula">
+          <mat-expansion-panel-header style="padding: 0 16px">
+            <a><i class="material-icons">description</i> Documentos</a>
+          </mat-expansion-panel-header>
+          <a mat-list-item>Boletim</a>
+          <a mat-list-item>Histórico Analítico</a>
+          <a mat-list-item>Comprovante de Matrícula</a>
+          <a mat-list-item>Certidões</a>
+        </mat-expansion-panel>
+        <a mat-list-item routerLink="/grade-curricular">
+          <i class="material-icons">view_list</i>
+          Grade Curricular
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

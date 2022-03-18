@@ -1,0 +1,37 @@
+.sidenav {
+  background-color: #3f51b5;
+  width: 200px;
+  float: fixed;
+  left: 0;
+}
+
+.sidenav a {
+  color: #fff;
+}
+.sidenav a:hover {
+  background-color: #303f9f;
+}
+
+.sidenav i {
+  padding-right: 10px;
+}
+
+.content {
+  padding: 16px;
+  background-color: #fff;
+}
+
+.dropdown__matricula {
+  border-radius: 0px;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px;
+}
+
+.dropdown__a:hover {
+  background-color: #303f9f;
+}
+
+.mat-expansion-indicator::after {
+  color: #fff !important;
+}

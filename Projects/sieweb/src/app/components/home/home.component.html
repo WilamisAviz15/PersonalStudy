@@ -1,0 +1,196 @@
+<mat-card class="home mat-elevation-z3">
+  <mat-card-title class="title"> Bem vindo, {{ name }} </mat-card-title>
+  <br />
+  <mat-card-subtitle class="subtitle">
+    Aqui serão exibidos as informações referentes ao seu histórico acadêmico
+    <br />
+    <br />
+    Atualmente estamos no período <span class="subtitle__periodo">2021/2</span>
+  </mat-card-subtitle>
+</mat-card>
+
+<div class="dashboard">
+  <mat-card class="dashboard__ch-pagas">
+    <div class="dashboard__ch-pagas__divider">
+      <div class="dashboard__ch-pagas__divider__1">
+        <i class="material-icons">done</i>
+      </div>
+      <div class="dashboard__ch-pagas__divider__2">
+        <h2>Carga Horária Cumprida</h2>
+        <h2>100</h2>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="dashboard__ch-a-pagar">
+    <div class="dashboard__ch-pagas__divider">
+      <div class="dashboard__ch-pagas__divider__1">
+        <i class="material-icons">add</i>
+      </div>
+      <div class="dashboard__ch-pagas__divider__2">
+        <h2>Carga Horária a Obter</h2>
+        <h2>2900</h2>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="dashboard__matriculadas">
+    <div class="dashboard__ch-pagas__divider">
+      <div class="dashboard__ch-pagas__divider__1">
+        <i class="material-icons">rule</i>
+      </div>
+      <div class="dashboard__ch-pagas__divider__2">
+        <h2>Disciplinas Cumpridas</h2>
+        <h2>1</h2>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="dashboard__restantes">
+    <div class="dashboard__ch-pagas__divider">
+      <div class="dashboard__ch-pagas__divider__1">
+        <i class="material-icons">reorder</i>
+      </div>
+      <div class="dashboard__ch-pagas__divider__2">
+        <h2>Disciplinas Restantes</h2>
+        <h2>55</h2>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<mat-card class="home mat-elevation-z3">
+  <mat-card-title class="home-title"> Dados do aluno </mat-card-title>
+  <mat-card-content>
+    <table>
+      <tbody>
+        <tr>
+          <td><label for="matricula">Matrícula:</label></td>
+          <td><span id="matricula">21210001</span></td>
+        </tr>
+        <tr>
+          <td><label for="matricula_sigaa">Matrícula SIGAA:</label></td>
+          <td><span id="matricula_sigaa">21210001</span></td>
+        </tr>
+        <tr>
+          <td><label for="nome">Nome:</label></td>
+          <td><span id="nome">WILAMIS MICAEL DE ARAUJO AVIZ</span></td>
+        </tr>
+        <tr>
+          <td><label for="curso">Curso:</label></td>
+          <td>
+            <span id="curso"
+              >Engenharia De Computação - Presencial - Campus Maceió -
+              Bacharelado - Diurno - Semestral (1139973)</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><label for="campus">Campus:</label></td>
+          <td><span id="campus">Campus Maceió</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><span id="ue">Unidade Educacional (Maceió)</span></td>
+        </tr>
+        <tr>
+          <td><label for="versao">Versão do Curso:</label></td>
+          <td><span id="versao">C2011 - 2011</span></td>
+        </tr>
+        <tr>
+          <td><label for="turno">Turno:</label></td>
+          <td><span id="turno">Vespertino</span></td>
+        </tr>
+        <tr>
+          <td><label for="periodo_atual">Período Atual:</label></td>
+          <td><span id="periodo_atual">7</span></td>
+        </tr>
+        <tr>
+          <td><label for="fluxo">Fluxo:</label></td>
+          <td><span id="fluxo">Individual</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="home mat-elevation-z3">
+  <mat-card-title class="home-title"> Informações de ingresso </mat-card-title>
+  <mat-card-content
+    ><table>
+      <tbody>
+        <tr>
+          <td><label for="forma_ingresso">Forma Ingresso:</label></td>
+          <td>
+            <span id="forma_ingresso"
+              >Exame Nacional do Ensino Médio – ENEM</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="ano_ingresso_curso">Ano de Ingresso no Curso:</label>
+          </td>
+          <td><span id="ano_ingresso_curso">2019</span></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="periodo_ingresso_curso"
+              >Período de Ingresso no Curso:</label
+            >
+          </td>
+          <td><span id="periodo_ingresso_curso">2º Semestre</span></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="ano_ingresso_instituicao"
+              >Ano de Ingresso na Instituição:</label
+            >
+          </td>
+          <td><span id="ano_ingresso_instituicao">2019</span></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="periodo_ingresso_instituicao"
+              >Período de Ingresso na Instituição:</label
+            >
+          </td>
+          <td><span id="periodo_ingresso_instituicao">2º Semestre</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<h2>Turmas Matriculadas no Período Atual (2021/2º Semestre)</h2>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="turma">
+    <th mat-header-cell *matHeaderCellDef>Turma</th>
+    <td mat-cell *matCellDef="let element">{{ element.turma }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="disciplina">
+    <th mat-header-cell *matHeaderCellDef>Disciplina</th>
+    <td mat-cell *matCellDef="let element">{{ element.disciplina }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="tipo_matricula">
+    <th mat-header-cell *matHeaderCellDef>Tipo de Matrícula</th>
+    <td mat-cell *matCellDef="let element">{{ element.tipo_matricula }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="conceito">
+    <th mat-header-cell *matHeaderCellDef>Conceito</th>
+    <td mat-cell *matCellDef="let element">{{ element.conceito }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="plano_curso">
+    <th mat-header-cell *matHeaderCellDef>Plano de Curso</th>
+    <td mat-cell *matCellDef="let element">{{ element.plano_curso }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,10 +1,18 @@
-<mat-toolbar class="header mat-elevation-z4">
-    <span>
-        <a><img src="../assets/img/logo.png" alt="logo" class="logo"></a>
-    </span>
-    <div class="mensagem-inicio">
-        <h1><a class="titulo">SIE WEB</a></h1>
-        <p class="tipo-modulo">Módulo Acadêmico</p>
+<mat-toolbar class="header mat-elevation-z6">
+  <div class="header-info">
+    <div class="header-info-logo">
+      <span>
+        <a><img src="../assets/img/logo.png" alt="logo" class="logo" /></a>
+      </span>
     </div>
-    
+    <div class="header-info-details">
+      <h1><a class="header__info__details__titulo">SIE WEB</a></h1>
+      <p class="header__info__details__tipo-modulo">Módulo Acadêmico</p>
+    </div>
+  </div>
+  <div class="header-options">
+    <a mat-button><i class="material-icons">notifications</i></a>
+    <a mat-button routerLink="/preferencias">Preferências</a>
+    <a routerLink="/login" mat-button>Sair</a>
+  </div>
 </mat-toolbar>
