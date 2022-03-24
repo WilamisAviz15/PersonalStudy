@@ -1,0 +1,94 @@
+<mat-card class="home mat-elevation-z3">
+  <mat-card-title class="title"> Histórico Comum </mat-card-title>
+  <br />
+  <table>
+    <tbody>
+      <tr>
+        <td><span>Matrícula:</span></td>
+        <td>19210704</td>
+      </tr>
+      <tr>
+        <td><span>Nome:</span></td>
+        <td><span id="nome">WILAMIS MICAEL DE ARAUJO AVIZ</span></td>
+      </tr>
+      <tr>
+        <td><span>Curso:</span></td>
+        <td>
+          Engenharia De Computação - Presencial - Campus Maceió - Bacharelado -
+          Diurno - Semestral (1139973)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+  <ng-container matColumnDef="ano">
+    <th mat-header-cell *matHeaderCellDef>Ano</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.ano }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="periodo">
+    <th mat-header-cell *matHeaderCellDef>Periodo</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.periodo }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef>Codigo</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.codigo }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="turma">
+    <th mat-header-cell *matHeaderCellDef>Turma</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.turma }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="disciplina">
+    <th mat-header-cell *matHeaderCellDef>Disciplina</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.disciplina }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ch">
+    <th mat-header-cell *matHeaderCellDef>CH</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.ch }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tipo_matricula">
+    <th mat-header-cell *matHeaderCellDef>Tipo de matricula</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.tipo_matricula }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="media_final">
+    <th mat-header-cell *matHeaderCellDef>Média final</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.media_final }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="conceito">
+    <th mat-header-cell *matHeaderCellDef>Conceito</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.conceito }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="plano_curso">
+    <th mat-header-cell *matHeaderCellDef>Plano de curso</th>
+    <td mat-cell *matCellDef="let element" class="histComum">
+      {{ element.plano_curso }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

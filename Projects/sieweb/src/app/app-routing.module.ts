@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonHistoricComponent } from './components/enrollment/common-historic/common-historic.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'grade-curricular',
     component: CurriculumComponent,
+  },
+  {
+    path: 'matricula/historico-comum',
+    component: CommonHistoricComponent,
   },
 ];
 

@@ -14,3 +14,11 @@ table {
 h2 {
   padding-left: 5px;
 }
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.histComum {
+  text-align: center;
+}

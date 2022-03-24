@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { CurriculumComponent } from './components/curriculum/curriculum.component';
+import { CommonHistoricComponent } from './components/enrollment/common-historic/common-historic.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CurriculumComponent } from './components/curriculum/curriculum.componen
     EditProfileComponent,
     PreferencesComponent,
     CurriculumComponent,
+    CommonHistoricComponent,
   ],
   imports: [
     BrowserModule,

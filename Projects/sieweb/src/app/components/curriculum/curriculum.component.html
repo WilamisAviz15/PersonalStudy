@@ -1,1 +1,144 @@
-<p>curriculum works!</p>
+<mat-card class="home mat-elevation-z3">
+  <mat-card-title class="title"> Grade Curricular </mat-card-title>
+  <br />
+  <table>
+    <tbody>
+      <tr>
+        <td><span>Curso:</span></td>
+        <td>ENGENHARIA DE COMPUTAÇÃO</td>
+        <td><span>Versão do curso:</span></td>
+        <td>C2011 - Matriz: 2011</td>
+      </tr>
+      <tr>
+        <td><span>Habilitação:</span></td>
+        <td>Bacharelado</td>
+        <td><span>Regime:</span></td>
+        <td>Semestral</td>
+      </tr>
+      <tr>
+        <td><span>Turno:</span></td>
+        <td>Diurno</td>
+        <td>
+          <span>Carga Horária Mínima no Período:</span>
+        </td>
+        <td>300</td>
+      </tr>
+      <tr>
+        <td>
+          <span>Carga Horária Máxima no Período:</span>
+        </td>
+        <td>430</td>
+        <td>
+          <span>Número Máximo de Períodos:</span>
+        </td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>
+          <span>Número Mínimo de Períodos:</span>
+        </td>
+        <td>10</td>
+        <td><span>Carga Horária Fixa:</span></td>
+        <td>3060</td>
+      </tr>
+      <tr>
+        <td><span>Carga Horária Estágio:</span></td>
+        <td>160</td>
+        <td><span>Carga Horária Eletiva:</span></td>
+        <td>780</td>
+      </tr>
+      <tr>
+        <td><span>Carga Horária Flexível:</span></td>
+        <td>200</td>
+        <td><span>Carga Horária TCC:</span></td>
+        <td>90</td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
+
+<h2>Disciplinas Eletivas</h2>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+  <!-- Position Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef>Codigo</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.codigo }}
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="disciplina">
+    <th mat-header-cell *matHeaderCellDef>Disciplina</th>
+    <td mat-cell *matCellDef="let element">{{ element.disciplina }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="ch">
+    <th mat-header-cell *matHeaderCellDef>CH</th>
+    <td mat-cell *matCellDef="let element">{{ element.ch }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<h2>Disciplinas Obrigatórias</h2>
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z3">
+  <!-- Position Column -->
+  <ng-container matColumnDef="periodo">
+    <th mat-header-cell *matHeaderCellDef>Periodo</th>
+    <td mat-cell *matCellDef="let element">{{ element.periodo }}</td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef>Codigo</th>
+    <td mat-cell *matCellDef="let element">{{ element.codigo }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="disciplina">
+    <th mat-header-cell *matHeaderCellDef>Disciplina</th>
+    <td mat-cell *matCellDef="let element">{{ element.disciplina }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="ch">
+    <th mat-header-cell *matHeaderCellDef>CH</th>
+    <td mat-cell *matCellDef="let element">{{ element.ch }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+</table>
+
+<h2>Pré-requisitos</h2>
+<table mat-table [dataSource]="dataSource3" class="mat-elevation-z3">
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef>Codigo</th>
+    <td mat-cell *matCellDef="let element">{{ element.codigo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="disciplina">
+    <th mat-header-cell *matHeaderCellDef>Disciplina</th>
+    <td mat-cell *matCellDef="let element">{{ element.disciplina }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="ch">
+    <th mat-header-cell *matHeaderCellDef>CH</th>
+    <td mat-cell *matCellDef="let element">{{ element.ch }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="pre_requisito">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center">
+      Pré-requisito
+    </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center">
+      {{ element.pre_requisito }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+</table>
