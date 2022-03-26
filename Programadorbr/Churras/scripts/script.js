@@ -19,14 +19,16 @@ function calcular() {
   let qtdTtlCerveja = cervejaPP(qtdDur) * qtdAdt;
   let qtdTtlBebidas =
     bebidasPP(qtdDur) * qtdAdt + (bebidasPP(qtdDur) / 2) * qtdChd;
-  resultado.innerHTML = `<p>${qtdTtlCarne / 1000} Kg de carne</p>`;
+  resultado.innerHTML = `<p style="text-align: center; font-weight:bold;">Você vai precisar de: </p>`;
+  resultado.innerHTML += `<p>${qtdTtlCarne / 1000} Kg de carne</p>`;
   resultado.innerHTML += `<p>${Math.ceil(
     qtdTtlCerveja / 355
-  )} Latas de cerveja</p>`;
+  )} Latas de cerveja de 355ml</p>`;
   resultado.innerHTML += `<p>${Math.ceil(
     qtdTtlBebidas / 2000
   )} Garrafas de 2L de bebidas
   </p>`;
+  resultado.style.fontSize = "20px";
 }
 
 function carnePP(duracao) {
