@@ -68,3 +68,37 @@ button {
 .btn:hover {
   background-color: #00796b;
 }
+
+@media screen and (max-width: 999px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .divisor {
+    display: flex;
+    flex-direction: column;
+  }
+  .n1 {
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    background-color: #009688;
+  }
+  .n2 {
+    float: right;
+    width: 100vw;
+    height: 90vh;
+    background-color: #b2dfdb;
+  }
+  img {
+    width: 10vw;
+    height: 10vh;
+    margin: auto;
+    display: block;
+  }
+  .container {
+    margin: 15px 15px;
+  }
+}
