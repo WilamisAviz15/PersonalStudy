@@ -3,4 +3,5 @@ Esse projeto consiste em calcular quantos kg de carne eu deveria comprar para um
 Feito usando HTML5, CSS3 e Javascript puro.
 
 ## Imagens do projeto
-![alt text](../Programadorbr/Churras/assets/images/churras)
+![churras](https://user-images.githubusercontent.com/58791888/160248832-91c900fc-36f8-460a-851c-0c1c67006ffb.png)
+
