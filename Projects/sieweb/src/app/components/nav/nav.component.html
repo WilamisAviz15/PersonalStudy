@@ -4,14 +4,16 @@
     mode="side"
     opened
     fixedInViewport="true"
-    fixedTopGap="64">
+    fixedTopGap="64"
+    #sidenav
+    role="navigation">
     <div class="sidenav__content">
       <mat-nav-list class="nav-list">
-        <a mat-list-item routerLink="/home">
+        <a mat-list-item routerLink="/home" routerLinkActive="selected">
           <i class="material-icons">home</i>
           Início
         </a>
-        <a mat-list-item routerLink="/edit-profile">
+        <a mat-list-item routerLink="/edit-profile" routerLinkActive="selected">
           <i class="material-icons">edit</i>
           Editar dados pessoais
         </a>
@@ -19,25 +21,53 @@
           ><mat-expansion-panel class="dropdown__matricula">
             <mat-expansion-panel-header
               style="padding: 0 16px; display: flex; align-items: center">
-              <a><i class="material-icons">checklist</i> Matricula</a>
+              <span><i class="material-icons">checklist</i> Matricula</span>
             </mat-expansion-panel-header>
-            <a mat-list-item>Realizar Matrícula</a>
-            <a mat-list-item routerLink="/matricula/historico-comum"
+            <a
+              mat-list-item
+              routerLink="/matricula/matricula-semestral"
+              routerLinkActive="selected"
+              >Realizar Matrícula</a
+            >
+            <a
+              mat-list-item
+              routerLink="/matricula/historico-comum"
+              routerLinkActive="selected"
               >Histórico Comum</a
             >
-            <a mat-list-item>Solicitar Form. Transpal</a>
+            <a
+              mat-list-item
+              routerLink="/matricula/solicitacao-carteirinha"
+              routerLinkActive="selected"
+              >Solicitar Form. Transpal</a
+            >
           </mat-expansion-panel></a
         >
         <mat-expansion-panel class="dropdown__matricula">
           <mat-expansion-panel-header style="padding: 0 16px">
-            <a><i class="material-icons">description</i> Documentos</a>
+            <span><i class="material-icons">description</i> Documentos</span>
           </mat-expansion-panel-header>
-          <a mat-list-item>Boletim</a>
-          <a mat-list-item>Histórico Analítico</a>
-          <a mat-list-item>Comprovante de Matrícula</a>
-          <a mat-list-item>Certidões</a>
+          <a
+            mat-list-item
+            routerLink="/documentos/boletim"
+            routerLinkActive="selected"
+            >Boletim</a
+          >
+          <a
+            mat-list-item
+            routerLink="/documentos/historico-analitico"
+            routerLinkActive="selected"
+            >Histórico Analítico</a
+          >
+          <a mat-list-item routerLinkActive="selected"
+            >Comprovante de Matrícula</a
+          >
+          <a mat-list-item routerLinkActive="selected">Certidões</a>
         </mat-expansion-panel>
-        <a mat-list-item routerLink="/grade-curricular">
+        <a
+          mat-list-item
+          routerLink="/grade-curricular"
+          routerLinkActive="selected">
           <i class="material-icons">view_list</i>
           Grade Curricular
         </a>

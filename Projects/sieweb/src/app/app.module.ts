@@ -21,6 +21,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { CurriculumComponent } from './components/curriculum/curriculum.component';
 import { CommonHistoricComponent } from './components/enrollment/common-historic/common-historic.component';
+import { SemesterEnrollmentComponent } from './components/enrollment/semester-enrollment/semester-enrollment.component';
+import { MatSelectModule } from '@angular/material/select';
+import { TranspalFormComponent } from './components/enrollment/transpal-form/transpal-form.component';
+import { GradeReportComponent } from './components/documents/grade-report/grade-report.component';
+import { AcademicRecordComponent } from './components/documents/academic-record/academic-record.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { CommonHistoricComponent } from './components/enrollment/common-historic
     PreferencesComponent,
     CurriculumComponent,
     CommonHistoricComponent,
+    SemesterEnrollmentComponent,
+    TranspalFormComponent,
+    GradeReportComponent,
+    AcademicRecordComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,7 @@ import { CommonHistoricComponent } from './components/enrollment/common-historic
     MatListModule,
     MatTableModule,
     MatExpansionModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

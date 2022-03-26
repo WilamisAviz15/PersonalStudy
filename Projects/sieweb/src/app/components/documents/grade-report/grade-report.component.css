@@ -1,0 +1,21 @@
+.mat-card,
+.mat-table {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.periodo {
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.histComum {
+  text-align: center;
+}

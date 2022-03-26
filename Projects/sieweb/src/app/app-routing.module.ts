@@ -1,3 +1,7 @@
+import { AcademicRecordComponent } from './components/documents/academic-record/academic-record.component';
+import { GradeReportComponent } from './components/documents/grade-report/grade-report.component';
+import { TranspalFormComponent } from './components/enrollment/transpal-form/transpal-form.component';
+import { SemesterEnrollmentComponent } from './components/enrollment/semester-enrollment/semester-enrollment.component';
 import { CurriculumComponent } from './components/curriculum/curriculum.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
@@ -35,6 +39,22 @@ const routes: Routes = [
   {
     path: 'matricula/historico-comum',
     component: CommonHistoricComponent,
+  },
+  {
+    path: 'matricula/matricula-semestral',
+    component: SemesterEnrollmentComponent,
+  },
+  {
+    path: 'matricula/solicitacao-carteirinha',
+    component: TranspalFormComponent,
+  },
+  {
+    path: 'documentos/boletim',
+    component: GradeReportComponent,
+  },
+  {
+    path: 'documentos/historico-analitico',
+    component: AcademicRecordComponent,
   },
 ];
 
