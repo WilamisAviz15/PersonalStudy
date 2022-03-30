@@ -1,19 +1,17 @@
-.sidenav {
+.sidenav__ {
   background-color: #3f51b5;
   width: 200px;
-  float: fixed;
-  left: 0;
 }
 
-.sidenav a,
+.sidenav__ a,
 span {
   color: #fff;
 }
-.sidenav a:hover {
+.sidenav__ a:hover {
   background-color: #303f9f;
 }
 
-.sidenav i {
+.sidenav__ i {
   padding-right: 10px;
 }
 
@@ -39,4 +37,14 @@ span {
 
 .selected {
   background-color: #303f9f !important;
+}
+
+.test span .mat-expansion-indicator::after {
+  color: #fff !important;
+}
+
+@media screen and(min-width: 799px) {
+  .hide-on-small-screens {
+    display: none;
+  }
 }

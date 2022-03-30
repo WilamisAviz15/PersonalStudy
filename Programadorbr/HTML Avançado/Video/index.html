@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+
     <style>
       .container {
         position: relative;
@@ -23,14 +20,58 @@
         top: 0;
         width: 100%;
         height: 100%;
+        text-align: center;
+      }
+      .btn {
+        position: relative;
+        width: 60px;
+        /* margin: 10px; */
+        padding: 10px;
+        top: 100%;
+        transform: translateY(-100%);
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <video class="video" src="./assets/videos/video.mp4"></video>
+      <video class="video" id="video" src="./assets/videos/video.mp4"></video>
       <div class="controle">
-        <i class="material-icons">cloud</i>
+        <img
+          class="btn"
+          onclick="retrosceder()"
+          src="./assets/images/previous.svg"
+          alt=""
+        />
+        <img
+          class="btn"
+          onclick="avancar()"
+          src="./assets/images/next.svg"
+          alt=""
+        />
+        <img
+          class="btn"
+          onclick="diminuir()"
+          src="./assets/images/dim_vel.svg"
+          alt=""
+        />
+        <img
+          class="btn"
+          onclick="aumentar()"
+          src="./assets/images/add_vel.svg"
+          alt=""
+        />
+        <img
+          class="btn"
+          onclick="play()"
+          src="./assets/images/play.svg"
+          alt=""
+        />
+        <img
+          class="btn"
+          onclick="stop()"
+          src="./assets/images/stop.svg"
+          alt=""
+        />
       </div>
     </div>
   </body>
