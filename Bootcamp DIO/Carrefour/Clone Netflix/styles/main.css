@@ -24,7 +24,8 @@ header .container {
   justify-content: space-between;
 }
 
-header .logo {
+header .logo a{
+  text-decoration: none;
   margin-left: 5px;
   color: var(--vermelho);
   font-family: "Arial Black", Times;
@@ -45,8 +46,8 @@ header nav a:hover {
 .filme-principal {
   font-size: 16px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 100%),
-    url("/img/capa-house.jpg");
-  height: 400px;
+    url("/img/capa-re.jpg");
+  height: 500px;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -102,3 +103,8 @@ header nav a:hover {
 .carrosel-filmes {
   margin-top: 5px;
 }
+
+.mais-jogados{
+  padding: 15px;
+}
+
