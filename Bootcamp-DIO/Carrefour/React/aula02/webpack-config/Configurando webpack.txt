@@ -1,0 +1,11 @@
+Criação dos arquivos webpack.config.js
+npm i -D webpack webpack-cli
+
+adicionar no package.json:
+"build": "webpack --mode production"
+
+instalar babel
+npm i @babel/core babel-loader @babel/preset-env @ babel/preset-react --save-dev
+
+ESLINT:
+npm install --save-dev eslint babel-eslint eslint-plugin-react eslint-watch
