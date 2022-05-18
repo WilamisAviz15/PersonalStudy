@@ -1,0 +1,33 @@
+====Configurações iniciais====
+1. Criar arquivo package.json:
+npm --init
+2. instalar o typescript:
+npm install -g typescript
+3. iniciar o arquivo tsconfig.json:
+tsc --init
+4. adicionar ou descomentar as linhas:
+"moduleResolution": "node",    
+"rootDir": "src",
+"typeRoots": [
+"./src/@types",
+"./node_modules/@types"
+],
+"outDir": "./dist",    
+"removeComments": true,
+5. Instalar a lib:
+npm install --save-dev typescript
+npm install --save-dev @types/node
+6. Inserir o script em package.json:
+"build": "tsc -p ."
+7. Para transpilar:
+npm run build
+
+====Configurando servidor express====
+1. instalar express:
+npm install --save express
+npm install --save-dev @types/express
+2. Instalar:
+npm install --save-dev ts-node-dev
+3. Inserir o script:
+"dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+
