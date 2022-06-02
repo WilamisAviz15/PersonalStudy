@@ -1,0 +1,19 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #3e3e3e;
+  color: #fff;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-left: 25px;
+}
+
+li {
+  margin-right: 20px;
+}
