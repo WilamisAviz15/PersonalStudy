@@ -23,7 +23,6 @@ function App() {
     <div className="App">
       <FormUsers onSaveUser={saveUserHandler} />
       <Users users={users} />
-      <DialogError />
     </div>
   );
 }

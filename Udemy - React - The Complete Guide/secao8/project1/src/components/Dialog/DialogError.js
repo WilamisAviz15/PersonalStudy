@@ -1,16 +1,18 @@
 import React from "react";
 import "./DialogError.css";
 
-const DialogError = () => {
+const DialogError = (props) => {
   return (
-    <div className="container-dialog">
-      <header>Invalid Input</header>
-      <div className="container-dialog-content">
-        <p>Please enter a valid name and age</p>
+    <div className="container-backdrop" onClick={props.onCloseDialog}>
+      <div className="container-dialog">
+        <header>{props.title}</header>
+        <div className="container-dialog-content">
+          <p>{props.message}</p>
+        </div>
+        <footer className="container-dialog-footer">
+          <button onClick={props.onCloseDialog}>Okay</button>
+        </footer>
       </div>
-      <footer className="container-dialog-footer">
-        <button>Okay</button>
-      </footer>
     </div>
   );
 };
