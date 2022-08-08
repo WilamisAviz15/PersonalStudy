@@ -1,0 +1,37 @@
+.container-dialog {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
+  background: white;
+  border-radius: 16px;
+}
+
+header {
+  background-color: #8b005d;
+  color: white;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.container-dialog .container-dialog-content {
+  padding: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+@media (min-width: 768px) {
+  .container-dialog {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}

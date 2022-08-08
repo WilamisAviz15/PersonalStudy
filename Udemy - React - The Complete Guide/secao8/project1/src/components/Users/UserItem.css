@@ -1,0 +1,19 @@
+.container-item {
+  width: 35rem;
+  max-width: 90%;
+  margin: 1rem auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.9rem;
+  background-color: rgb(255, 255, 255);
+}
+
+.container-item-elements {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-item-elements input {
+  font-size: 1.3rem;
+  padding: 0.2rem;
+}
