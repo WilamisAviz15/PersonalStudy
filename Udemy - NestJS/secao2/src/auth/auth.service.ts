@@ -6,11 +6,11 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
+import * as bcript from 'bcrypt';
+
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { User } from './user.entity';
-
-import * as bcript from 'bcrypt';
-import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
@@ -23,15 +23,13 @@ export class AuthService {
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     const { username, password } = authCredentialsDto;
-
-    //hash
     const salt = await bcript.genSalt();
     const hashedPassword = await bcript.hash(password, salt);
-
     const user = this.usersRepository.create({
       username,
       password: hashedPassword,
     });
+
     try {
       await this.usersRepository.save(user);
     } catch (err) {
