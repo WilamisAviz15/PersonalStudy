@@ -1,26 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { ITask } from "../../interfaces/ITask.interface";
+import Item from "./Item";
 import style from "./List.module.scss";
 
-const List = () => {
-  const tasks = [
-    {
-      name: "React",
-      time: "02:00:00",
-    },
-    {
-      name: "Javascript",
-      time: "01:00:00",
-    },
-  ];
+interface IProps {
+  tasks: ITask[];
+  setSelectedTask: (selectedTask: ITask) => void;
+}
+
+const List = ({ tasks, setSelectedTask }: IProps) => {
   return (
     <aside className={style.listaTarefas}>
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map((task) => (
-          <li key={task.name} className={style.item}>
-            <h3>{task.name}</h3>
-            <span>{task.time}</span>
-          </li>
+          <Item setSelectedTask={setSelectedTask} key={task.id} task={task} />
         ))}
       </ul>
     </aside>
