@@ -1,15 +1,15 @@
 import React from "react";
 import style from "./Button.module.scss";
 
-const Button = ({
-  text,
-  type = "button",
-}: {
+interface PropsButton {
   text: string;
   type?: "button" | "submit" | "reset" | undefined;
-}) => {
+  onClick?: () => void;
+}
+
+const Button = ({ text, type = "button", onClick }: PropsButton) => {
   return (
-    <button type={type} className={style.botao}>
+    <button type={type} className={style.botao} onClick={onClick}>
       {text}
     </button>
   );

@@ -7,14 +7,18 @@ interface IProps {
 }
 
 const Item = ({ task, setSelectedTask }: IProps) => {
-  console.log(task);
   return (
     <li
-      className={`${style.item} ${task.selected ? style.itemSelecionado : ""}`}
-      onClick={() => setSelectedTask(task)}
+      className={`${style.item} ${task.selected ? style.itemSelecionado : ""} ${
+        task.completed ? style.itemCompletado : ""
+      }`}
+      onClick={() => !task.completed && setSelectedTask(task)}
     >
       <h3>{task.name}</h3>
       <span>{task.time}</span>
+      {task.completed && (
+        <span className={style.concluido} aria-label="task complete"></span>
+      )}
     </li>
   );
 };
