@@ -1,0 +1,38 @@
+.card {
+  display: inline-block;
+  background-color: #090909;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+
+  &__header {
+    &__title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    margin-top: 2rem;
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__action {
+    margin-top: 2rem;
+    &__items {
+      button {
+        border: none;
+        background-color: inherit;
+        color: white;
+        cursor: pointer;
+      }
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.2rem;
+    }
+  }
+}

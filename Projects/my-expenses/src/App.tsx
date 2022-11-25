@@ -1,5 +1,13 @@
+import Card from "./components/Card";
+import Sidebar from "./components/Sidebar";
+
 function App() {
-  return <h1>helo</h1>;
+  return (
+    <main>
+      <Sidebar />
+      <Card />
+    </main>
+  );
 }
 
 export default App;
