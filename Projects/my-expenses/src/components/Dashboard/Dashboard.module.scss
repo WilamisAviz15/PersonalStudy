@@ -1,0 +1,56 @@
+.dashboard {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__conversion {
+      button {
+        background-color: white;
+        border: 1px solid #fafafa;
+        border-radius: 10px;
+        padding: 0.3rem 0.7rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      button .selectd {
+        background-color: #141414;
+      }
+
+      button:first-child {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  &__balance {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__gain {
+    display: flex;
+    justify-content: space-around;
+    &__up {
+      font-size: 1rem;
+    }
+    &__down {
+      font-size: 1rem;
+    }
+
+    &__value {
+      font-size: 1.2rem;
+    }
+  }
+}
