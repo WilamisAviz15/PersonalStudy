@@ -1,9 +1,7 @@
-import Card from "./components/Card";
-import CardBalance from "./components/Card/CardBalance";
 import Sidebar from "./components/Sidebar";
 import styles from "./App.module.scss";
-import SimpleCard from "./components/Card/SimpleCard";
-import Dashboard from "./components/Dashboard";
+import Balance from "./components/Balance";
+import Box from "./components/Box";
 
 function App() {
   return (
@@ -12,7 +10,8 @@ function App() {
       <div className={styles.container__content}>
         {/* <SimpleCard />
         <CardBalance /> */}
-        <Dashboard />
+        <Balance />
+        <Box />
       </div>
     </main>
   );
