@@ -5,15 +5,23 @@ import styles from "./List.module.scss";
 const List = () => {
   return (
     <nav className={styles.sidebar__nav}>
-      <a href="/">
-        <FaHome />
-      </a>
-      <a href="/">
-        <FaWallet />
-      </a>
-      <a href="/">
-        <FaUserAlt />
-      </a>
+      <ul>
+        <li>
+          <a href="/">
+            <FaHome />
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <FaWallet />
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <FaUserAlt />
+          </a>
+        </li>
+      </ul>
     </nav>
   );
 };

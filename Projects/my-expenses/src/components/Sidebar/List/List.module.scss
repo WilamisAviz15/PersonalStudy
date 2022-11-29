@@ -4,7 +4,16 @@ nav {
   flex-direction: column;
   color: white;
   margin: 2rem;
-  a {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 2rem;
+  }
+
+  li a {
     color: white;
     text-decoration: none;
     font-size: 2.7rem;
