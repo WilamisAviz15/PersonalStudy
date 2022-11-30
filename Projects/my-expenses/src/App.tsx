@@ -1,7 +1,7 @@
 import Sidebar from "./components/Sidebar";
 import styles from "./App.module.scss";
 import Balance from "./components/Balance";
-import Box from "./components/Box";
+import Transaction from "./components/Transaction";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         {/* <SimpleCard />
         <CardBalance /> */}
         <Balance />
-        <Box />
+        <Transaction />
       </div>
     </main>
   );

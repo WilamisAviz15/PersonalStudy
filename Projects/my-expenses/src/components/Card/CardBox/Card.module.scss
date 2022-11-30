@@ -1,0 +1,24 @@
+.cardbox {
+  background-color: #090909;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
