@@ -13,11 +13,15 @@ const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
     "Date",
   ];
 
-  return (
+  return tbodyData.length > 0 ? (
     <table className={styles.table}>
       <THead theadData={theadData} />
       <TBody tBodyData={tbodyData} />
     </table>
+  ) : (
+    <h2 style={{ textAlign: "center" }}>
+      There are no transactions performed.
+    </h2>
   );
 };
 

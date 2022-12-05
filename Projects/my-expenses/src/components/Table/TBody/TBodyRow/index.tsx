@@ -15,7 +15,6 @@ const TableRow = ({ data }: { data: IWalletItem }) => {
         className={styles.dot}
         style={{ backgroundColor: `${data.color}` }}
       ></span>
-
       {data.transactions.map((item) => (
         <TBodyRowItem item={item} />
       ))}

@@ -1,10 +1,19 @@
 import Sidebar from "./components/Sidebar";
 import styles from "./App.module.scss";
-import Balance from "./components/Balance";
+import Wallet from "./components/Wallet";
 import Transaction from "./components/Transaction";
 import { IWalletItem } from "./shared/interfaces/IWalletItem.interface";
+import Dialog from "./components/Dialog";
+import DialogWallet from "./components/Dialog/DialogWallet";
+import { useState } from "react";
 
 function App() {
+  const [openWalletDialog, setOpenWalletDialog] = useState(false);
+
+  const handleOpenWalletDialog = (event: any) => {
+    setOpenWalletDialog(event);
+  };
+  // const data: IWalletItem[] = [];
   const data: IWalletItem[] = [
     {
       id: "1",
@@ -55,7 +64,7 @@ function App() {
       color: "",
     },
     {
-      id: "1",
+      id: "4",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -71,7 +80,7 @@ function App() {
       color: "#2196F3",
     },
     {
-      id: "2",
+      id: "5",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -87,7 +96,7 @@ function App() {
       color: "#009688",
     },
     {
-      id: "3",
+      id: "6",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -103,7 +112,7 @@ function App() {
       color: "",
     },
     {
-      id: "1",
+      id: "7",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -119,7 +128,7 @@ function App() {
       color: "#2196F3",
     },
     {
-      id: "2",
+      id: "8",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -135,7 +144,7 @@ function App() {
       color: "#009688",
     },
     {
-      id: "3",
+      id: "9",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -151,7 +160,7 @@ function App() {
       color: "",
     },
     {
-      id: "3",
+      id: "10",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -167,7 +176,7 @@ function App() {
       color: "",
     },
     {
-      id: "3",
+      id: "11",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -183,7 +192,7 @@ function App() {
       color: "",
     },
     {
-      id: "3",
+      id: "12",
       title: "Netflix",
       balance: "R$ 3.000,00",
       description: "Descricao da caixinha",
@@ -203,10 +212,19 @@ function App() {
     <main className={styles.container}>
       <Sidebar />
       <div className={styles.container__content}>
-        {/* <SimpleCard />
-        <CardBalance /> */}
-        <Balance data={data} />
+        <Wallet
+          data={data}
+          onOpenWalletDialog={(value: boolean) => handleOpenWalletDialog(value)}
+        />
         <Transaction data={data} />
+        {openWalletDialog && (
+          <Dialog
+            title="Create a wallet"
+            onCloseDialog={(value: boolean) => handleOpenWalletDialog(value)}
+          >
+            <DialogWallet />
+          </Dialog>
+        )}
       </div>
     </main>
   );
