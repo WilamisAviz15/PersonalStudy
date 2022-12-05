@@ -1,14 +1,15 @@
+import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
 import styles from "./Card.module.scss";
 
-const CardBox = ({ backgroundColor }: { backgroundColor: string }) => {
+const CardBox = ({ item }: { item: IWalletItem }) => {
   return (
     <article
       className={styles.cardbox}
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundColor: `${item.color ? item.color : "#8BC34A"}` }}
     >
-      <h3>Natal</h3>
-      <h4>Descricao da caixinha</h4>
-      <span> R$ 0,02</span>
+      <h3>{item.title}</h3>
+      <h4>{item.description}</h4>
+      <span>{item.balance}</span>
     </article>
   );
 };

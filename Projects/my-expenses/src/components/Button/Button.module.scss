@@ -1,6 +1,7 @@
 .button {
   padding: 0.3rem 0.4rem;
   border-radius: 8px;
+  background-color: white;
   cursor: pointer;
 
   &__plusIcon {
@@ -8,6 +9,5 @@
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
   }
 }

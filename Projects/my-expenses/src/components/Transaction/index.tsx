@@ -1,9 +1,11 @@
 import styles from "./Transaction.module.scss";
 
 import Card from "../Card";
-import Select from "../Select";
+import Table from "../Table";
+import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
+import CardHeader from "../Card/CardHeader";
 
-const Transaction = () => {
+const Transaction = ({ data }: { data: IWalletItem[] }) => {
   return (
     <Card>
       <>
@@ -11,8 +13,9 @@ const Transaction = () => {
           <div className={styles.transaction__header}>
             <h3>Transaction</h3>
           </div>
-          <div className={styles.transaction__header__dropdown}>
-            <Select />
+          <CardHeader />
+          <div className={styles.transaction__header__table}>
+            <Table tbodyData={data} />
           </div>
         </article>
       </>

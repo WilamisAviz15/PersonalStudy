@@ -1,0 +1,29 @@
+.card {
+  &__header {
+    &__dropdown {
+      display: "inline-flex";
+      justify-content: "flex-start";
+    }
+
+    &__search {
+      display: flex;
+      align-items: center;
+      border: 1px solid white;
+      border-radius: 5px;
+      padding: 0.2rem;
+      padding-left: 0.8rem;
+
+      input {
+        background-color: #090909;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 0.2rem;
+      }
+
+      input:focus {
+        outline: none;
+      }
+    }
+  }
+}

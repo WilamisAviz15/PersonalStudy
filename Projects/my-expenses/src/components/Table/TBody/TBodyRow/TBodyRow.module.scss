@@ -1,0 +1,19 @@
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #8bc34a;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.item {
+  font-weight: 100;
+}
+
+.item:nth-child(3) {
+  font-weight: 600;
+}
+
+.item:nth-child(5) {
+  font-weight: 500;
+}
