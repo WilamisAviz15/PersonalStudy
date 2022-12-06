@@ -1,0 +1,89 @@
+// Colors
+$color-1: #2ecc71;
+$color-2: #3498db;
+$color-3: #f1c40f;
+$color-4: #e74c3c;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__colors {
+    display: flex;
+    gap: 10px;
+    &__dot {
+      height: 20px;
+      width: 20px;
+      background-color: #8bc34a;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    button:focus,
+    button:active {
+      border: 2px solid white;
+    }
+  }
+
+  &__custom__radios {
+    div {
+      display: inline-block;
+    }
+
+    &__color {
+      background-color: $color-1;
+    }
+
+    input[type="radio"] {
+      display: none;
+
+      + label {
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 9px;
+
+        span {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin: -1px 4px 0 0;
+          vertical-align: middle;
+          cursor: pointer;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+          background-repeat: no-repeat;
+          background-position: center;
+          text-align: center;
+          line-height: 22px;
+
+          img {
+            opacity: 0;
+            transition: all 0.3s ease;
+            width: 50%;
+          }
+        }
+      }
+
+      &#color-2 + label span {
+        background-color: $color-2;
+      }
+
+      &#color-3 + label span {
+        background-color: $color-3;
+      }
+
+      &#color-4 + label span {
+        background-color: $color-4;
+      }
+
+      &:checked + label span img {
+        opacity: 1;
+      }
+    }
+  }
+}

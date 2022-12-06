@@ -18,7 +18,8 @@ const DialogOverlay = ({ title, onCloseDialog, children }: IPropsDialog) => {
       </header>
       <div className={styles["container-dialog__content"]}>{children}</div>
       <footer className={styles["container-dialog__footer"]}>
-        <button onClick={() => onCloseDialog(false)}>Okay</button>
+        <button onClick={() => onCloseDialog(false)}>Cancel</button>
+        <button>Create</button>
       </footer>
     </div>
   );

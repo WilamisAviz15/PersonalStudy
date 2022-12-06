@@ -10,8 +10,8 @@ import { useState } from "react";
 function App() {
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
 
-  const handleOpenWalletDialog = (event: any) => {
-    setOpenWalletDialog(event);
+  const handleOpenWalletDialog = (value: boolean) => {
+    setOpenWalletDialog(value);
   };
   // const data: IWalletItem[] = [];
   const data: IWalletItem[] = [
