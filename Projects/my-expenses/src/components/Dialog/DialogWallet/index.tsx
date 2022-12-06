@@ -35,7 +35,8 @@ const DialogWallet = () => {
           <button className={styles.content__colors__dot}></button>
           <button className={styles.content__colors__dot}></button> 
         </div> */}
-
+        //TODO:
+        {/* https://www.sliderrevolution.com/resources/styling-radio-buttons/ */}
         <div className={styles.content__custom__radios}>
           <div>
             <input type="radio" id="color-1" name="color" value="color-1" />
