@@ -13,7 +13,17 @@ const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
     "Date",
   ];
 
-  return tbodyData.length > 0 ? (
+  const verifyTransactions = (): boolean => {
+    let existsTransaction = false;
+    tbodyData.map((data) =>
+      data.transactions.length > 0
+        ? (existsTransaction = true)
+        : (existsTransaction = false)
+    );
+    return existsTransaction;
+  };
+
+  return verifyTransactions() ? (
     <table className={styles.table}>
       <THead theadData={theadData} />
       <TBody tBodyData={tbodyData} />

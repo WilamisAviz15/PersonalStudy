@@ -5,7 +5,12 @@ import { IPropsDialog } from "../../shared/interfaces/IPropsDialog.interface";
 import React from "react";
 import DialogBackdrop from "./DialogBackdrop";
 
-const Dialog = ({ title, onCloseDialog, children }: IPropsDialog) => {
+const Dialog = ({
+  title,
+  onCloseDialog,
+  saveNewWallet,
+  children,
+}: IPropsDialog) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -13,9 +18,11 @@ const Dialog = ({ title, onCloseDialog, children }: IPropsDialog) => {
         document.getElementById("backdrop-root")!
       )}
       {ReactDOM.createPortal(
-        <DialogOverlay title={title} onCloseDialog={onCloseDialog}>
-          {children}
-        </DialogOverlay>,
+        <DialogOverlay
+          title={title}
+          onCloseDialog={onCloseDialog}
+          saveNewWallet={saveNewWallet}
+        />,
         document.getElementById("overlay-root")!
       )}
     </React.Fragment>

@@ -1,5 +1,6 @@
 export interface IPropsDialog {
   title: string;
   onCloseDialog: (value: boolean) => void;
-  children: React.ReactNode;
+  saveNewWallet: (wallet: any) => void;
+  children?: React.ReactNode;
 }

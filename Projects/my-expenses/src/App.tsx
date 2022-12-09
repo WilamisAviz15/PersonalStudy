@@ -4,226 +4,47 @@ import Wallet from "./components/Wallet";
 import Transaction from "./components/Transaction";
 import { IWalletItem } from "./shared/interfaces/IWalletItem.interface";
 import Dialog from "./components/Dialog";
-import DialogWallet from "./components/Dialog/DialogWallet";
 import { useState } from "react";
+import { IWalletData } from "./shared/interfaces/IWalletData.interface";
 
 function App() {
+  let id = 1;
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
+  const [walletData, setWalletData] = useState<IWalletItem[]>([]);
 
-  const handleOpenWalletDialog = (value: boolean) => {
+  const handleWalletDialog = (value: boolean) => {
     setOpenWalletDialog(value);
   };
-  // const data: IWalletItem[] = [];
-  const data: IWalletItem[] = [
-    {
-      id: "1",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ 29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#2196F3",
-    },
-    {
-      id: "2",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#009688",
-    },
-    {
-      id: "3",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ 29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-    {
-      id: "4",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#2196F3",
-    },
-    {
-      id: "5",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ 29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#009688",
-    },
-    {
-      id: "6",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-    {
-      id: "7",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ 29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#2196F3",
-    },
-    {
-      id: "8",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "#009688",
-    },
-    {
-      id: "9",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-    {
-      id: "10",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-    {
-      id: "11",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-    {
-      id: "12",
-      title: "Netflix",
-      balance: "R$ 3.000,00",
-      description: "Descricao da caixinha",
-      transactions: [
-        {
-          name: "Netflix",
-          currentBalance: "R$ 3.000,00",
-          description: "Pay fulana",
-          amount: "R$ -29,90",
-          date: "01/01/2021",
-        },
-      ],
-      color: "",
-    },
-  ];
+
+  const handleSaveNewWallet = (wallet: IWalletData) => {
+    const { name, description, selectedColor, value } = wallet;
+    const newWallet: IWalletItem = {
+      id: (++id).toString(),
+      title: name,
+      description,
+      color: selectedColor,
+      balance: value,
+      transactions: [],
+    };
+    setWalletData((oldWalletData) => [...oldWalletData, newWallet]);
+    handleWalletDialog(false);
+  };
+
   return (
     <main className={styles.container}>
       <Sidebar />
       <div className={styles.container__content}>
         <Wallet
-          data={data}
-          onOpenWalletDialog={(value: boolean) => handleOpenWalletDialog(value)}
+          data={walletData}
+          onOpenWalletDialog={(value: boolean) => handleWalletDialog(value)}
         />
-        <Transaction data={data} />
+        <Transaction data={walletData} />
         {openWalletDialog && (
           <Dialog
             title="Create a wallet"
-            onCloseDialog={(value: boolean) => handleOpenWalletDialog(value)}
-          >
-            <DialogWallet />
-          </Dialog>
+            onCloseDialog={(value: boolean) => handleWalletDialog(value)}
+            saveNewWallet={(wallet: any) => handleSaveNewWallet(wallet)}
+          />
         )}
       </div>
     </main>

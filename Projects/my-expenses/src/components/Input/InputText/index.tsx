@@ -1,7 +1,19 @@
 import styles from "./InputText.module.scss";
 
-const InputText = () => {
-  return <input type="text" className={styles.inputText} />;
+interface Iprops {
+  value: string;
+  setValue: (value: string) => void;
+}
+
+const InputText = ({ value, setValue }: Iprops) => {
+  return (
+    <input
+      type="text"
+      className={styles.inputText}
+      value={value}
+      onChange={(event) => setValue(event.target.value)}
+    />
+  );
 };
 
 export default InputText;
