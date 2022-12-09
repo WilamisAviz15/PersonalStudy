@@ -6,15 +6,14 @@ import InputNumber from "../../Input/InputNumber";
 import { useState } from "react";
 
 const DialogWallet = () => {
-  const [checked, setChecked] = useState(true);
+  const [selectedColor, setSelectedColor] = useState<string>("color-1");
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event);
   };
 
-  const handleInputChecked = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.target.checked = !checked;
-    setChecked(!checked);
+  const handleInputChecked = (color: string) => {
+    setSelectedColor(color);
   };
 
   return (
@@ -35,11 +34,10 @@ const DialogWallet = () => {
               id={styles["color-1"]}
               name="color"
               value="color-1"
-              checked={checked}
-              onChange={(event) => handleInputChecked(event)}
+              checked={selectedColor === "color-1"}
             />
             <label htmlFor="color-1">
-              <span>
+              <span onClick={() => handleInputChecked("color-1")}>
                 <img src={checkedIcon} alt="Checked Icon" />
               </span>
             </label>
@@ -51,9 +49,10 @@ const DialogWallet = () => {
               id={styles["color-2"]}
               name="color"
               value="color-2"
+              checked={selectedColor === "color-2"}
             />
             <label htmlFor="color-2">
-              <span>
+              <span onClick={() => handleInputChecked("color-2")}>
                 <img src={checkedIcon} alt="Checked Icon" />
               </span>
             </label>
@@ -65,9 +64,10 @@ const DialogWallet = () => {
               id={styles["color-3"]}
               name="color"
               value="color-3"
+              checked={selectedColor === "color-3"}
             />
             <label htmlFor="color-3">
-              <span>
+              <span onClick={() => handleInputChecked("color-3")}>
                 <img src={checkedIcon} alt="Checked Icon" />
               </span>
             </label>
@@ -79,9 +79,10 @@ const DialogWallet = () => {
               id={styles["color-4"]}
               name="color"
               value="color-4"
+              checked={selectedColor === "color-4"}
             />
             <label htmlFor="color-4">
-              <span>
+              <span onClick={() => handleInputChecked("color-4")}>
                 <img src={checkedIcon} alt="Checked Icon" />
               </span>
             </label>
