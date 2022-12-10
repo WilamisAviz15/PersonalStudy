@@ -8,7 +8,7 @@ import CardHeader from "../Card/CardHeader";
 
 interface IPropsWallet {
   data: IWalletItem[];
-  onOpenWalletDialog: (value: boolean) => void;
+  onOpenWalletDialog: (value: boolean, id?: string) => void;
 }
 
 const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
@@ -24,7 +24,9 @@ const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
         </div>
         <div className={styles.dashboard__content}>
           {data.length > 0 ? (
-            data.map((item) => <CardBox item={item} />)
+            data.map((item) => (
+              <CardBox item={item} onOpenWalletDialog={onOpenWalletDialog} />
+            ))
           ) : (
             <h2>There are no wallets created.</h2>
           )}

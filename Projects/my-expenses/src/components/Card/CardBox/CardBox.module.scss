@@ -1,0 +1,41 @@
+.cardbox {
+  background-color: #090909;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1.5rem;
+  padding-bottom: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+  width: 150px;
+  height: 130px;
+  max-height: 130px;
+
+  &__content {
+    margin-bottom: 1.5rem;
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    a {
+      cursor: pointer;
+    }
+  }
+}

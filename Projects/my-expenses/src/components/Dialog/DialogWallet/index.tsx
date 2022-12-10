@@ -3,61 +3,65 @@ import styles from "./DialogWallet.module.scss";
 import checkedIcon from "../../../assets/img/checked-icon.svg";
 import InputText from "../../Input/InputText";
 import InputNumber from "../../Input/InputNumber";
-import { IWalletData } from "../../../shared/interfaces/IWalletData.interface";
+import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
 
 const DialogWallet = ({
   walletData,
   setWalletData,
 }: {
-  walletData: IWalletData;
-  setWalletData: React.Dispatch<React.SetStateAction<IWalletData>>;
+  walletData: IWalletItem;
+  setWalletData: React.Dispatch<React.SetStateAction<IWalletItem>>;
 }) => {
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const handleInputChecked = (color: string) => {
     setWalletData((walletData) => ({
-      name: walletData.name,
+      id: "",
+      title: walletData.title,
       description: walletData.description,
-      selectedColor: color,
-      value: walletData.value,
+      color: color,
+      balance: walletData.balance,
+      transactions: [],
     }));
   };
 
   const handleInputName = (value: string) => {
     setWalletData((walletData) => ({
-      name: value,
+      id: "",
+      title: value,
       description: walletData.description,
-      selectedColor: walletData.selectedColor,
-      value: walletData.value,
+      color: walletData.color,
+      balance: walletData.balance,
+      transactions: [],
     }));
   };
 
   const handleInputDescription = (value: string) => {
     setWalletData((walletData) => ({
-      name: walletData.name,
+      id: "",
+      title: walletData.title,
       description: value,
-      selectedColor: walletData.selectedColor,
-      value: walletData.value,
+      color: walletData.color,
+      balance: walletData.balance,
+      transactions: [],
     }));
   };
 
   const handleInputValue = (value: string) => {
     setWalletData((walletData) => ({
-      name: walletData.name,
+      id: "",
+      title: walletData.title,
       description: walletData.description,
-      selectedColor: walletData.selectedColor,
-      value: value,
+      color: walletData.color,
+      balance: value,
+      transactions: [],
     }));
   };
 
   return (
-    <form onSubmit={(event) => handleOnSubmit(event)}>
+    <section>
       <div className={styles.content}>
         <label htmlFor="">Name:</label>
         <InputText
-          value={walletData.name}
+          value={walletData.title}
           setValue={(value: string) => handleInputName(value)}
         />
         <label htmlFor="">Description:</label>
@@ -67,7 +71,7 @@ const DialogWallet = ({
         />
         <label htmlFor="">Initial Value:</label>
         <InputNumber
-          value={walletData.value}
+          value={walletData.balance}
           setValue={(value: string) => handleInputValue(value)}
         />
         <label htmlFor="">Color:</label>
@@ -79,7 +83,7 @@ const DialogWallet = ({
               id={styles["color-1"]}
               name="color"
               value="color-1"
-              checked={walletData.selectedColor === "color-1"}
+              checked={walletData.color === "color-1"}
             />
             <label htmlFor="color-1">
               <span onClick={() => handleInputChecked("color-1")}>
@@ -94,7 +98,7 @@ const DialogWallet = ({
               id={styles["color-2"]}
               name="color"
               value="color-2"
-              checked={walletData.selectedColor === "color-2"}
+              checked={walletData.color === "color-2"}
             />
             <label htmlFor="color-2">
               <span onClick={() => handleInputChecked("color-2")}>
@@ -109,7 +113,7 @@ const DialogWallet = ({
               id={styles["color-3"]}
               name="color"
               value="color-3"
-              checked={walletData.selectedColor === "color-3"}
+              checked={walletData.color === "color-3"}
             />
             <label htmlFor="color-3">
               <span onClick={() => handleInputChecked("color-3")}>
@@ -124,7 +128,7 @@ const DialogWallet = ({
               id={styles["color-4"]}
               name="color"
               value="color-4"
-              checked={walletData.selectedColor === "color-4"}
+              checked={walletData.color === "color-4"}
             />
             <label htmlFor="color-4">
               <span onClick={() => handleInputChecked("color-4")}>
@@ -134,7 +138,7 @@ const DialogWallet = ({
           </div>
         </div>
       </div>
-    </form>
+    </section>
   );
 };
 

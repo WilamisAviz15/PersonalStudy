@@ -1,7 +1,14 @@
 import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
-import styles from "./Card.module.scss";
+import styles from "./CardBox.module.scss";
+import { FaPlus, FaEdit } from "react-icons/fa";
 
-const CardBox = ({ item }: { item: IWalletItem }) => {
+const CardBox = ({
+  item,
+  onOpenWalletDialog,
+}: {
+  item: IWalletItem;
+  onOpenWalletDialog: (value: boolean, id?: string) => void;
+}) => {
   const returnColor = (nameColor: string): string => {
     switch (nameColor) {
       case "color-1":
@@ -24,9 +31,20 @@ const CardBox = ({ item }: { item: IWalletItem }) => {
         backgroundColor: `${returnColor(item.color)}`,
       }}
     >
-      <h3>{item.title}</h3>
-      <h4>{item.description}</h4>
-      <span>R$ {Number(item.balance).toFixed(2).replace(".", ",")}</span>
+      <div className={styles.cardbox__content}>
+        <h3>{item.title}</h3>
+        <h4>{item.description}</h4>
+        <span>R$ {Number(item.balance).toFixed(2).replace(".", ",")}</span>
+      </div>
+
+      <div className={styles.cardbox__actions}>
+        <a>
+          <FaEdit onClick={() => onOpenWalletDialog(true, item.id)} />
+        </a>
+        <a>
+          <FaPlus />
+        </a>
+      </div>
     </article>
   );
 };

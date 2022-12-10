@@ -1,25 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { IPropsDialog } from "../../../shared/interfaces/IPropsDialog.interface";
-import { IWalletData } from "../../../shared/interfaces/IWalletData.interface";
+import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
+import DialogAddBalance from "../DialogAddBalance";
 import DialogWallet from "../DialogWallet";
 import styles from "./DialogOverlay.module.scss";
 
 const DialogOverlay = ({
   title,
+  wallet,
   onCloseDialog,
+  updateWallet,
   saveNewWallet,
 }: IPropsDialog) => {
-  const [walletData, setWalletData] = useState<IWalletData>({
-    name: "",
+  const [walletData, setWalletData] = useState<IWalletItem>({
+    title: "",
     description: "",
-    selectedColor: "color-1",
-    value: "0.00",
+    color: "color-1",
+    id: "",
+    transactions: [],
+    balance: "0.00",
   });
+
+  useEffect(() => {
+    if (wallet !== undefined) {
+      setWalletData(wallet);
+      console.log(wallet);
+    }
+  }, []);
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    saveNewWallet(walletData);
+    saveNewWallet!(walletData);
   };
 
   return (
@@ -39,7 +51,16 @@ const DialogOverlay = ({
         </button>
       </header>
       <main className={styles["container-dialog__content"]}>
-        <DialogWallet walletData={walletData} setWalletData={setWalletData} />
+        {title === "Create a wallet" && (
+          <DialogWallet walletData={walletData} setWalletData={setWalletData} />
+        )}
+
+        {title === "Add value" && (
+          <DialogAddBalance
+            walletData={walletData}
+            updateWallet={updateWallet}
+          />
+        )}
       </main>
       <footer className={styles["container-dialog__footer"]}>
         <button onClick={() => onCloseDialog(false)}>Cancel</button>

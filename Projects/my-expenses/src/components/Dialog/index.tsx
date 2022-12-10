@@ -7,8 +7,10 @@ import DialogBackdrop from "./DialogBackdrop";
 
 const Dialog = ({
   title,
+  wallet,
   onCloseDialog,
   saveNewWallet,
+  updateWallet,
   children,
 }: IPropsDialog) => {
   return (
@@ -22,6 +24,8 @@ const Dialog = ({
           title={title}
           onCloseDialog={onCloseDialog}
           saveNewWallet={saveNewWallet}
+          updateWallet={updateWallet}
+          wallet={wallet}
         />,
         document.getElementById("overlay-root")!
       )}
