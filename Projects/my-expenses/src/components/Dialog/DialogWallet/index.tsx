@@ -14,7 +14,7 @@ const DialogWallet = ({
 }) => {
   const handleInputChecked = (color: string) => {
     setWalletData((walletData) => ({
-      id: "",
+      id: walletData.id ? walletData.id : "",
       title: walletData.title,
       description: walletData.description,
       color: color,
@@ -25,7 +25,7 @@ const DialogWallet = ({
 
   const handleInputName = (value: string) => {
     setWalletData((walletData) => ({
-      id: "",
+      id: walletData.id ? walletData.id : "",
       title: value,
       description: walletData.description,
       color: walletData.color,
@@ -36,7 +36,7 @@ const DialogWallet = ({
 
   const handleInputDescription = (value: string) => {
     setWalletData((walletData) => ({
-      id: "",
+      id: walletData.id ? walletData.id : "",
       title: walletData.title,
       description: value,
       color: walletData.color,
@@ -47,7 +47,7 @@ const DialogWallet = ({
 
   const handleInputValue = (value: string) => {
     setWalletData((walletData) => ({
-      id: "",
+      id: walletData.id ? walletData.id : "",
       title: walletData.title,
       description: walletData.description,
       color: walletData.color,
@@ -59,6 +59,12 @@ const DialogWallet = ({
   return (
     <section>
       <div className={styles.content}>
+        {walletData.id && (
+          <>
+            <label htmlFor="">ID:</label>
+            <InputText value={walletData.id} readonly={true} />
+          </>
+        )}
         <label htmlFor="">Name:</label>
         <InputText
           value={walletData.title}

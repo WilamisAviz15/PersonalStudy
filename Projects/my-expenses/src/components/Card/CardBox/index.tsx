@@ -7,7 +7,7 @@ const CardBox = ({
   onOpenWalletDialog,
 }: {
   item: IWalletItem;
-  onOpenWalletDialog: (value: boolean, id?: string) => void;
+  onOpenWalletDialog: (value: boolean, currentWallet?: IWalletItem) => void;
 }) => {
   const returnColor = (nameColor: string): string => {
     switch (nameColor) {
@@ -39,7 +39,7 @@ const CardBox = ({
 
       <div className={styles.cardbox__actions}>
         <a>
-          <FaEdit onClick={() => onOpenWalletDialog(true, item.id)} />
+          <FaEdit onClick={() => onOpenWalletDialog(true, item)} />
         </a>
         <a>
           <FaPlus />

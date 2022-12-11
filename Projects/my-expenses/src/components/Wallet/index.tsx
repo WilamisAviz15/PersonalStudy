@@ -8,7 +8,7 @@ import CardHeader from "../Card/CardHeader";
 
 interface IPropsWallet {
   data: IWalletItem[];
-  onOpenWalletDialog: (value: boolean, id?: string) => void;
+  onOpenWalletDialog: (value: boolean, currentWallet?: IWalletItem) => void;
 }
 
 const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {

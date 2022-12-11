@@ -4,101 +4,53 @@ import Wallet from "./components/Wallet";
 import Transaction from "./components/Transaction";
 import { IWalletItem } from "./shared/interfaces/IWalletItem.interface";
 import Dialog from "./components/Dialog";
-import { useState } from "react";
-import { IWalletData } from "./shared/interfaces/IWalletData.interface";
+import { useEffect, useState } from "react";
+import { getIndex, setIndex } from "./services/app.service";
 
 function App() {
   let id = 0;
-  const [isIdEditing, setIsIdEditing] = useState<number>();
+  const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
-  const [walletData, setWalletData] = useState<IWalletItem[]>([
-    // {
-    //   id: "1",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-    // {
-    //   id: "2",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-    // {
-    //   id: "3",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-    // {
-    //   id: "4",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-    // {
-    //   id: "5",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-    // {
-    //   id: "6",
-    //   balance: "0",
-    //   color: "color-1",
-    //   description: "test",
-    //   title: "natal",
-    //   transactions: [],
-    // },
-  ]);
+  const [walletData, setWalletData] = useState<IWalletItem[]>([]);
 
-  const handleWalletDialog = (value: boolean, id?: string) => {
-    if (id) {
-      setIsIdEditing(+id);
-      console.log(isIdEditing);
+  useEffect(() => {
+    id = getIndex();
+  }, []);
+
+  const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
+    if (currentWallet) {
+      setIsIdEditing(currentWallet);
+    } else {
+      setIsIdEditing(undefined);
     }
 
     setOpenWalletDialog(value);
   };
 
-  const updateWallet = (wallet: IWalletItem) => {
-    console.log(wallet);
-    // setWalletData((walletData) => ({
-    //   name: walletData.name,
-    //   description: walletData.description,
-    //   selectedColor: walletData.selectedColor,
-    //   value: value,
-    // }));
-  };
-
   const handleSaveNewWallet = (wallet: IWalletItem) => {
-    const { title, description, color, balance } = wallet;
-    const newWallet: IWalletItem = {
-      id: (id++).toString(),
-      title,
-      description,
-      color,
-      balance,
-      transactions: [],
-    };
-    setWalletData((oldWalletData) => [...oldWalletData, newWallet]);
-    handleWalletDialog(false);
-  };
+    const isEditing = walletData.find((wallets) => wallets.id === wallet.id);
 
-  const isEditing = (): IWalletItem | undefined => {
-    const a = isIdEditing ? walletData[isIdEditing] : undefined;
-    console.log(a);
-    return isIdEditing ? walletData[isIdEditing] : undefined;
+    if (isEditing) {
+      console.log("editing:", isEditing);
+      setWalletData((oldWalletData) => {
+        oldWalletData[+wallet.id] = wallet;
+        return oldWalletData;
+      });
+      setIsIdEditing(undefined);
+    } else {
+      const { title, description, color, balance } = wallet;
+      const newWallet: IWalletItem = {
+        id: setIndex().toString(),
+        title,
+        description,
+        color,
+        balance,
+        transactions: [],
+      };
+
+      setWalletData((oldWalletData) => [...oldWalletData, newWallet]);
+    }
+    handleWalletDialog(false);
   };
 
   return (
@@ -107,15 +59,15 @@ function App() {
       <div className={styles.container__content}>
         <Wallet
           data={walletData}
-          onOpenWalletDialog={(value: boolean, id?: string) =>
-            handleWalletDialog(value, id)
+          onOpenWalletDialog={(value: boolean, currentWallet?: IWalletItem) =>
+            handleWalletDialog(value, currentWallet)
           }
         />
         <Transaction data={walletData} />
         {openWalletDialog && (
           <Dialog
             title="Create a wallet"
-            wallet={isEditing()}
+            wallet={isIdEditing}
             onCloseDialog={(value: boolean) => handleWalletDialog(value)}
             saveNewWallet={(wallet: IWalletItem) => handleSaveNewWallet(wallet)}
           />

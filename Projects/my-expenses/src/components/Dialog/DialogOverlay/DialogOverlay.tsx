@@ -55,12 +55,12 @@ const DialogOverlay = ({
           <DialogWallet walletData={walletData} setWalletData={setWalletData} />
         )}
 
-        {title === "Add value" && (
+        {/* {title === "Add value" && (
           <DialogAddBalance
             walletData={walletData}
             updateWallet={updateWallet}
           />
-        )}
+        )} */}
       </main>
       <footer className={styles["container-dialog__footer"]}>
         <button onClick={() => onCloseDialog(false)}>Cancel</button>
