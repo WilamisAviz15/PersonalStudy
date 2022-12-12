@@ -1,26 +1,32 @@
 import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
 import styles from "./CardBox.module.scss";
-import { FaPlus, FaEdit } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const CardBox = ({
   item,
   onOpenWalletDialog,
+  onDeleteWallet,
+  onAddBalanceOnWallet,
 }: {
   item: IWalletItem;
   onOpenWalletDialog: (value: boolean, currentWallet?: IWalletItem) => void;
+  onDeleteWallet?: (id: number) => void;
+  onAddBalanceOnWallet?: (id: number) => void;
 }) => {
   const returnColor = (nameColor: string): string => {
     switch (nameColor) {
       case "color-1":
-        return "#2ecc71";
+        return "#05c091";
       case "color-2":
         return "#3498db";
       case "color-3":
-        return "#f1c40f";
+        return "#ff8a45";
       case "color-4":
-        return "#e74c3c";
+        return "#ff6e76";
+      case "color-5":
+        return "#8d48e3";
       default:
-        return "#2ecc71";
+        return "#05c091";
     }
   };
 
@@ -42,7 +48,10 @@ const CardBox = ({
           <FaEdit onClick={() => onOpenWalletDialog(true, item)} />
         </a>
         <a>
-          <FaPlus />
+          <FaTrash onClick={() => onDeleteWallet!(+item.id)} />
+        </a>
+        <a>
+          <FaPlus onClick={() => onAddBalanceOnWallet!(+item.id)} />
         </a>
       </div>
     </article>

@@ -4,18 +4,14 @@ import Wallet from "./components/Wallet";
 import Transaction from "./components/Transaction";
 import { IWalletItem } from "./shared/interfaces/IWalletItem.interface";
 import Dialog from "./components/Dialog";
-import { useEffect, useState } from "react";
-import { getIndex, setIndex } from "./services/app.service";
+import { useState } from "react";
+import { setIndex } from "./services/app.service";
 
 function App() {
-  let id = 0;
   const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
+  const [isValueAddBalance, setIsValueAddBalance] = useState<number>();
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
   const [walletData, setWalletData] = useState<IWalletItem[]>([]);
-
-  useEffect(() => {
-    id = getIndex();
-  }, []);
 
   const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
     if (currentWallet) {
@@ -23,11 +19,43 @@ function App() {
     } else {
       setIsIdEditing(undefined);
     }
-
+    setIsValueAddBalance(undefined);
     setOpenWalletDialog(value);
   };
 
-  const handleSaveNewWallet = (wallet: IWalletItem) => {
+  const handleDeleteWallet = (id: number) => {
+    console.log(id);
+    setWalletData((oldWalletData) => {
+      oldWalletData = oldWalletData.filter(
+        (walletData) => +walletData.id !== id
+      );
+      return oldWalletData;
+    });
+  };
+
+  const handleAddBalanceOnWallet = (id: number) => {
+    setIsValueAddBalance(id);
+    setOpenWalletDialog(true);
+  };
+
+  const handleUpdateBalanceOnWallet = (value: string, id: number) => {
+    setWalletData((oldWalletData) => {
+      const oldBalance = +oldWalletData[id].balance;
+      const newValue = oldBalance + +value;
+      oldWalletData[id].balance = newValue.toString();
+      oldWalletData[id].transactions.push({
+        name: oldWalletData[id].title,
+        amount: value,
+        currentBalance: oldWalletData[id].balance,
+        date: new Date().toLocaleDateString(),
+        description: "test",
+      });
+      return oldWalletData;
+    });
+    handleWalletDialog(false);
+  };
+
+  const handleSaveOrUpdateNewWallet = (wallet: IWalletItem) => {
     const isEditing = walletData.find((wallets) => wallets.id === wallet.id);
 
     if (isEditing) {
@@ -62,23 +90,28 @@ function App() {
           onOpenWalletDialog={(value: boolean, currentWallet?: IWalletItem) =>
             handleWalletDialog(value, currentWallet)
           }
+          onDeleteWallet={(id: number) => handleDeleteWallet(id)}
+          onAddBalanceOnWallet={(id: number) => handleAddBalanceOnWallet(id)}
         />
         <Transaction data={walletData} />
         {openWalletDialog && (
           <Dialog
-            title="Create a wallet"
+            title={
+              isIdEditing
+                ? "Edit a wallet"
+                : isValueAddBalance
+                ? "Add a value"
+                : "Create a wallet"
+            }
             wallet={isIdEditing}
             onCloseDialog={(value: boolean) => handleWalletDialog(value)}
-            saveNewWallet={(wallet: IWalletItem) => handleSaveNewWallet(wallet)}
+            saveNewWallet={(wallet: IWalletItem) =>
+              handleSaveOrUpdateNewWallet(wallet)
+            }
+            isValueAddBalance={isValueAddBalance}
+            updateBalanceOnWallet={handleUpdateBalanceOnWallet}
           />
         )}
-        {/* {openAddBalanceDialog && (
-          <Dialog
-            title="Add value"
-            onCloseDialog={(value: boolean) => handleWalletDialog(value)}
-            updateWallet={(wallet: IWalletItem) => updateWallet(wallet)}
-          />
-        )} */}
       </div>
     </main>
   );

@@ -8,10 +8,12 @@ import DialogBackdrop from "./DialogBackdrop";
 const Dialog = ({
   title,
   wallet,
+  isValueAddBalance,
+  children,
   onCloseDialog,
   saveNewWallet,
   updateWallet,
-  children,
+  updateBalanceOnWallet,
 }: IPropsDialog) => {
   return (
     <React.Fragment>
@@ -26,6 +28,8 @@ const Dialog = ({
           saveNewWallet={saveNewWallet}
           updateWallet={updateWallet}
           wallet={wallet}
+          isValueAddBalance={isValueAddBalance}
+          updateBalanceOnWallet={updateBalanceOnWallet}
         />,
         document.getElementById("overlay-root")!
       )}

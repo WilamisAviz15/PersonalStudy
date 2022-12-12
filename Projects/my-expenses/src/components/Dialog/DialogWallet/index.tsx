@@ -75,11 +75,15 @@ const DialogWallet = ({
           value={walletData.description}
           setValue={(value: string) => handleInputDescription(value)}
         />
-        <label htmlFor="">Initial Value:</label>
-        <InputNumber
-          value={walletData.balance}
-          setValue={(value: string) => handleInputValue(value)}
-        />
+        {!walletData.id && (
+          <>
+            <label htmlFor="">Initial Value:</label>
+            <InputNumber
+              value={walletData.balance}
+              setValue={(value: string) => handleInputValue(value)}
+            />
+          </>
+        )}
         <label htmlFor="">Color:</label>
 
         <div className={styles.content__custom__radios}>
@@ -138,6 +142,20 @@ const DialogWallet = ({
             />
             <label htmlFor="color-4">
               <span onClick={() => handleInputChecked("color-4")}>
+                <img src={checkedIcon} alt="Checked Icon" />
+              </span>
+            </label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id={styles["color-5"]}
+              name="color"
+              value="color-5"
+              checked={walletData.color === "color-5"}
+            />
+            <label htmlFor="color-5">
+              <span onClick={() => handleInputChecked("color-5")}>
                 <img src={checkedIcon} alt="Checked Icon" />
               </span>
             </label>

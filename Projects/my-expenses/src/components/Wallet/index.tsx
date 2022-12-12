@@ -3,15 +3,15 @@ import styles from "./Wallet.module.scss";
 import Card from "../Card";
 import Button from "../Button";
 import CardBox from "../Card/CardBox";
-import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import CardHeader from "../Card/CardHeader";
+import { IPropsWallet } from "../../shared/interfaces/IPropsWallet.interface";
 
-interface IPropsWallet {
-  data: IWalletItem[];
-  onOpenWalletDialog: (value: boolean, currentWallet?: IWalletItem) => void;
-}
-
-const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
+const Wallet = ({
+  data,
+  onOpenWalletDialog,
+  onDeleteWallet,
+  onAddBalanceOnWallet,
+}: IPropsWallet) => {
   return (
     <Card>
       <article className={styles.dashboard}>
@@ -25,7 +25,12 @@ const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
         <div className={styles.dashboard__content}>
           {data.length > 0 ? (
             data.map((item) => (
-              <CardBox item={item} onOpenWalletDialog={onOpenWalletDialog} />
+              <CardBox
+                item={item}
+                onOpenWalletDialog={onOpenWalletDialog}
+                onDeleteWallet={onDeleteWallet}
+                onAddBalanceOnWallet={onAddBalanceOnWallet}
+              />
             ))
           ) : (
             <h2>There are no wallets created.</h2>

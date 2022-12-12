@@ -9,9 +9,10 @@ import styles from "./DialogOverlay.module.scss";
 const DialogOverlay = ({
   title,
   wallet,
+  isValueAddBalance,
   onCloseDialog,
-  updateWallet,
   saveNewWallet,
+  updateBalanceOnWallet,
 }: IPropsDialog) => {
   const [walletData, setWalletData] = useState<IWalletItem>({
     title: "",
@@ -19,8 +20,9 @@ const DialogOverlay = ({
     color: "color-1",
     id: "",
     transactions: [],
-    balance: "0.00",
+    balance: "",
   });
+  const [addBalanceValue, setAddBalanceValue] = useState<string>();
 
   useEffect(() => {
     if (wallet !== undefined) {
@@ -31,7 +33,11 @@ const DialogOverlay = ({
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    saveNewWallet!(walletData);
+    if (addBalanceValue === undefined) {
+      saveNewWallet!(walletData);
+    } else {
+      updateBalanceOnWallet!(addBalanceValue, isValueAddBalance!);
+    }
   };
 
   return (
@@ -51,20 +57,18 @@ const DialogOverlay = ({
         </button>
       </header>
       <main className={styles["container-dialog__content"]}>
-        {title === "Create a wallet" && (
+        {isValueAddBalance !== undefined ? (
+          <DialogAddBalance
+            addBalance={addBalanceValue}
+            setAddBalance={setAddBalanceValue}
+          />
+        ) : (
           <DialogWallet walletData={walletData} setWalletData={setWalletData} />
         )}
-
-        {/* {title === "Add value" && (
-          <DialogAddBalance
-            walletData={walletData}
-            updateWallet={updateWallet}
-          />
-        )} */}
       </main>
       <footer className={styles["container-dialog__footer"]}>
         <button onClick={() => onCloseDialog(false)}>Cancel</button>
-        <button>Create</button>
+        <button>Save</button>
       </footer>
     </form>
   );

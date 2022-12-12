@@ -1,25 +1,23 @@
-import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
 import InputNumber from "../../Input/InputNumber";
 import styles from "./DialogAddBalance.module.scss";
 
 const DialogAddBalance = ({
-  walletData,
-  updateWallet,
+  addBalance,
+  setAddBalance,
 }: {
-  walletData: IWalletItem;
-  updateWallet: ((wallet: IWalletItem) => void) | undefined;
+  addBalance: string | undefined;
+  setAddBalance: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-  console.log(walletData);
   const handleInputValue = (value: string) => {
-    // updateWallet!();
+    setAddBalance(value);
   };
 
   return (
     <section>
       <div className={styles.content}>
-        <label htmlFor="">Name:</label>
+        <label htmlFor="">Value:</label>
         <InputNumber
-          value={"1"}
+          value={addBalance!}
           setValue={(value: string) => handleInputValue(value)}
         />
       </div>
