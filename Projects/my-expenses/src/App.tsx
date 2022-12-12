@@ -4,7 +4,7 @@ import Wallet from "./components/Wallet";
 import Transaction from "./components/Transaction";
 import { IWalletItem } from "./shared/interfaces/IWalletItem.interface";
 import Dialog from "./components/Dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setIndex } from "./services/app.service";
 
 function App() {

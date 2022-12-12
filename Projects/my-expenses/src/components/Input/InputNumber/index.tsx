@@ -9,7 +9,6 @@ const InputNumber = ({ value, setValue }: Iprops) => {
   return (
     <input
       type="number"
-      min={0}
       className={styles.inputNumber}
       value={value}
       onChange={(event) => setValue(event.target.value)}

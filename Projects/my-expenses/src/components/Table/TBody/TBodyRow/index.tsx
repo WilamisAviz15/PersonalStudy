@@ -1,27 +1,31 @@
+import { useEffect } from "react";
 import { IWalletItem } from "../../../../shared/interfaces/IWalletItem.interface";
+import { getCardColor } from "../../../../shared/util/util";
 import styles from "./TBodyRow.module.scss";
 import TBodyRowItem from "./TBodyRowItem";
 
-interface IProps {
-  id: string;
-  items: string[];
-  color: string;
-}
+const handleTBodyRow = (data: IWalletItem) => {
+  return (
+    <>
+      {data.transactions.map((item) => (
+        <tr>
+          <span
+            className={styles.dot}
+            style={{ backgroundColor: `${getCardColor(data.color)}` }}
+          ></span>
+          <TBodyRowItem item={item} />
+        </tr>
+      ))}
+    </>
+  );
+};
 
 const TableRow = ({ data }: { data: IWalletItem }) => {
-  return (
-    data.transactions && (
-      <tr>
-        <span
-          className={styles.dot}
-          style={{ backgroundColor: `${data.color}` }}
-        ></span>
-        {data.transactions.map((item) => (
-          <TBodyRowItem item={item} />
-        ))}
-      </tr>
-    )
-  );
+  useEffect(() => {
+    handleTBodyRow(data);
+  }, []);
+
+  return data.transactions && handleTBodyRow(data);
 };
 
 export default TableRow;
