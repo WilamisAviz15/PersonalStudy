@@ -1,27 +1,15 @@
-import firebase from "../shared/util/firebase.config";
+import { db } from "../shared/util/firebase.config";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
-const db = firebase.ref("/my-expenses");
-
-class TutorialDataService {
-  getAll() {
-    return db;
-  }
-
-  create(tutorial: any) {
-    return db.push(tutorial);
-  }
-
-  update(key: string, value: any) {
-    return db.child(key).update(value);
-  }
-
-  delete(key: string) {
-    return db.child(key).remove();
-  }
-
-  deleteAll() {
-    return db.remove();
-  }
-}
-
-export default new TutorialDataService();
+const handleSubmit = async () => {
+  // try {
+  //   await addDoc(collection(db, "tasks"), {
+  //     title: title,
+  //     description: description,
+  //     completed: false,
+  //     created: Timestamp.now(),
+  //   });
+  // } catch (err) {
+  //   alert(err);
+  // }
+};
