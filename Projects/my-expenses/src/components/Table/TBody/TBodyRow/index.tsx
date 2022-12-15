@@ -23,7 +23,7 @@ const handleTBodyRow = (data: IWalletItem) => {
 const TableRow = ({ data }: { data: IWalletItem }) => {
   useEffect(() => {
     handleTBodyRow(data);
-  }, []);
+  }, [data]);
 
   return data.transactions && handleTBodyRow(data);
 };

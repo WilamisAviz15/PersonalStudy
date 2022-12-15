@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
@@ -15,13 +15,13 @@ const Home = () => {
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
   const [walletData, setWalletData] = useState<IWalletItem[]>([]);
 
-  useEffect(() => {
-    const data = query(collection(db, "users"));
+  // useEffect(() => {
+  //   const data = query(collection(db, "users"));
 
-    onSnapshot(data, (querySnapshot) => {
-      querySnapshot.docs.map((doc) => console.log(doc));
-    });
-  }, []);
+  //   onSnapshot(data, (querySnapshot) => {
+  //     querySnapshot.docs.map((doc) => console.log(doc));
+  //   });
+  // }, []);
 
   const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
     if (currentWallet) {

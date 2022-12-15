@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import styles from "./Table.module.scss";
 import TBody from "./TBody";
 import THead from "./Thead";
 
 const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
+  useEffect(() => {
+    verifyTransactions(tbodyData);
+  }, [tbodyData]);
+
   const theadData = [
     "",
     "Wallet",
@@ -13,9 +18,9 @@ const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
     "Date",
   ];
 
-  const verifyTransactions = (): boolean => {
+  const verifyTransactions = (tbodyData: IWalletItem[]): boolean => {
     let existsTransaction = false;
-    tbodyData.map((data) =>
+    tbodyData.forEach((data) =>
       data.transactions.length > 0
         ? (existsTransaction = true)
         : (existsTransaction = false)
@@ -23,7 +28,7 @@ const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
     return existsTransaction;
   };
 
-  return verifyTransactions() ? (
+  return verifyTransactions(tbodyData) ? (
     <table className={styles.table}>
       <THead theadData={theadData} />
       <TBody tBodyData={tbodyData} />
