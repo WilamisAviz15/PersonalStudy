@@ -1,4 +1,5 @@
 import { FaWallet, FaHome, FaUserAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import styles from "./List.module.scss";
 
@@ -7,19 +8,19 @@ const List = ({ logout }: { logout: () => {} }) => {
     <nav className={styles.sidebar__nav}>
       <ul>
         <li>
-          <a href="/">
+          <Link to="/home">
             <FaHome />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/">
+          <Link to="/wallet">
             <FaWallet />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/" onClick={logout}>
+          <Link to="/auth" onClick={logout}>
             <FaUserAlt />
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
