@@ -8,12 +8,25 @@ import { setIndex } from "../../services/app.service";
 import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import { db } from "../../shared/util/firebase.config";
 import Transaction from "../../components/Transaction";
+import { UserAuth } from "../auth/context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
   const [isValueAddBalance, setIsValueAddBalance] = useState<number>();
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
   const [walletData, setWalletData] = useState<IWalletItem[]>([]);
+  const { logOut } = UserAuth();
+
+  const navigate = useNavigate();
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      navigate("/auth");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // useEffect(() => {
   //   const data = query(collection(db, "users"));
@@ -92,7 +105,7 @@ const Home = () => {
   };
   return (
     <main className={styles.container}>
-      <Sidebar />
+      <Sidebar logout={handleSignOut} />
       <div className={styles.container__content}>
         <Wallet
           data={walletData}

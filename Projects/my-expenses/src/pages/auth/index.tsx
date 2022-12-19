@@ -1,22 +1,31 @@
-import GoogleLogin from "react-google-login";
+import { useEffect } from "react";
+import GoogleButton from "react-google-button";
 import styles from "./Auth.module.scss";
-
-const responseGoogle = (response: any) => {
-  //   const {
-  //     profileObj: { name, email, imageUrl },
-  //   } = response;
-  console.log(response);
-};
+import { UserAuth } from "./context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
+  const { googleSignIn, logOut, user } = UserAuth();
+  const navigate = useNavigate();
+  const handleGoogleSignIn = async () => {
+    try {
+      console.log(process.env.REACT_APP_FIREBASE_API_KEY);
+      await googleSignIn();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/home");
+    }
+  }, [user]);
+
   return (
     <div className={styles.container}>
-      <GoogleLogin
-        clientId={process.env.API_GOOGLE!}
-        buttonText="Continuar com o Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-      />
+      <GoogleButton onClick={handleGoogleSignIn} />
+      {user && <button onClick={logOut}>Logout</button>}
     </div>
   );
 };

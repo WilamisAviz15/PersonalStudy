@@ -2,7 +2,7 @@ import { FaWallet, FaHome, FaUserAlt } from "react-icons/fa";
 
 import styles from "./List.module.scss";
 
-const List = () => {
+const List = ({ logout }: { logout: () => {} }) => {
   return (
     <nav className={styles.sidebar__nav}>
       <ul>
@@ -17,7 +17,7 @@ const List = () => {
           </a>
         </li>
         <li>
-          <a href="/">
+          <a href="/" onClick={logout}>
             <FaUserAlt />
           </a>
         </li>
