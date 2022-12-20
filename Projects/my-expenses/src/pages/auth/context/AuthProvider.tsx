@@ -10,9 +10,11 @@ import {
 import { auth } from "../../../shared/util/firebase.config";
 
 const AuthContext = React.createContext({
-  googleSignIn: () => {},
+  googleSignIn: () => {
+    return;
+  },
   logOut: () => {},
-  user: {} || null,
+  user: null as User | null,
 });
 
 export const AuthContextProvider = ({
@@ -25,16 +27,18 @@ export const AuthContextProvider = ({
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
+    // signInWithRedirect(auth, provider);
   };
 
   const logOut = () => {
+    localStorage.clear();
+    setUser(null);
     signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("User", currentUser);
     });
     return () => {
       unsubscribe();

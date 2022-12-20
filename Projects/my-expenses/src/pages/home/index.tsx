@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { collection, query, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
 import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
 import Sidebar from "../../components/Sidebar";
@@ -10,6 +10,7 @@ import { db } from "../../shared/util/firebase.config";
 import Transaction from "../../components/Transaction";
 import { UserAuth } from "../auth/context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { IUserData } from "../../shared/interfaces/IUserData.interface";
 
 const Home = () => {
   const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
@@ -28,13 +29,18 @@ const Home = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const data = query(collection(db, "users"));
+  useEffect(() => {
+    const getUser = async () => {
+      const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
+      const docRef = doc(db, "users", user.id!);
+      const docSnap = await getDoc(docRef);
 
-  //   onSnapshot(data, (querySnapshot) => {
-  //     querySnapshot.docs.map((doc) => console.log(doc));
-  //   });
-  // }, []);
+      const userWalletsData = docSnap.data() as IUserData;
+      console.log(userWalletsData);
+    };
+
+    getUser();
+  }, []);
 
   const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
     if (currentWallet) {
