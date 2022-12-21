@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
@@ -11,6 +11,7 @@ import Transaction from "../../components/Transaction";
 import { UserAuth } from "../auth/context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { IUserData } from "../../shared/interfaces/IUserData.interface";
+import WalletContext from "../../store/wallet-context";
 
 const Home = () => {
   const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
@@ -19,6 +20,9 @@ const Home = () => {
   const [walletData, setWalletData] = useState<IWalletItem[]>([]);
   const { logOut } = UserAuth();
 
+  const walletsContext = useContext(WalletContext);
+
+  console.log(walletsContext.wallets);
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {

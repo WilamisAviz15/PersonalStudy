@@ -6,6 +6,7 @@ const WalletContext = React.createContext({
   addItem: (item: IWalletItem) => {},
   updateItem: (id: number) => {},
   removeItem: (id: number) => {},
+  handleSetWallets: (wallets: IWalletItem[]) => {},
 });
 
 export default WalletContext;

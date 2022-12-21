@@ -20,11 +20,16 @@ export const WalletContextProvider = ({
     console.log("wallet");
   };
 
+  const handleSetWallets = (wallets: IWalletItem[]) => {
+    setWallets(wallets);
+  };
+
   const walletContext = {
     wallets,
     addItem,
     updateItem,
     removeItem,
+    handleSetWallets,
   };
 
   return (
