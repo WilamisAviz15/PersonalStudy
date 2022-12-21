@@ -4,7 +4,6 @@ import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
 import Sidebar from "../../components/Sidebar";
 import Wallet from "../../components/Wallet";
-import { setIndex } from "../../services/app.service";
 import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import { db } from "../../shared/util/firebase.config";
 import Transaction from "../../components/Transaction";
@@ -17,13 +16,12 @@ const Home = () => {
   const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
   const [isValueAddBalance, setIsValueAddBalance] = useState<number>();
   const [openWalletDialog, setOpenWalletDialog] = useState(false);
-  const [walletData, setWalletData] = useState<IWalletItem[]>([]);
   const { logOut } = UserAuth();
-
+  const navigate = useNavigate();
   const walletsContext = useContext(WalletContext);
 
   console.log(walletsContext.wallets);
-  const navigate = useNavigate();
+
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -40,7 +38,7 @@ const Home = () => {
       const docSnap = await getDoc(docRef);
 
       const userData = docSnap.data() as IUserData;
-      setWalletData(userData.wallets!);
+      walletsContext.handleSetWallets(userData.wallets!);
       console.log(userData);
     };
     setTimeout(() => {
@@ -60,12 +58,7 @@ const Home = () => {
 
   const handleDeleteWallet = (id: number) => {
     console.log(id);
-    setWalletData((oldWalletData) => {
-      oldWalletData = oldWalletData.filter(
-        (walletData) => +walletData.id !== id
-      );
-      return oldWalletData;
-    });
+    walletsContext.removeItem(id);
   };
 
   const handleAddBalanceOnWallet = (id: number) => {
@@ -73,45 +66,26 @@ const Home = () => {
     setOpenWalletDialog(true);
   };
 
-  const handleUpdateBalanceOnWallet = (value: string, id: number) => {
-    setWalletData((oldWalletData) => {
-      const oldBalance = +oldWalletData[id].balance;
-      const newValue = oldBalance + +value;
-      oldWalletData[id].balance = newValue.toString();
-      oldWalletData[id].transactions.push({
-        name: oldWalletData[id].title,
-        amount: value,
-        currentBalance: oldWalletData[id].balance,
-        date: new Date().toLocaleDateString(),
-        description: "test",
-      });
-      return oldWalletData;
-    });
+  const handleUpdateBalanceOnWallet = (value: string, idWallet: number) => {
+    walletsContext.updateTransactions(value, idWallet);
     handleWalletDialog(false);
   };
 
+  const verifyIndex = (idWallet: string) => {
+    return walletsContext.wallets.findIndex((wallet) => wallet.id === idWallet);
+  };
+
   const handleSaveOrUpdateNewWallet = (wallet: IWalletItem) => {
-    const isEditing = walletData.find((wallets) => wallets.id === wallet.id);
+    const isEditing = walletsContext.wallets.find(
+      (wallets) => wallets.id === wallet.id
+    );
 
     if (isEditing) {
       console.log("editing:", isEditing);
-      setWalletData((oldWalletData) => {
-        oldWalletData[+wallet.id] = wallet;
-        return oldWalletData;
-      });
+      walletsContext.updateItem(wallet, verifyIndex(wallet.id));
       setIsIdEditing(undefined);
     } else {
-      const { title, description, color, balance } = wallet;
-      const newWallet: IWalletItem = {
-        id: setIndex().toString(),
-        title,
-        description,
-        color,
-        balance,
-        transactions: [],
-      };
-
-      setWalletData((oldWalletData) => [...oldWalletData, newWallet]);
+      walletsContext.addItem(wallet);
     }
     handleWalletDialog(false);
   };
@@ -120,14 +94,14 @@ const Home = () => {
       <Sidebar logout={handleSignOut} />
       <div className={styles.container__content}>
         <Wallet
-          data={walletData}
+          data={walletsContext.wallets}
           onOpenWalletDialog={(value: boolean, currentWallet?: IWalletItem) =>
             handleWalletDialog(value, currentWallet)
           }
           onDeleteWallet={(id: number) => handleDeleteWallet(id)}
           onAddBalanceOnWallet={(id: number) => handleAddBalanceOnWallet(id)}
         />
-        <Transaction data={walletData} />
+        <Transaction data={walletsContext.wallets} />
         {openWalletDialog && (
           <Dialog
             title={
