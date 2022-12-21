@@ -7,15 +7,17 @@ import {
   signInWithPopup,
   User,
 } from "firebase/auth";
-import { auth } from "../../../shared/util/firebase.config";
+import { auth, db } from "../../../shared/util/firebase.config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { IUserData } from "../../../shared/interfaces/IUserData.interface";
 
 const AuthContext = React.createContext({
-  googleSignIn: () => {
-    return;
-  },
+  googleSignIn: () => fn(),
   logOut: () => {},
   user: null as User | null,
 });
+
+const fn = () => new Promise<void>((res, rej) => undefined);
 
 export const AuthContextProvider = ({
   children,
@@ -24,9 +26,22 @@ export const AuthContextProvider = ({
 }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const googleSignIn = () => {
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    const userResult = await signInWithPopup(auth, provider);
+
+    const docRef = doc(db, "users", userResult.user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.data() === undefined) {
+      const userData: IUserData = {
+        name: userResult.user.displayName!,
+        email: userResult.user.email!,
+        photoURL: userResult.user.photoURL!,
+        wallets: [],
+      };
+      await setDoc(doc(db, "users", userResult.user.uid), userData);
+    }
     // signInWithRedirect(auth, provider);
   };
 

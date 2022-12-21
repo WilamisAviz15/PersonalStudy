@@ -8,11 +8,10 @@ import { IUserData } from "../../shared/interfaces/IUserData.interface";
 const Auth = () => {
   const { googleSignIn, logOut, user } = UserAuth();
   const navigate = useNavigate();
+
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      if (user !== null) {
-      }
     } catch (err) {
       console.log(err);
     }

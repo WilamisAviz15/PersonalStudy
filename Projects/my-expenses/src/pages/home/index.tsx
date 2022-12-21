@@ -35,11 +35,13 @@ const Home = () => {
       const docRef = doc(db, "users", user.id!);
       const docSnap = await getDoc(docRef);
 
-      const userWalletsData = docSnap.data() as IUserData;
-      console.log(userWalletsData);
+      const userData = docSnap.data() as IUserData;
+      setWalletData(userData.wallets!);
+      console.log(userData);
     };
-
-    getUser();
+    setTimeout(() => {
+      getUser();
+    }, 2000);
   }, []);
 
   const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
