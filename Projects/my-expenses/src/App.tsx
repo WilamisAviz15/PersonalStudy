@@ -3,6 +3,7 @@ import Protected from "./components/Protected";
 import Auth from "./pages/auth";
 import { AuthContextProvider } from "./pages/auth/context/AuthProvider";
 import Home from "./pages/home";
+import WalletContextProvider from "./store/WalletProvider";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
           path="/home"
           element={
             <Protected>
-              <Home />
+              <WalletContextProvider>
+                <Home />
+              </WalletContextProvider>
             </Protected>
           }
         ></Route>
