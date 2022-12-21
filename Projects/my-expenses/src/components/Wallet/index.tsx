@@ -6,12 +6,7 @@ import CardBox from "../Card/CardBox";
 import CardHeader from "../Card/CardHeader";
 import { IPropsWallet } from "../../shared/interfaces/IPropsWallet.interface";
 
-const Wallet = ({
-  data,
-  onOpenWalletDialog,
-  onDeleteWallet,
-  onAddBalanceOnWallet,
-}: IPropsWallet) => {
+const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
   return (
     <Card>
       <article className={styles.dashboard}>
@@ -25,12 +20,7 @@ const Wallet = ({
         <div className={styles.dashboard__content}>
           {data.length > 0 ? (
             data.map((item) => (
-              <CardBox
-                item={item}
-                onOpenWalletDialog={onOpenWalletDialog}
-                onDeleteWallet={onDeleteWallet}
-                onAddBalanceOnWallet={onAddBalanceOnWallet}
-              />
+              <CardBox item={item} onOpenWalletDialog={onOpenWalletDialog} />
             ))
           ) : (
             <h2>There are no wallets created.</h2>

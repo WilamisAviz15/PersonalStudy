@@ -2,18 +2,28 @@ import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
 import styles from "./CardBox.module.scss";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { getCardColor } from "../../../shared/util/util";
+import { useContext } from "react";
+import WalletContext from "../../../store/wallet-context";
 
 const CardBox = ({
   item,
   onOpenWalletDialog,
-  onDeleteWallet,
-  onAddBalanceOnWallet,
 }: {
   item: IWalletItem;
   onOpenWalletDialog: (value: boolean, currentWallet?: IWalletItem) => void;
-  onDeleteWallet?: (id: number) => void;
-  onAddBalanceOnWallet?: (id: number) => void;
 }) => {
+  const walletsContext = useContext(WalletContext);
+
+  const handleDeleteWallet = (id: number) => {
+    console.log(id);
+    walletsContext.removeItem(id);
+  };
+
+  const handleAddBalanceOnWallet = (id: number) => {
+    walletsContext.transaction.setIsValueAddBalance(id);
+    walletsContext.dialog.setOpenWalletDialog(true);
+  };
+
   return (
     <article
       className={styles.cardbox}
@@ -32,10 +42,10 @@ const CardBox = ({
           <FaEdit onClick={() => onOpenWalletDialog(true, item)} />
         </a>
         <a>
-          <FaTrash onClick={() => onDeleteWallet!(+item.id)} />
+          <FaTrash onClick={() => handleDeleteWallet!(+item.id)} />
         </a>
         <a>
-          <FaPlus onClick={() => onAddBalanceOnWallet!(+item.id)} />
+          <FaPlus onClick={() => handleAddBalanceOnWallet!(+item.id)} />
         </a>
       </div>
     </article>

@@ -1,7 +1,11 @@
 import { useState } from "react";
+import uuid from "react-uuid";
+
 import { IWalletItem } from "../shared/interfaces/IWalletItem.interface";
 import WalletContext from "./wallet-context";
-import uuid from "react-uuid";
+import { IDialogState } from "../shared/interfaces/IDialogState.interface";
+import { IEditingState } from "../shared/interfaces/IEditingState.interface";
+import { ITransactionState } from "../shared/interfaces/ITransactionState.interface";
 
 export const WalletContextProvider = ({
   children,
@@ -9,6 +13,9 @@ export const WalletContextProvider = ({
   children: JSX.Element;
 }) => {
   const [wallets, setWallets] = useState<IWalletItem[]>([]);
+  const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
+  const [isValueAddBalance, setIsValueAddBalance] = useState<number>();
+  const [openWalletDialog, setOpenWalletDialog] = useState(false);
 
   const addItem = (item: IWalletItem) => {
     item.id = uuid();
@@ -54,6 +61,18 @@ export const WalletContextProvider = ({
 
   const walletContext = {
     wallets,
+    dialog: {
+      openWalletDialog,
+      setOpenWalletDialog,
+    } as IDialogState,
+    editing: {
+      isIdEditing,
+      setIsIdEditing,
+    } as IEditingState,
+    transaction: {
+      isValueAddBalance,
+      setIsValueAddBalance,
+    } as ITransactionState,
     addItem,
     updateItem,
     removeItem,

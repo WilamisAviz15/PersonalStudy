@@ -1,5 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
 import Sidebar from "../../components/Sidebar";
@@ -8,14 +10,10 @@ import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import { db } from "../../shared/util/firebase.config";
 import Transaction from "../../components/Transaction";
 import { UserAuth } from "../auth/context/AuthProvider";
-import { useNavigate } from "react-router-dom";
 import { IUserData } from "../../shared/interfaces/IUserData.interface";
 import WalletContext from "../../store/wallet-context";
 
 const Home = () => {
-  const [isIdEditing, setIsIdEditing] = useState<IWalletItem>();
-  const [isValueAddBalance, setIsValueAddBalance] = useState<number>();
-  const [openWalletDialog, setOpenWalletDialog] = useState(false);
   const { logOut } = UserAuth();
   const navigate = useNavigate();
   const walletsContext = useContext(WalletContext);
@@ -48,22 +46,12 @@ const Home = () => {
 
   const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
     if (currentWallet) {
-      setIsIdEditing(currentWallet);
+      walletsContext.editing.setIsIdEditing(currentWallet);
     } else {
-      setIsIdEditing(undefined);
+      walletsContext.editing.setIsIdEditing(undefined);
     }
-    setIsValueAddBalance(undefined);
-    setOpenWalletDialog(value);
-  };
-
-  const handleDeleteWallet = (id: number) => {
-    console.log(id);
-    walletsContext.removeItem(id);
-  };
-
-  const handleAddBalanceOnWallet = (id: number) => {
-    setIsValueAddBalance(id);
-    setOpenWalletDialog(true);
+    walletsContext.transaction.setIsValueAddBalance(undefined);
+    walletsContext.dialog.setOpenWalletDialog(value);
   };
 
   const handleUpdateBalanceOnWallet = (value: string, idWallet: number) => {
@@ -83,7 +71,7 @@ const Home = () => {
     if (isEditing) {
       console.log("editing:", isEditing);
       walletsContext.updateItem(wallet, verifyIndex(wallet.id));
-      setIsIdEditing(undefined);
+      walletsContext.editing.setIsIdEditing(undefined);
     } else {
       walletsContext.addItem(wallet);
     }
@@ -98,25 +86,23 @@ const Home = () => {
           onOpenWalletDialog={(value: boolean, currentWallet?: IWalletItem) =>
             handleWalletDialog(value, currentWallet)
           }
-          onDeleteWallet={(id: number) => handleDeleteWallet(id)}
-          onAddBalanceOnWallet={(id: number) => handleAddBalanceOnWallet(id)}
         />
         <Transaction data={walletsContext.wallets} />
-        {openWalletDialog && (
+        {walletsContext.dialog.openWalletDialog && (
           <Dialog
             title={
-              isIdEditing
+              walletsContext.editing.isIdEditing
                 ? "Edit a wallet"
-                : isValueAddBalance
+                : walletsContext.transaction.isValueAddBalance
                 ? "Add a value"
                 : "Create a wallet"
             }
-            wallet={isIdEditing}
+            wallet={walletsContext.editing.isIdEditing}
             onCloseDialog={(value: boolean) => handleWalletDialog(value)}
             saveNewWallet={(wallet: IWalletItem) =>
               handleSaveOrUpdateNewWallet(wallet)
             }
-            isValueAddBalance={isValueAddBalance}
+            isValueAddBalance={walletsContext.transaction.isValueAddBalance}
             updateBalanceOnWallet={handleUpdateBalanceOnWallet}
           />
         )}
