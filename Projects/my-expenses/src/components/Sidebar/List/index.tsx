@@ -9,10 +9,9 @@ const List = () => {
   const { logOut } = UserAuth();
   const navigate = useNavigate();
 
-  const logout = async () => {
+  const logout = () => {
     try {
-      await logOut();
-      navigate("/auth");
+      logOut().then(() => navigate("/auth"));
     } catch (err) {
       console.log(err);
     }

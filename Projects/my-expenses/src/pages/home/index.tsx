@@ -10,18 +10,31 @@ import WalletContext from "store/wallet-context";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { db } from "shared/util/firebase.config";
 import { IUserData } from "shared/interfaces/IUserData.interface";
+import { Navigate } from "react-router-dom";
+import { UserAuth } from "pages/auth/context/AuthProvider";
 
 const Home = () => {
+  const { user } = UserAuth();
+  const currentUser: IUserData = {
+    id: user?.uid,
+    name: user?.displayName!,
+    email: user?.email!,
+    photoURL: user?.photoURL!,
+  };
+  console.log(currentUser);
   const walletsContext = useContext(WalletContext);
   console.log(walletsContext.wallets);
-
   useEffect(() => {
     const getUser = async () => {
       const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
       const docRef = doc(db, "users", user.id!);
       const docSnap = await getDoc(docRef);
-
       const userData = docSnap.data() as IUserData;
+
+      if (userData === undefined) {
+        localStorage.clear();
+        return <Navigate to="/auth" />;
+      }
       walletsContext.handleSetWallets(userData.wallets!);
       console.log(userData);
     };

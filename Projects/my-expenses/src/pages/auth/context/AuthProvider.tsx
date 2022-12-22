@@ -13,7 +13,7 @@ import { IUserData } from "shared/interfaces/IUserData.interface";
 
 const AuthContext = React.createContext({
   googleSignIn: () => fn(),
-  logOut: () => {},
+  logOut: () => fn(),
   user: null as User | null,
 });
 
@@ -29,7 +29,6 @@ export const AuthContextProvider = ({
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     const userResult = await signInWithPopup(auth, provider);
-
     const docRef = doc(db, "users", userResult.user.uid);
     const docSnap = await getDoc(docRef);
 
@@ -45,10 +44,10 @@ export const AuthContextProvider = ({
     // signInWithRedirect(auth, provider);
   };
 
-  const logOut = () => {
+  const logOut = async () => {
     localStorage.clear();
     setUser(null);
-    signOut(auth);
+    await signOut(auth);
   };
 
   useEffect(() => {
