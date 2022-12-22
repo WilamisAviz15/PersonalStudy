@@ -6,12 +6,12 @@ import styles from "./Pages.module.scss";
 import Dialog from "../../components/Dialog";
 import Sidebar from "../../components/Sidebar";
 import Wallet from "../../components/Wallet";
+import Transaction from "../../components/Transaction";
+import WalletContext from "../../store/wallet-context";
 import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
 import { db } from "../../shared/util/firebase.config";
-import Transaction from "../../components/Transaction";
 import { UserAuth } from "../auth/context/AuthProvider";
 import { IUserData } from "../../shared/interfaces/IUserData.interface";
-import WalletContext from "../../store/wallet-context";
 
 const Home = () => {
   const { logOut } = UserAuth();
@@ -44,39 +44,6 @@ const Home = () => {
     }, 2000);
   }, []);
 
-  const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
-    if (currentWallet) {
-      walletsContext.editing.setIsIdEditing(currentWallet);
-    } else {
-      walletsContext.editing.setIsIdEditing(undefined);
-    }
-    walletsContext.transaction.setIsValueAddBalance(undefined);
-    walletsContext.dialog.setOpenWalletDialog(value);
-  };
-
-  const handleUpdateBalanceOnWallet = (value: string, idWallet: number) => {
-    walletsContext.updateTransactions(value, idWallet);
-    handleWalletDialog(false);
-  };
-
-  const verifyIndex = (idWallet: string) => {
-    return walletsContext.wallets.findIndex((wallet) => wallet.id === idWallet);
-  };
-
-  const handleSaveOrUpdateNewWallet = (wallet: IWalletItem) => {
-    const isEditing = walletsContext.wallets.find(
-      (wallets) => wallets.id === wallet.id
-    );
-
-    if (isEditing) {
-      console.log("editing:", isEditing);
-      walletsContext.updateItem(wallet, verifyIndex(wallet.id));
-      walletsContext.editing.setIsIdEditing(undefined);
-    } else {
-      walletsContext.addItem(wallet);
-    }
-    handleWalletDialog(false);
-  };
   return (
     <main className={styles.container}>
       <Sidebar logout={handleSignOut} />
@@ -84,7 +51,7 @@ const Home = () => {
         <Wallet
           data={walletsContext.wallets}
           onOpenWalletDialog={(value: boolean, currentWallet?: IWalletItem) =>
-            handleWalletDialog(value, currentWallet)
+            walletsContext.handleWalletDialog(value, currentWallet)
           }
         />
         <Transaction data={walletsContext.wallets} />
@@ -98,12 +65,14 @@ const Home = () => {
                 : "Create a wallet"
             }
             wallet={walletsContext.editing.isIdEditing}
-            onCloseDialog={(value: boolean) => handleWalletDialog(value)}
+            onCloseDialog={(value: boolean) =>
+              walletsContext.handleWalletDialog(value)
+            }
             saveNewWallet={(wallet: IWalletItem) =>
-              handleSaveOrUpdateNewWallet(wallet)
+              walletsContext.handleSaveOrUpdateNewWallet(wallet)
             }
             isValueAddBalance={walletsContext.transaction.isValueAddBalance}
-            updateBalanceOnWallet={handleUpdateBalanceOnWallet}
+            updateBalanceOnWallet={walletsContext.handleUpdateBalanceOnWallet}
           />
         )}
       </div>

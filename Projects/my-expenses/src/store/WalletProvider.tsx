@@ -59,6 +59,38 @@ export const WalletContextProvider = ({
     setWallets(wallets);
   };
 
+  const handleUpdateBalanceOnWallet = (value: string, idWallet: number) => {
+    updateTransactions(value, idWallet);
+    handleWalletDialog(false);
+  };
+
+  const handleWalletDialog = (value: boolean, currentWallet?: IWalletItem) => {
+    if (currentWallet) {
+      setIsIdEditing(currentWallet);
+    } else {
+      setIsIdEditing(undefined);
+    }
+    setIsValueAddBalance(undefined);
+    setOpenWalletDialog(value);
+  };
+
+  const verifyIndex = (idWallet: string) => {
+    return wallets.findIndex((wallet) => wallet.id === idWallet);
+  };
+
+  const handleSaveOrUpdateNewWallet = (wallet: IWalletItem) => {
+    const isEditing = wallets.find((wallets) => wallets.id === wallet.id);
+
+    if (isEditing) {
+      console.log("editing:", isEditing);
+      updateItem(wallet, verifyIndex(wallet.id));
+      setIsIdEditing(undefined);
+    } else {
+      addItem(wallet);
+    }
+    handleWalletDialog(false);
+  };
+
   const walletContext = {
     wallets,
     dialog: {
@@ -78,6 +110,9 @@ export const WalletContextProvider = ({
     removeItem,
     handleSetWallets,
     updateTransactions,
+    handleUpdateBalanceOnWallet,
+    handleWalletDialog,
+    handleSaveOrUpdateNewWallet,
   };
 
   return (

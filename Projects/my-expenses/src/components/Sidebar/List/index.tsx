@@ -1,4 +1,4 @@
-import { FaWallet, FaHome, FaUserAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaHome, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import styles from "./List.module.scss";
@@ -13,13 +13,13 @@ const List = ({ logout }: { logout: () => {} }) => {
           </Link>
         </li>
         <li>
-          <Link to="/wallet">
-            <FaWallet />
+          <Link to="/profile">
+            <FaUserAlt />
           </Link>
         </li>
         <li>
           <Link to="/auth" onClick={logout}>
-            <FaUserAlt />
+            <FaSignOutAlt />
           </Link>
         </li>
       </ul>

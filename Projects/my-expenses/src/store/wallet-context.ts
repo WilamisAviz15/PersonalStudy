@@ -14,6 +14,9 @@ const WalletContext = React.createContext({
   removeItem: (id: number) => {},
   handleSetWallets: (wallets: IWalletItem[]) => {},
   updateTransactions: (value: string, idWallet: number) => {},
+  handleUpdateBalanceOnWallet: (value: string, idWallet: number) => {},
+  handleWalletDialog: (value: boolean, currentWallet?: IWalletItem) => {},
+  handleSaveOrUpdateNewWallet: (wallet: IWalletItem) => {},
 });
 
 export default WalletContext;
