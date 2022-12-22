@@ -1,33 +1,19 @@
 import { useContext, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./Pages.module.scss";
-import Dialog from "../../components/Dialog";
-import Sidebar from "../../components/Sidebar";
-import Wallet from "../../components/Wallet";
-import Transaction from "../../components/Transaction";
-import WalletContext from "../../store/wallet-context";
-import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
-import { db } from "../../shared/util/firebase.config";
-import { UserAuth } from "../auth/context/AuthProvider";
-import { IUserData } from "../../shared/interfaces/IUserData.interface";
+import Dialog from "components/Dialog";
+import Sidebar from "components/Sidebar";
+import Wallet from "components/Wallet";
+import Transaction from "components/Transaction";
+import WalletContext from "store/wallet-context";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
+import { db } from "shared/util/firebase.config";
+import { IUserData } from "shared/interfaces/IUserData.interface";
 
 const Home = () => {
-  const { logOut } = UserAuth();
-  const navigate = useNavigate();
   const walletsContext = useContext(WalletContext);
-
   console.log(walletsContext.wallets);
-
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-      navigate("/auth");
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     const getUser = async () => {
@@ -46,7 +32,7 @@ const Home = () => {
 
   return (
     <main className={styles.container}>
-      <Sidebar logout={handleSignOut} />
+      <Sidebar />
       <div className={styles.container__content}>
         <Wallet
           data={walletsContext.wallets}

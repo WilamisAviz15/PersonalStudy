@@ -1,4 +1,4 @@
-import { ITransactionItem } from "../../../../../shared/interfaces/ITransactionItem.interface";
+import { ITransactionItem } from "shared/interfaces/ITransactionItem.interface";
 import styles from "./TBodyRowItem.module.scss";
 
 const isPositiveOrNegativeValue = (value: string): string => {

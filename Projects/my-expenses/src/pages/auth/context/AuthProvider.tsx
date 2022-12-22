@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
   signInWithPopup,
   User,
 } from "firebase/auth";
-import { auth, db } from "../../../shared/util/firebase.config";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { IUserData } from "../../../shared/interfaces/IUserData.interface";
+
+import { auth, db } from "shared/util/firebase.config";
+import { IUserData } from "shared/interfaces/IUserData.interface";
 
 const AuthContext = React.createContext({
   googleSignIn: () => fn(),

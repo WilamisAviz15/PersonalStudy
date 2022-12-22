@@ -1,7 +1,5 @@
 import styles from "./Select.module.scss";
 
-import React from "react";
-
 const Select = () => {
   return (
     <select className={styles.select}>

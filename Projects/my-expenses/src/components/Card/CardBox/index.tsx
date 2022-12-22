@@ -1,9 +1,10 @@
-import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
-import styles from "./CardBox.module.scss";
-import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
-import { getCardColor } from "../../../shared/util/util";
 import { useContext } from "react";
-import WalletContext from "../../../store/wallet-context";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
+
+import styles from "./CardBox.module.scss";
+import WalletContext from "store/wallet-context";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
+import { getCardColor } from "shared/util/util";
 
 const CardBox = ({
   item,

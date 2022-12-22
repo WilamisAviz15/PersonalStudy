@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
+
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import styles from "./Table.module.scss";
 import TBody from "./TBody";
 import THead from "./Thead";

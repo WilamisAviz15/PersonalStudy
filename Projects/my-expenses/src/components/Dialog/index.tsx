@@ -1,15 +1,14 @@
-import styles from "./Dialog.module.scss";
 import ReactDOM from "react-dom";
-import DialogOverlay from "./DialogOverlay/DialogOverlay";
-import { IPropsDialog } from "../../shared/interfaces/IPropsDialog.interface";
 import React from "react";
+
+import DialogOverlay from "./DialogOverlay/DialogOverlay";
 import DialogBackdrop from "./DialogBackdrop";
+import { IPropsDialog } from "shared/interfaces/IPropsDialog.interface";
 
 const Dialog = ({
   title,
   wallet,
   isValueAddBalance,
-  children,
   onCloseDialog,
   saveNewWallet,
   updateWallet,

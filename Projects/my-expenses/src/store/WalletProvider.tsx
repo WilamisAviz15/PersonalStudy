@@ -1,11 +1,11 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 
-import { IWalletItem } from "../shared/interfaces/IWalletItem.interface";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import WalletContext from "./wallet-context";
-import { IDialogState } from "../shared/interfaces/IDialogState.interface";
-import { IEditingState } from "../shared/interfaces/IEditingState.interface";
-import { ITransactionState } from "../shared/interfaces/ITransactionState.interface";
+import { IDialogState } from "shared/interfaces/IDialogState.interface";
+import { IEditingState } from "shared/interfaces/IEditingState.interface";
+import { ITransactionState } from "shared/interfaces/ITransactionState.interface";
 
 export const WalletContextProvider = ({
   children,

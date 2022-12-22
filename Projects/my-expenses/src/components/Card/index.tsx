@@ -1,5 +1,4 @@
 import styles from "./Card.module.scss";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const Card = ({
   children,

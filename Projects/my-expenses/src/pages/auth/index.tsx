@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import GoogleButton from "react-google-button";
+
 import styles from "./Auth.module.scss";
 import { UserAuth } from "./context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { IUserData } from "../../shared/interfaces/IUserData.interface";
+import { IUserData } from "shared/interfaces/IUserData.interface";
 
 const Auth = () => {
   const { googleSignIn, logOut, user } = UserAuth();

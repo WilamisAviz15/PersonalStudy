@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
-import { IPropsDialog } from "../../../shared/interfaces/IPropsDialog.interface";
-import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
+
+import { IPropsDialog } from "shared/interfaces/IPropsDialog.interface";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import DialogAddBalance from "../DialogAddBalance";
 import DialogWallet from "../DialogWallet";
 import styles from "./DialogOverlay.module.scss";

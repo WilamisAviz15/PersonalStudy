@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
-import Select from "../../Select";
+
+import Select from "components/Select";
 import styles from "./CardHeader.module.scss";
 
 const CardHeader = () => {

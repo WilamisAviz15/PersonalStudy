@@ -1,10 +1,10 @@
 import styles from "./Wallet.module.scss";
 
-import Card from "../Card";
-import Button from "../Button";
-import CardBox from "../Card/CardBox";
-import CardHeader from "../Card/CardHeader";
-import { IPropsWallet } from "../../shared/interfaces/IPropsWallet.interface";
+import Card from "components/Card";
+import Button from "components/Button";
+import CardBox from "components/Card/CardBox";
+import CardHeader from "components/Card/CardHeader";
+import { IPropsWallet } from "shared/interfaces/IPropsWallet.interface";
 
 const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
   return (

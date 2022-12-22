@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { IWalletItem } from "../../../../shared/interfaces/IWalletItem.interface";
-import { getCardColor } from "../../../../shared/util/util";
+
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
+import { getCardColor } from "shared/util/util";
 import styles from "./TBodyRow.module.scss";
 import TBodyRowItem from "./TBodyRowItem";
 

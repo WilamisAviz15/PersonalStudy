@@ -1,10 +1,10 @@
 import List from "./List";
 import styles from "./Sidebar.module.scss";
 
-const Sidebar = ({ logout }: { logout: () => {} }) => {
+const Sidebar = () => {
   return (
     <header className={styles.sidebar}>
-      <List logout={logout} />
+      <List />
     </header>
   );
 };

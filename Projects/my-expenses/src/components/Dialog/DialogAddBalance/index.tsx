@@ -1,4 +1,4 @@
-import InputNumber from "../../Input/InputNumber";
+import InputNumber from "components/Input/InputNumber";
 import styles from "./DialogAddBalance.module.scss";
 
 const DialogAddBalance = ({

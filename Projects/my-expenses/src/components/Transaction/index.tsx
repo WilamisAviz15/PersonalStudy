@@ -1,9 +1,9 @@
 import styles from "./Transaction.module.scss";
 
-import Card from "../Card";
-import Table from "../Table";
-import { IWalletItem } from "../../shared/interfaces/IWalletItem.interface";
-import CardHeader from "../Card/CardHeader";
+import Card from "components/Card";
+import Table from "components/Table";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
+import CardHeader from "components/Card/CardHeader";
 
 const Transaction = ({ data }: { data: IWalletItem[] }) => {
   return (

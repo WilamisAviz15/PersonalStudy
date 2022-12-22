@@ -1,4 +1,4 @@
-import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import TBodyRow from "./TBodyRow";
 
 const TBody = ({ tBodyData }: { tBodyData: IWalletItem[] }) => {

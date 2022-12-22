@@ -1,9 +1,9 @@
 import styles from "./DialogWallet.module.scss";
 
-import checkedIcon from "../../../assets/img/checked-icon.svg";
-import InputText from "../../Input/InputText";
-import InputNumber from "../../Input/InputNumber";
-import { IWalletItem } from "../../../shared/interfaces/IWalletItem.interface";
+import checkedIcon from "assets/img/checked-icon.svg";
+import InputText from "components/Input/InputText";
+import InputNumber from "components/Input/InputNumber";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 
 const DialogWallet = ({
   walletData,
