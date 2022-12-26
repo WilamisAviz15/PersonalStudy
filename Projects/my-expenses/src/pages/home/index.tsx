@@ -19,7 +19,6 @@ const Home = () => {
     email: user?.email!,
     photoURL: user?.photoURL!,
   };
-  console.log(currentUser);
   const walletsContext = useContext(WalletContext);
   useEffect(() => {
     getUser(walletsContext);
