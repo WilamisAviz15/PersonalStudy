@@ -45,6 +45,7 @@ export const WalletContextProvider = ({
       const newValue = oldBalance + +value;
       oldWalletData[idWallet].balance = newValue.toString();
       oldWalletData[idWallet].transactions.push({
+        id: uuid(),
         name: oldWalletData[idWallet].title,
         amount: value,
         currentBalance: oldWalletData[idWallet].balance,
