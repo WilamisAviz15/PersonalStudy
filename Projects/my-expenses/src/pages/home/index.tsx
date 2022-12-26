@@ -1,17 +1,15 @@
 import { useContext, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
 
-import styles from "./Pages.module.scss";
+import styles from "./Home.module.scss";
 import Dialog from "components/Dialog";
 import Sidebar from "components/Sidebar";
 import Wallet from "components/Wallet";
 import Transaction from "components/Transaction";
 import WalletContext from "store/wallet-context";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
-import { db } from "shared/util/firebase.config";
 import { IUserData } from "shared/interfaces/IUserData.interface";
-import { Navigate } from "react-router-dom";
 import { UserAuth } from "pages/auth/context/AuthProvider";
+import { getUser } from "./Home.service";
 
 const Home = () => {
   const { user } = UserAuth();
@@ -24,21 +22,7 @@ const Home = () => {
   console.log(currentUser);
   const walletsContext = useContext(WalletContext);
   useEffect(() => {
-    const getUser = async () => {
-      const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
-      const docRef = doc(db, "users", user.id!);
-      const docSnap = await getDoc(docRef);
-      const userData = docSnap.data() as IUserData;
-
-      if (userData === undefined) {
-        localStorage.clear();
-        return <Navigate to="/auth" />;
-      }
-      walletsContext.handleSetWallets(userData.wallets!);
-    };
-    setTimeout(() => {
-      getUser();
-    }, 1000);
+    getUser(walletsContext);
   }, []);
 
   return (
