@@ -15,7 +15,7 @@ const CardBox = ({
 }) => {
   const walletsContext = useContext(WalletContext);
 
-  const handleDeleteWallet = (id: number) => {
+  const handleDeleteWallet = (id: string) => {
     walletsContext.removeItem(id);
   };
 
@@ -42,7 +42,7 @@ const CardBox = ({
           <FaEdit onClick={() => onOpenWalletDialog(true, item)} />
         </a>
         <a>
-          <FaTrash onClick={() => handleDeleteWallet!(+item.id)} />
+          <FaTrash onClick={() => handleDeleteWallet!(item.id)} />
         </a>
         <a>
           <FaPlus onClick={() => handleAddBalanceOnWallet!(item.id)} />

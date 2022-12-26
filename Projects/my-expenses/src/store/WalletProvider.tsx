@@ -29,10 +29,10 @@ export const WalletContextProvider = ({
     });
   };
 
-  const removeItem = (id: number) => {
+  const removeItem = (id: string) => {
     setWallets((oldWalletData) => {
       oldWalletData = oldWalletData.filter(
-        (walletData) => +walletData.id !== id
+        (walletData) => walletData.id !== id
       );
       return oldWalletData;
     });

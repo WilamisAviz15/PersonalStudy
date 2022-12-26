@@ -12,7 +12,7 @@ const WalletContext = React.createContext({
   transaction: {} as ITransactionState,
   addItem: (item: IWalletItem) => {},
   updateItem: (wallet: IWalletItem, index: number) => {},
-  removeItem: (id: number) => {},
+  removeItem: (id: string) => {},
   handleSetWallets: (wallets: IWalletItem[]) => {},
   updateTransactions: (value: string, idWallet: number) => {},
   handleUpdateBalanceOnWallet: (value: string, idWallet: string) => {},
