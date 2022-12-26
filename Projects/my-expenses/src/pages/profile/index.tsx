@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
+
 import styles from "./Profile.module.scss";
 import Sidebar from "components/Sidebar";
 import Card from "components/Card";
 import InputText from "components/Input/InputText";
 import { UserAuth } from "pages/auth/context/AuthProvider";
-import { useEffect, useState } from "react";
 
 interface IUserProfile {
   id: string;
