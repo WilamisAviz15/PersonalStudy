@@ -19,7 +19,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -30,7 +30,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: walletData.color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -41,7 +41,7 @@ const DialogWallet = ({
       description: value,
       color: walletData.color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -52,7 +52,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: walletData.color,
       balance: value,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 

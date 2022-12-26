@@ -1,6 +1,6 @@
 export interface ITransactionState {
-  isValueAddBalance: number | undefined;
+  isValueAddBalance: string | undefined;
   setIsValueAddBalance: React.Dispatch<
-    React.SetStateAction<number | undefined>
+    React.SetStateAction<string | undefined>
   >;
 }

@@ -59,8 +59,9 @@ export const WalletContextProvider = ({
     setWallets(wallets);
   };
 
-  const handleUpdateBalanceOnWallet = (value: string, idWallet: number) => {
-    updateTransactions(value, idWallet);
+  const handleUpdateBalanceOnWallet = (value: string, idWallet: string) => {
+    const index = wallets.findIndex((wallet) => wallet.id === idWallet);
+    updateTransactions(value, index);
     handleWalletDialog(false);
   };
 
@@ -82,7 +83,6 @@ export const WalletContextProvider = ({
     const isEditing = wallets.find((wallets) => wallets.id === wallet.id);
 
     if (isEditing) {
-      console.log("editing:", isEditing);
       updateItem(wallet, verifyIndex(wallet.id));
       setIsIdEditing(undefined);
     } else {

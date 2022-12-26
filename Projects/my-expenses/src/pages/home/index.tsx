@@ -23,7 +23,6 @@ const Home = () => {
   };
   console.log(currentUser);
   const walletsContext = useContext(WalletContext);
-  console.log(walletsContext.wallets);
   useEffect(() => {
     const getUser = async () => {
       const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
@@ -36,11 +35,10 @@ const Home = () => {
         return <Navigate to="/auth" />;
       }
       walletsContext.handleSetWallets(userData.wallets!);
-      console.log(userData);
     };
     setTimeout(() => {
       getUser();
-    }, 2000);
+    }, 1000);
   }, []);
 
   return (
@@ -70,8 +68,6 @@ const Home = () => {
             saveNewWallet={(wallet: IWalletItem) =>
               walletsContext.handleSaveOrUpdateNewWallet(wallet)
             }
-            isValueAddBalance={walletsContext.transaction.isValueAddBalance}
-            updateBalanceOnWallet={walletsContext.handleUpdateBalanceOnWallet}
           />
         )}
       </div>

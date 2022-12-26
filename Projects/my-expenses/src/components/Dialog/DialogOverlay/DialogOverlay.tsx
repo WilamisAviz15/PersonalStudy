@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { MdClose } from "react-icons/md";
 
 import { IPropsDialog } from "shared/interfaces/IPropsDialog.interface";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
+import WalletContext from "store/wallet-context";
 import DialogAddBalance from "../DialogAddBalance";
 import DialogWallet from "../DialogWallet";
 import styles from "./DialogOverlay.module.scss";
@@ -10,10 +11,8 @@ import styles from "./DialogOverlay.module.scss";
 const DialogOverlay = ({
   title,
   wallet,
-  isValueAddBalance,
   onCloseDialog,
   saveNewWallet,
-  updateBalanceOnWallet,
 }: IPropsDialog) => {
   const [walletData, setWalletData] = useState<IWalletItem>({
     title: "",
@@ -24,11 +23,11 @@ const DialogOverlay = ({
     balance: "",
   });
   const [addBalanceValue, setAddBalanceValue] = useState<string>();
+  const walletsContext = useContext(WalletContext);
 
   useEffect(() => {
     if (wallet !== undefined) {
       setWalletData(wallet);
-      console.log(wallet);
     }
   }, []);
 
@@ -37,7 +36,10 @@ const DialogOverlay = ({
     if (addBalanceValue === undefined) {
       saveNewWallet!(walletData);
     } else {
-      updateBalanceOnWallet!(addBalanceValue, isValueAddBalance!);
+      walletsContext.handleUpdateBalanceOnWallet!(
+        addBalanceValue,
+        walletsContext.transaction.isValueAddBalance!
+      );
     }
   };
 
@@ -58,7 +60,7 @@ const DialogOverlay = ({
         </button>
       </header>
       <main className={styles["container-dialog__content"]}>
-        {isValueAddBalance !== undefined ? (
+        {walletsContext.transaction.isValueAddBalance !== undefined ? (
           <DialogAddBalance
             addBalance={addBalanceValue}
             setAddBalance={setAddBalanceValue}
