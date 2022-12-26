@@ -1,3 +1,4 @@
+import { IWalletContext } from "./interfaces/IWalletContext.interface";
 import React from "react";
 
 import { IDialogState } from "shared/interfaces/IDialogState.interface";
@@ -5,7 +6,7 @@ import { IEditingState } from "shared/interfaces/IEditingState.interface";
 import { ITransactionState } from "shared/interfaces/ITransactionState.interface";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 
-const WalletContext = React.createContext({
+const WalletContext = React.createContext<IWalletContext>({
   wallets: [] as IWalletItem[],
   dialog: {} as IDialogState,
   editing: {} as IEditingState,

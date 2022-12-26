@@ -5,6 +5,7 @@ import styles from "./CardBox.module.scss";
 import WalletContext from "store/wallet-context";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { getCardColor } from "shared/util/util";
+import { deleteWallet } from "./CardBox.service";
 
 const CardBox = ({
   item,
@@ -16,7 +17,7 @@ const CardBox = ({
   const walletsContext = useContext(WalletContext);
 
   const handleDeleteWallet = (id: string) => {
-    walletsContext.removeItem(id);
+    deleteWallet(walletsContext, id);
   };
 
   const handleAddBalanceOnWallet = (id: string) => {

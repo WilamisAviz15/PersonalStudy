@@ -38,7 +38,6 @@ export const WalletContextProvider = ({
     });
   };
 
-  //TODO: MELHORAR
   const updateTransactions = (value: string, idWallet: number) => {
     setWallets((oldWalletData) => {
       const oldBalance = +oldWalletData[idWallet].balance;

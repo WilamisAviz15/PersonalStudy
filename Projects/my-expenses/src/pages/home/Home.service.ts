@@ -1,8 +1,9 @@
-import { doc, getDoc } from "firebase/firestore";
-import { UserAuth } from "pages/auth/context/AuthProvider";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import { IUserData } from "shared/interfaces/IUserData.interface";
+import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { db } from "shared/util/firebase.config";
+import { IWalletContext } from "store/interfaces/IWalletContext.interface";
 
 export async function getUser(walletsContext: any) {
   const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
@@ -17,7 +18,12 @@ export async function getUser(walletsContext: any) {
   walletsContext.handleSetWallets(userData.wallets!);
 }
 
-export function getUserData() {
-  const { user } = UserAuth();
-  return;
+export async function handleSaveOrUpdateWallet(
+  walletsContext: IWalletContext,
+  wallet: IWalletItem
+) {
+  walletsContext.handleSaveOrUpdateNewWallet(wallet);
+  const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
+  user.wallets = walletsContext.wallets;
+  await setDoc(doc(db, "users", user.id!), user);
 }

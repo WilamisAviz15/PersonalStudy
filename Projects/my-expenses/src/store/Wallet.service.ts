@@ -1,5 +1,4 @@
 import { doc, setDoc } from "firebase/firestore";
-import { IUserData } from "shared/interfaces/IUserData.interface";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { db } from "shared/util/firebase.config";
 
