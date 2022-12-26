@@ -8,17 +8,13 @@ const DialogAddBalance = ({
   addBalance: string | undefined;
   setAddBalance: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-  const handleInputValue = (value: string) => {
-    setAddBalance(value);
-  };
-
   return (
     <section>
       <div className={styles.content}>
         <label htmlFor="">Value:</label>
         <InputNumber
           value={addBalance!}
-          setValue={(value: string) => handleInputValue(value)}
+          setValue={(value: string) => setAddBalance(value)}
         />
       </div>
     </section>

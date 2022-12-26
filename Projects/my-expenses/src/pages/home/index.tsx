@@ -13,12 +13,6 @@ import { getUser } from "./Home.service";
 
 const Home = () => {
   const { user } = UserAuth();
-  const currentUser: IUserData = {
-    id: user?.uid,
-    name: user?.displayName!,
-    email: user?.email!,
-    photoURL: user?.photoURL!,
-  };
   const walletsContext = useContext(WalletContext);
   useEffect(() => {
     getUser(walletsContext);
