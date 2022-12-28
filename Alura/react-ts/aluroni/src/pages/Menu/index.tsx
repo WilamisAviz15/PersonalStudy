@@ -25,7 +25,7 @@ const Menu = () => {
             <Filters filter={filter} setFilter={setFilter} />
             <Sorter order={order} setOrder={setOrder} />
           </div>
-          <Items />
+          <Items search={search} filter={filter} order={order} />
         </section>
       </nav>
     </main>
