@@ -9,7 +9,11 @@ interface PropsSearcher {
 function Searcher({ search, setSearch }: PropsSearcher) {
   return (
     <div className={styles.buscador}>
-      <input value={search} onChange={(e) => setSearch(e.target.value)} />
+      <input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Buscar"
+      />
       <CgSearch size={20} color="#4C5D5E" />
     </div>
   );
