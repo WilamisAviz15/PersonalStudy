@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import styles from "./Item.module.scss";
-import cardapio from "../items.json";
+import cardapio from "data/menu.json";
 
 type IProps = typeof cardapio[0];
 
