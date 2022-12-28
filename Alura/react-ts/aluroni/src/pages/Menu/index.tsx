@@ -15,19 +15,19 @@ const Menu = () => {
     <main>
       <nav className={styles.menu}>
         <Logo />
-        <header className={styles.header}>
-          <div className={styles.header__text}>A casa do código e da massa</div>
-        </header>
-        <section className={styles.cardapio}>
-          <h3 className={styles.cardapio__titulo}>Menu</h3>
-          <Searcher search={search} setSearch={setSearch} />
-          <div className={styles.cardapio__filtros}>
-            <Filters filter={filter} setFilter={setFilter} />
-            <Sorter order={order} setOrder={setOrder} />
-          </div>
-          <Items search={search} filter={filter} order={order} />
-        </section>
       </nav>
+      <header className={styles.header}>
+        <div className={styles.header__text}>A casa do código e da massa</div>
+      </header>
+      <section className={styles.cardapio}>
+        <h3 className={styles.cardapio__titulo}>Menu</h3>
+        <Searcher search={search} setSearch={setSearch} />
+        <div className={styles.cardapio__filtros}>
+          <Filters filter={filter} setFilter={setFilter} />
+          <Sorter order={order} setOrder={setOrder} />
+        </div>
+        <Items search={search} filter={filter} order={order} />
+      </section>
     </main>
   );
 };
