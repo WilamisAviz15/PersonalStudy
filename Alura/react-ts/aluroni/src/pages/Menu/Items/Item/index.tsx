@@ -1,11 +1,9 @@
 import classNames from "classnames";
+import { TypePlate } from "types/Plate";
 
 import styles from "./Item.module.scss";
-import cardapio from "data/menu.json";
 
-type IProps = typeof cardapio[0];
-
-function Item(props: IProps) {
+function Item(props: TypePlate) {
   const { title, description, category, size, serving, price, photo } = props;
 
   return (

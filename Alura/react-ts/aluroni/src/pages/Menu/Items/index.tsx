@@ -2,6 +2,7 @@ import styles from "./Items.module.scss";
 import menu from "data/menu.json";
 import Item from "./Item/index";
 import { useEffect, useState } from "react";
+import { TypeMenu } from "types/Plate";
 
 interface IProps {
   search: string;
@@ -22,7 +23,7 @@ const Items = ({ filter, order, search }: IProps) => {
     return true;
   }
 
-  function sorting(list: typeof menu) {
+  function sorting(list: TypeMenu) {
     switch (order) {
       case "porcao":
         return list.sort((a, b) => (a.size > b.size ? 1 : -1));

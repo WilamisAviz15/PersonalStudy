@@ -2,12 +2,20 @@ import menu from "data/menu.json";
 import styles from "./Home.module.scss";
 import themeStyles from "styles/Theme.module.scss";
 import nossaCasa from "assets/nossa_casa.png";
+import { useNavigate } from "react-router-dom";
+import { TypePlate } from "types/Plate";
 
 const Home = () => {
+  const navigate = useNavigate();
   let recommendedPlates = [...menu];
   recommendedPlates = recommendedPlates
     .sort(() => 0.5 - Math.random())
     .splice(0, 3);
+
+  function redirectToDetails(plate: TypePlate) {
+    navigate(`/prato/${plate.id}`, { state: { plate } });
+  }
+
   return (
     <section>
       <h3 className={themeStyles.titulo}>Recomendações da cozinha</h3>
@@ -17,7 +25,12 @@ const Home = () => {
             <div className={styles.recomendado__imagem}>
               <img src={item.photo} alt={item.title} />
             </div>
-            <button className={styles.recomendado__botao}>Ver mais</button>
+            <button
+              className={styles.recomendado__botao}
+              onClick={() => redirectToDetails(item)}
+            >
+              Ver mais
+            </button>
           </div>
         ))}
       </div>
