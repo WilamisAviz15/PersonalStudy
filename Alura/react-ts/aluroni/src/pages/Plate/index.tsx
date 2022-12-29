@@ -4,6 +4,7 @@ import styles from "./Plate.module.scss";
 import menu from "data/menu.json";
 import TagsPlate from "components/TagsPlate";
 import NotFound from "pages/NotFound";
+import DefaultPage from "components/DefaultPage";
 
 const Plate = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const Plate = () => {
     return <NotFound />;
   }
   return (
-    <>
+    <DefaultPage>
       <button className={styles.voltar} onClick={() => navigate(-1)}>
         {"< Voltar"}
       </button>
@@ -27,7 +28,7 @@ const Plate = () => {
           <TagsPlate {...plate} />
         </div>
       </section>
-    </>
+    </DefaultPage>
   );
 };
 
