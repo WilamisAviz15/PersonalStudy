@@ -23,8 +23,8 @@ const Table = ({ tbodyData }: { tbodyData: IWalletItem[] }) => {
     let existsTransaction = false;
     tbodyData.forEach((data) =>
       data.transactions.length > 0
-        ? (existsTransaction = true)
-        : (existsTransaction = false)
+        ? (existsTransaction = existsTransaction || true)
+        : (existsTransaction = existsTransaction || false)
     );
     return existsTransaction;
   };

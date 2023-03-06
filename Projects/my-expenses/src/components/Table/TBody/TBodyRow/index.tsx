@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { getCardColor } from "shared/util/util";
@@ -9,12 +9,12 @@ const handleTBodyRow = (data: IWalletItem) => {
   return (
     <>
       {data.transactions.map((item) => (
-        <tr>
-          <span
+        <tr key={item.id}>
+          <td
             className={styles.dot}
             style={{ backgroundColor: `${getCardColor(data.color)}` }}
-          ></span>
-          <TBodyRowItem item={item} />
+          ></td>
+          <TBodyRowItem key={item.id} item={item} />
         </tr>
       ))}
     </>

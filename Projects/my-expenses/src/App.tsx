@@ -5,6 +5,7 @@ import Protected from "components/Protected";
 import Auth from "pages/auth";
 import Home from "pages/home";
 import WalletContextProvider from "store/WalletProvider";
+import Profile from "pages/profile";
 
 function App() {
   return (
@@ -17,6 +18,16 @@ function App() {
             <Protected>
               <WalletContextProvider>
                 <Home />
+              </WalletContextProvider>
+            </Protected>
+          }
+        ></Route>
+        <Route
+          path="/profile"
+          element={
+            <Protected>
+              <WalletContextProvider>
+                <Profile />
               </WalletContextProvider>
             </Protected>
           }

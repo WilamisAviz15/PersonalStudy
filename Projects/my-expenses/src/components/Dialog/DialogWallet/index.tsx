@@ -19,7 +19,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -30,7 +30,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: walletData.color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -41,7 +41,7 @@ const DialogWallet = ({
       description: value,
       color: walletData.color,
       balance: walletData.balance,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -52,7 +52,7 @@ const DialogWallet = ({
       description: walletData.description,
       color: walletData.color,
       balance: value,
-      transactions: [],
+      transactions: walletData.transactions,
     }));
   };
 
@@ -94,6 +94,7 @@ const DialogWallet = ({
               name="color"
               value="color-1"
               checked={walletData.color === "color-1"}
+              onChange={() => {}}
             />
             <label htmlFor="color-1">
               <span onClick={() => handleInputChecked("color-1")}>
@@ -109,6 +110,7 @@ const DialogWallet = ({
               name="color"
               value="color-2"
               checked={walletData.color === "color-2"}
+              onChange={() => {}}
             />
             <label htmlFor="color-2">
               <span onClick={() => handleInputChecked("color-2")}>
@@ -124,6 +126,7 @@ const DialogWallet = ({
               name="color"
               value="color-3"
               checked={walletData.color === "color-3"}
+              onChange={() => {}}
             />
             <label htmlFor="color-3">
               <span onClick={() => handleInputChecked("color-3")}>
@@ -139,6 +142,7 @@ const DialogWallet = ({
               name="color"
               value="color-4"
               checked={walletData.color === "color-4"}
+              onChange={() => {}}
             />
             <label htmlFor="color-4">
               <span onClick={() => handleInputChecked("color-4")}>
@@ -153,6 +157,7 @@ const DialogWallet = ({
               name="color"
               value="color-5"
               checked={walletData.color === "color-5"}
+              onChange={() => {}}
             />
             <label htmlFor="color-5">
               <span onClick={() => handleInputChecked("color-5")}>

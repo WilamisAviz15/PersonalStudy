@@ -1,5 +1,6 @@
 import filters from "./filters.json";
 import styles from "./Filters.module.scss";
+import classNames from "classnames";
 
 type iFilter = typeof filters[0];
 
@@ -15,21 +16,22 @@ const Filters = ({ filter, setFilter }: PropsFilter) => {
   };
 
   const handleLoadingFilters = () => {
-    return filters.map((option) => {
-      return (
-        <div className={styles.filtros}>
+    return (
+      <div className={styles.filtros}>
+        {filters.map((option) => (
           <button
-            className={`${styles.filtros__filtro} ${
-              filter === option.id ? styles["filtros__filtro--ativo"] : ""
-            }`}
+            className={classNames({
+              [styles.filtros__filtro]: true,
+              [styles["filtros__filtro--ativo"]]: filter === option.id,
+            })}
             key={option.id}
             onClick={() => selectFilter(option)}
           >
             {option.label}
           </button>
-        </div>
-      );
-    });
+        ))}
+      </div>
+    );
   };
 
   return <div>{handleLoadingFilters()}</div>;

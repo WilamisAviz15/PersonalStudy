@@ -8,11 +8,9 @@ import { IPropsDialog } from "shared/interfaces/IPropsDialog.interface";
 const Dialog = ({
   title,
   wallet,
-  isValueAddBalance,
   onCloseDialog,
   saveNewWallet,
   updateWallet,
-  updateBalanceOnWallet,
 }: IPropsDialog) => {
   return (
     <React.Fragment>
@@ -27,8 +25,6 @@ const Dialog = ({
           saveNewWallet={saveNewWallet}
           updateWallet={updateWallet}
           wallet={wallet}
-          isValueAddBalance={isValueAddBalance}
-          updateBalanceOnWallet={updateBalanceOnWallet}
         />,
         document.getElementById("overlay-root")!
       )}

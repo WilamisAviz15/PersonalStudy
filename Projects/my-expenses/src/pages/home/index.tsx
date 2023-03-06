@@ -1,46 +1,18 @@
 import { useContext, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
 
-import styles from "./Pages.module.scss";
+import styles from "./Home.module.scss";
 import Dialog from "components/Dialog";
 import Sidebar from "components/Sidebar";
 import Wallet from "components/Wallet";
 import Transaction from "components/Transaction";
 import WalletContext from "store/wallet-context";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
-import { db } from "shared/util/firebase.config";
-import { IUserData } from "shared/interfaces/IUserData.interface";
-import { Navigate } from "react-router-dom";
-import { UserAuth } from "pages/auth/context/AuthProvider";
+import { getUser, handleSaveOrUpdateWallet } from "./Home.service";
 
 const Home = () => {
-  const { user } = UserAuth();
-  const currentUser: IUserData = {
-    id: user?.uid,
-    name: user?.displayName!,
-    email: user?.email!,
-    photoURL: user?.photoURL!,
-  };
-  console.log(currentUser);
   const walletsContext = useContext(WalletContext);
-  console.log(walletsContext.wallets);
   useEffect(() => {
-    const getUser = async () => {
-      const user = JSON.parse(localStorage.getItem("user")!) as IUserData;
-      const docRef = doc(db, "users", user.id!);
-      const docSnap = await getDoc(docRef);
-      const userData = docSnap.data() as IUserData;
-
-      if (userData === undefined) {
-        localStorage.clear();
-        return <Navigate to="/auth" />;
-      }
-      walletsContext.handleSetWallets(userData.wallets!);
-      console.log(userData);
-    };
-    setTimeout(() => {
-      getUser();
-    }, 2000);
+    getUser(walletsContext);
   }, []);
 
   return (
@@ -68,10 +40,8 @@ const Home = () => {
               walletsContext.handleWalletDialog(value)
             }
             saveNewWallet={(wallet: IWalletItem) =>
-              walletsContext.handleSaveOrUpdateNewWallet(wallet)
+              handleSaveOrUpdateWallet(walletsContext, wallet)
             }
-            isValueAddBalance={walletsContext.transaction.isValueAddBalance}
-            updateBalanceOnWallet={walletsContext.handleUpdateBalanceOnWallet}
           />
         )}
       </div>

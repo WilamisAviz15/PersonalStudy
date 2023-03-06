@@ -5,6 +5,7 @@ import styles from "./CardBox.module.scss";
 import WalletContext from "store/wallet-context";
 import { IWalletItem } from "shared/interfaces/IWalletItem.interface";
 import { getCardColor } from "shared/util/util";
+import { deleteWallet } from "./CardBox.service";
 
 const CardBox = ({
   item,
@@ -15,12 +16,11 @@ const CardBox = ({
 }) => {
   const walletsContext = useContext(WalletContext);
 
-  const handleDeleteWallet = (id: number) => {
-    console.log(id);
-    walletsContext.removeItem(id);
+  const handleDeleteWallet = (id: string) => {
+    deleteWallet(walletsContext, id);
   };
 
-  const handleAddBalanceOnWallet = (id: number) => {
+  const handleAddBalanceOnWallet = (id: string) => {
     walletsContext.transaction.setIsValueAddBalance(id);
     walletsContext.dialog.setOpenWalletDialog(true);
   };
@@ -43,10 +43,10 @@ const CardBox = ({
           <FaEdit onClick={() => onOpenWalletDialog(true, item)} />
         </a>
         <a>
-          <FaTrash onClick={() => handleDeleteWallet!(+item.id)} />
+          <FaTrash onClick={() => handleDeleteWallet!(item.id)} />
         </a>
         <a>
-          <FaPlus onClick={() => handleAddBalanceOnWallet!(+item.id)} />
+          <FaPlus onClick={() => handleAddBalanceOnWallet!(item.id)} />
         </a>
       </div>
     </article>

@@ -20,7 +20,11 @@ const Wallet = ({ data, onOpenWalletDialog }: IPropsWallet) => {
         <div className={styles.dashboard__content}>
           {data.length > 0 ? (
             data.map((item) => (
-              <CardBox item={item} onOpenWalletDialog={onOpenWalletDialog} />
+              <CardBox
+                key={item.id}
+                item={item}
+                onOpenWalletDialog={onOpenWalletDialog}
+              />
             ))
           ) : (
             <h2>There are no wallets created.</h2>
