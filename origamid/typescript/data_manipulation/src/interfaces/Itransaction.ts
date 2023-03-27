@@ -1,20 +1,32 @@
-export type TransactionStatus =
+export type TTransactionStatus =
   | "Paga"
   | "Recusada pela operadora de cartão"
   | "Estornada"
   | "Aguardando pagamento";
 
-export type PaymentMethod = "Cartão de Crédito" | "Boleto";
+export enum EnumTransactionStatus {
+  PAID = "Paga",
+  REFUSED = "Recusada pela operadora de cartão",
+  ESTORNED = "Estornada",
+  WAITING = "Aguardando pagamento",
+}
 
-export type ITemporaryData = {
+export enum EnumPaymentMethod {
+  CREDIT_CARD = "Cartão de Crédito",
+  BOLET = "Boleto",
+}
+
+export type TPaymentMethod = "Cartão de Crédito" | "Boleto";
+
+export type TTemporaryData = {
   Nome: string;
   Data: string;
   Email: string;
   ID: number;
-  Status: TransactionStatus;
+  Status: TTransactionStatus;
   ["Valor (R$)"]: string;
   ["Cliente Novo"]: boolean;
-  ["Forma de Pagamento"]: PaymentMethod;
+  ["Forma de Pagamento"]: TPaymentMethod;
 };
 
 export interface ITransaction {
@@ -23,7 +35,7 @@ export interface ITransaction {
   email: string;
   newClient: boolean;
   value: string;
-  status: TransactionStatus;
-  payment: PaymentMethod;
+  status: TTransactionStatus;
+  payment: TPaymentMethod;
   date: string;
 }

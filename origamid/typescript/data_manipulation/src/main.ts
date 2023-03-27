@@ -1,12 +1,8 @@
 import { IDashboard } from "./interfaces/IDashboard";
 import httpGet from "./main.service";
-import { calculateValuesDashboard, convertMoney } from "./util";
+import calculateValuesDashboard, { initDashboard } from "./util";
 
-let dashboard: IDashboard = {
-  total: 0,
-  countPaymentMethod: { bolet: 0, creditCard: 0 },
-  countTransactionStatus: { estorned: 0, paid: 0, refused: 0, waiting: 0 },
-};
+let dashboard: IDashboard = initDashboard();
 const data = await httpGet("https://api.origamid.dev/json/transacoes.json");
 const table = document.getElementById("table")!;
 
@@ -22,6 +18,7 @@ data?.forEach((item) => {
 });
 
 dashboard = calculateValuesDashboard(data);
+console.log(dashboard);
 
 document.getElementById(
   "total"

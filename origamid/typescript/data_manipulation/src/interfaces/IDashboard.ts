@@ -3,16 +3,31 @@ interface ICountTransactionStatus {
   refused: number;
   waiting: number;
   estorned: number;
-  biggestSalesDay?:
-    | "segunda"
-    | "terca"
-    | "quarta"
-    | "quinta"
-    | "sexta"
-    | "sabado"
-    | "domingo";
+  biggestSalesDay?: TDayOfWeek;
 }
 
+export type TDayOfWeek =
+  | "segunda"
+  | "terca"
+  | "quarta"
+  | "quinta"
+  | "sexta"
+  | "sabado"
+  | "domingo";
+
+export enum EnumBiggestSalesDay {
+  MONDAY = "segunda",
+  TUESDAY = "terca",
+  WEDNESDAY = "quarta",
+  THURSDAY = "quinta",
+  FRIDAY = "sexta",
+  SATURDAY = "sabado",
+  SUNDAY = "domingo",
+}
+
+export interface IDayOfWeek {
+  [day: string]: number;
+}
 export interface ICountPaymentMethod {
   creditCard: number;
   bolet: number;
