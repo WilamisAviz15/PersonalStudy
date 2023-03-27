@@ -1,0 +1,20 @@
+:root {
+  font-family: "Nunito", sans-serif;
+}
+
+table thead {
+  font-size: 1.25rem;
+}
+
+table tbody tr {
+  text-align: center;
+  font-size: 1rem;
+}
+
+table tbody:nth-child(odd) {
+  background-color: #f6f5fc;
+}
+
+table tbody tr td {
+  padding: 10px;
+}
