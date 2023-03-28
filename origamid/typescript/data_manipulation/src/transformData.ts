@@ -1,6 +1,6 @@
-import { ITemporaryData, ITransaction } from "./interfaces/Itransaction";
+import { TTemporaryData, ITransaction } from "./interfaces/Itransaction";
 
-export default function transformData(data: ITemporaryData[]): ITransaction[] {
+export default function transformData(data: TTemporaryData[]): ITransaction[] {
   return data.map(
     (item) =>
       ({

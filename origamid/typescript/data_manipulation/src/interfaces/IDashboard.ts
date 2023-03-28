@@ -6,6 +6,13 @@ interface ICountTransactionStatus {
   biggestSalesDay?: TDayOfWeek;
 }
 
+export type TCountTransactionStatus =
+  | "paid"
+  | "refused"
+  | "waiting"
+  | "estorned"
+  | "biggestSalesDay";
+
 export type TDayOfWeek =
   | "segunda"
   | "terca"
@@ -16,13 +23,13 @@ export type TDayOfWeek =
   | "domingo";
 
 export enum EnumBiggestSalesDay {
+  SUNDAY = "domingo",
   MONDAY = "segunda",
   TUESDAY = "terca",
   WEDNESDAY = "quarta",
   THURSDAY = "quinta",
   FRIDAY = "sexta",
   SATURDAY = "sabado",
-  SUNDAY = "domingo",
 }
 
 export interface IDayOfWeek {

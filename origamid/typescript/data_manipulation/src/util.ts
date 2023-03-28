@@ -20,12 +20,16 @@ function convertDate(date: string): string {
     .split("-")[0];
 }
 
-function convertMoney(money: string): number {
+function convertMoneyToNumber(money: string): number {
   if (money === "-") {
     return 0.0;
   }
 
   return Number(money.replace(".", "").replace(",", "."));
+}
+
+export function convertNumberToMoney(number: number): string {
+  return number.toLocaleString("pt-br", { minimumFractionDigits: 2 });
 }
 
 export function initDashboard(): IDashboard {
@@ -53,7 +57,7 @@ export default function calculateValuesDashboard(
   }
   let daysOfWeek: IDayOfWeek = initDaysOfWeek();
   let total = data.reduce((prev, current) => {
-    return (prev += convertMoney(current.value));
+    return (prev += convertMoneyToNumber(current.value));
   }, 0);
 
   const { bolet, creditCard } = data.reduce(
@@ -108,7 +112,7 @@ export default function calculateValuesDashboard(
     }
   });
 
-  function biggestValue(): TDayOfWeek {
+  function biggestSalesDay(): TDayOfWeek {
     return Object.keys(daysOfWeek).reduce((a, b) =>
       daysOfWeek[a] > daysOfWeek[b] ? a : b
     ) as TDayOfWeek;
@@ -125,7 +129,7 @@ export default function calculateValuesDashboard(
       paid,
       refused,
       waiting,
-      biggestSalesDay: biggestValue(),
+      biggestSalesDay: biggestSalesDay(),
     },
   };
 }
