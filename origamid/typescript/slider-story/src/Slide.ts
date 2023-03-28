@@ -19,6 +19,7 @@ export class Slide {
 
     this.index = 0;
     this.slide = this.slides[this.index];
+    this.init();
   }
 
   hide(el: Element) {
@@ -30,5 +31,26 @@ export class Slide {
     this.slide = this.slides[this.index];
     this.slides.forEach((el) => this.hide(el));
     this.slide.classList.add("active");
+  }
+  private addControls() {
+    const prevButton = document.createElement("button");
+    const nextButton = document.createElement("button");
+
+    this.controls.appendChild(prevButton);
+    this.controls.appendChild(nextButton);
+    prevButton.addEventListener("pointerup", () => this.prev());
+    nextButton.addEventListener("pointerup", () => this.next());
+  }
+
+  private init() {
+    this.addControls();
+    this.show(this.index);
+  }
+
+  next() {
+    this.show(this.index + 1);
+  }
+  prev() {
+    this.show(this.index - 1);
   }
 }
