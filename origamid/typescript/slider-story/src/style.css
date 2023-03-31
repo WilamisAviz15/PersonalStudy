@@ -39,6 +39,10 @@ video {
   cursor: pointer;
 }
 
+#story-item:first-child {
+  border: 1px solid #00796b;
+}
+
 #story-list > span {
   text-align: center;
 }
