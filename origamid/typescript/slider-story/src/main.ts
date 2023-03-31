@@ -1,26 +1,50 @@
 import createStory from "./createStory";
-import handleCurrentStory from "./handleCurrentStory";
+import initSession from "./handleSessionStorage";
+import handleStories from "./handleStories";
+import IUser from "./interfaces/IUser";
 import { Slide } from "./Slide";
 
 const $ = (id: string) => document.getElementById(id);
 
 const container = $("slide");
-const elements = $("slide-elements");
+const elements = $("slide-elements")!;
 const controls = $("slide-controls");
-const addStory = $("story")?.children[0];
-const selectedStory = $("story-item");
+const stories = $("story")!;
+const storiesChildren = $("story")!.children;
+const addStory = storiesChildren[0];
 
-selectedStory?.addEventListener("click", () =>
-  handleCurrentStory(selectedStory)
-);
+const { currentUser, friends } = initSession();
 
-if (container && elements && controls && elements.children.length) {
-  // const slide = new Slide(
-  //   container,
-  //   Array.from(elements.children),
-  //   controls,
-  //   2000
-  // );
+if (currentUser) {
+  generateElement(currentUser);
+  if (friends) {
+    generateElement(friends);
+  }
 }
 
+function showStory() {
+  if (
+    container &&
+    elements &&
+    controls &&
+    elements.children.length &&
+    currentUser
+  ) {
+    handleStories(elements, 1);
+
+    new Slide(container, Array.from(elements.children), controls, 2000);
+  }
+}
+
+Array.from(storiesChildren).forEach((el) => {
+  if (el instanceof HTMLDivElement) el.onclick = showStory;
+});
+
 addStory?.addEventListener("click", createStory);
+
+function generateElement(user: IUser) {
+  const storyItem = document.createElement("div");
+  storyItem.id = "story-item";
+  storyItem.innerHTML = `<span>${user.name[0]}</span>`;
+  stories.appendChild(storyItem);
+}

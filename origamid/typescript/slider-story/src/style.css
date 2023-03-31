@@ -54,11 +54,13 @@ video {
   margin: 20px auto;
   max-width: 800px;
   background: black;
+  max-height: 30vh;
 }
 
 #slide-elements {
   display: grid;
   grid-area: 1/1;
+  max-height: 30vh;
 }
 
 #slide-elements > * {
