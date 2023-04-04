@@ -1,11 +1,5 @@
 import "./App.css";
-import Stopwatch from "./assets/components/Stopwatch";
-
-interface cronometer {
-  hour: number;
-  minute: number;
-  second: number;
-}
+import Stopwatch from "./assets/components/stopwatch";
 
 function App() {
   return (
