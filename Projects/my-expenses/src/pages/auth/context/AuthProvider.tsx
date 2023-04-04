@@ -16,7 +16,7 @@ const AuthContext = React.createContext({
   logOut: () => fn(),
   user: null as User | null,
 });
-const a = "q";
+
 const fn = () => new Promise<void>((res, rej) => undefined);
 
 export const AuthContextProvider = ({
@@ -29,6 +29,7 @@ export const AuthContextProvider = ({
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     const userResult = await signInWithPopup(auth, provider);
+    console.log(userResult);
     const docRef = doc(db, "users", userResult.user.uid);
     const docSnap = await getDoc(docRef);
 

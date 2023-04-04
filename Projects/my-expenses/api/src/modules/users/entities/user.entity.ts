@@ -8,6 +8,9 @@ export class UserEntity {
   @Column({ length: 50, type: 'varchar' })
   name: string;
 
+  @Column({ name: 'id_google', length: 50, type: 'varchar' })
+  idGoogle: string;
+
   @Column({ length: 50, type: 'varchar' })
   email: string;
 
