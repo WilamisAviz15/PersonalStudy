@@ -16,7 +16,7 @@ const AuthContext = React.createContext({
   logOut: () => fn(),
   user: null as User | null,
 });
-
+const a = "q";
 const fn = () => new Promise<void>((res, rej) => undefined);
 
 export const AuthContextProvider = ({
