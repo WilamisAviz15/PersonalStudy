@@ -1,3 +1,7 @@
+import { IsNotEmpty, IsString } from 'class-validator';
+
 export class SignInDto {
-  idGoogle: string;
+  @IsString()
+  @IsNotEmpty()
+  idToken: string;
 }

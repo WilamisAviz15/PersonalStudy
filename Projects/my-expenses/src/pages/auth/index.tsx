@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { IUserData } from "shared/interfaces/IUserData.interface";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "shared/util/firebase.config";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Auth = () => {
   const { googleSignIn, logOut, user } = UserAuth();
@@ -46,8 +47,15 @@ const Auth = () => {
 
   return (
     <div className={styles.container}>
-      <GoogleButton onClick={handleGoogleSignIn} />
-      {user && <button onClick={logOut}>Logout</button>}
+      <GoogleLogin
+        onSuccess={(credentialResponse) => {
+          console.log(credentialResponse);
+        }}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
+      ;
     </div>
   );
 };

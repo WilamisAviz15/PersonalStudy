@@ -5,6 +5,7 @@ import { UsersModule } from 'src/modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from 'src/modules/users/entities/user.entity';
 import { GoogleAuthenticationModule } from './google-authentication/google-authentication.module';
+import { GoogleAuthenticationService } from './google-authentication/google-authentication.service';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { GoogleAuthenticationModule } from './google-authentication/google-authe
     GoogleAuthenticationModule,
   ],
   controllers: [AuthenticationController],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, GoogleAuthenticationService],
 })
 export class AuthenticationModule {}

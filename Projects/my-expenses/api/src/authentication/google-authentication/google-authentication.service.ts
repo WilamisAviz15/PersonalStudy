@@ -1,20 +1,27 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import TokenVerificationDto from './dto/token-verification-dto';
+import { OAuth2Client } from 'google-auth-library';
 
 @Injectable()
 export class GoogleAuthenticationService {
-  // oauthClient: Auth.OAuth2Client;
-  // constructor() {}
-  // async authenticate(token: string) {
-  //   const tokenInfo = await this.oauthClient.getTokenInfo(token);
-  //   const email = tokenInfo.email;
-  //   try {
-  //     const user = await this.usersService.getByEmail(email);
-  //     return this.handleRegisteredUser(user);
-  //   } catch (error) {
-  //     if (error.status !== 404) {
-  //       throw new error();
-  //     }
-  //     return this.registerUser(token, email);
-  //   }
-  // }
+  private client = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+  );
+  constructor() {}
+
+  async verifyToken(tokenData: TokenVerificationDto) {
+    try {
+      const ticket = await this.client.verifyIdToken({
+        idToken: tokenData.idToken,
+        audience: process.env.GOOGLE_CLIENT_ID,
+      });
+      return ticket.getPayload();
+    } catch (err) {
+      throw new HttpException(
+        'Ocorreu um erro ao carregar usuário',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 }

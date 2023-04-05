@@ -14,3 +14,5 @@ export function getCardColor(nameColor: string): string {
       return "#05c091";
   }
 }
+
+export const CLIENT_ID_GOOGLE = process.env["REACT_APP_API_GOOGLE"]!;
