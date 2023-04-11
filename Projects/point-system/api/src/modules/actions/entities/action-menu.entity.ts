@@ -5,12 +5,14 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ActionEntity } from './action.entity';
-import { MenuEntity } from 'src/modules/menus/entities/menu.entity';
+import { MenuEntity } from '../../menus/entities/menu.entity';
+import { PrivilegeEntity } from '../../menus/entities/privilege.entity';
 
 @Entity({ name: 'actions_menu' })
 export class ActionsMenuEntity {
@@ -31,10 +33,8 @@ export class ActionsMenuEntity {
   @JoinColumn({ name: 'action_id' })
   action?: ActionEntity;
 
-  // @OneToMany(() => PrivilegeEntity, (privilege) => privilege.actionsMenus, {
-  //   cascade: true,
-  // })
-  // privileges?: PrivilegeEntity[];
+  @OneToMany(() => PrivilegeEntity, (privilege) => privilege.actionsMenus, { cascade: true })
+  privileges?: PrivilegeEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt?: Date;

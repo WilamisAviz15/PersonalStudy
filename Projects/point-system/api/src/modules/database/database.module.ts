@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppDataSource } from './data-source';
+import { AppDataSource } from '../../config/database/data-source';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

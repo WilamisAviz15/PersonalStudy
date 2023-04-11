@@ -9,7 +9,8 @@ export const typeormOptions: DataSourceOptions = {
   password: 'root',
   database: 'point_system',
   entities,
-  synchronize: true,
+  migrations: [__dirname + '/migrations/*{.ts,.js}'],
+  synchronize: false,
 };
 
 export const AppDataSource = new DataSource(typeormOptions);

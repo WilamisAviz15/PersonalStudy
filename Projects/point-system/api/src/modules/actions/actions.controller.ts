@@ -1,40 +1,38 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ActionsService } from './actions.service';
+import { ActionInterface } from './interfaces/action.interface';
+import { ActionCreateDto } from './dtos/action-create.dto';
+import { ActionUpdateDto } from './dtos/action-update.dto';
 
 @Controller('actions')
 export class ActionsController {
-  constructor(private readonly actionsService: ActionsService) {}
+  constructor(private readonly service: ActionsService) {}
 
   @Post()
-  create(@Body() createActionDto: any) {
-    return this.actionsService.create(createActionDto);
+  create(@Body() data: ActionCreateDto): Promise<{ action: ActionInterface; message: string }> {
+    return this.service.create(data);
   }
 
   @Get()
-  findAll() {
-    return this.actionsService.findAll();
+  async findAll(): Promise<ActionInterface[]> {
+    return await this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.actionsService.findOne(+id);
+  findOne(@Param('id') id: number): Promise<ActionInterface> {
+    return this.service.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateActionDto: any) {
-    return this.actionsService.update(+id, updateActionDto);
+  update(
+    @Body() data: ActionUpdateDto,
+    @Param('id') id: number,
+  ): Promise<{ action: ActionInterface; message: string }> {
+    return this.service.update(data, id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.actionsService.remove(+id);
+  delete(@Param('id') id: number): Promise<{ message: string }> {
+    return this.service.delete(id);
   }
 }

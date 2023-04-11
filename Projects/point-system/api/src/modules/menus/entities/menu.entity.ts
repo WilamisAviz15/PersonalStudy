@@ -1,4 +1,3 @@
-import { ActionsMenuEntity } from 'src/modules/actions/entities/action-menu.entity';
 import {
   Column,
   CreateDateColumn,
@@ -10,6 +9,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { ActionsMenuEntity } from '../../actions/entities/action-menu.entity';
+import { MenusGroupEntity } from '../../menus-groups/entities/menus-group.entity';
 
 @Entity({ name: 'menus' })
 export class MenuEntity {
@@ -25,6 +27,9 @@ export class MenuEntity {
   @Column()
   route: string;
 
+  @Column()
+  icon: string;
+
   @Column({ name: 'menu_group_id' })
   menuGroupId: number;
 
@@ -32,9 +37,7 @@ export class MenuEntity {
   @JoinColumn({ name: 'menu_group_id', referencedColumnName: 'id' })
   group: MenusGroupEntity;
 
-  @OneToMany(() => ActionsMenuEntity, (actionsMenu) => actionsMenu.menu, {
-    cascade: true,
-  })
+  @OneToMany(() => ActionsMenuEntity, (actionsMenu) => actionsMenu.menu, { cascade: true })
   @JoinColumn({ name: 'action_id' })
   actionsMenus: ActionsMenuEntity[];
 

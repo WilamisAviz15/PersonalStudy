@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dto/create-menu.dto';
-import { UpdateMenuDto } from './dto/update-menu.dto';
 
 @Injectable()
 export class MenusService {
@@ -16,7 +15,7 @@ export class MenusService {
     return `This action returns a #${id} menu`;
   }
 
-  update(id: number, updateMenuDto: UpdateMenuDto) {
+  update(id: number, updateMenuDto: any) {
     return `This action updates a #${id} menu`;
   }
 
