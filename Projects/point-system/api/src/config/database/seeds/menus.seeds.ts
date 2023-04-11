@@ -27,7 +27,7 @@ export class MenusSeed implements Seeder {
       {
         name: 'Colaboradores',
         route: 'colaboradores',
-        menuKey: 'employee',
+        menuKey: 'employees',
         menuGroupId: 2,
       },
       {
@@ -39,13 +39,13 @@ export class MenusSeed implements Seeder {
       {
         name: 'Marcação dos Colaboradores',
         route: 'marcacao-dos-colaboradores',
-        menuKey: 'employee-appointments',
+        menuKey: 'employees-appointment',
         menuGroupId: 2,
       },
       {
         name: 'Tipo de Marcação',
         route: 'tipo-de-marcacao',
-        menuKey: 'appointments-type',
+        menuKey: 'appointment-type',
         menuGroupId: 2,
       },
       {
@@ -63,7 +63,7 @@ export class MenusSeed implements Seeder {
       {
         name: 'Status de Usuários',
         route: 'status-de-usuarios',
-        menuKey: 'user-status',
+        menuKey: 'users-status',
         menuGroupId: 2,
       },
       {

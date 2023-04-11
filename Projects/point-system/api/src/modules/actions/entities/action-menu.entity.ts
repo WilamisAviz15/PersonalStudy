@@ -14,7 +14,7 @@ import { ActionEntity } from './action.entity';
 import { MenuEntity } from '../../menus/entities/menu.entity';
 import { PrivilegeEntity } from '../../menus/entities/privilege.entity';
 
-@Entity({ name: 'actions_menu' })
+@Entity({ name: 'actions_menus' })
 export class ActionsMenuEntity {
   @PrimaryGeneratedColumn()
   id?: number;
