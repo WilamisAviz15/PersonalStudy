@@ -6,11 +6,30 @@ import { MenusSeed } from './seeds/menus.seeds';
 import { RolesSeed } from './seeds/roles.seed';
 import { ActionsMenuSeed } from './seeds/action-menus.seed';
 import { PrivilegesSeed } from './seeds/privileges.seed';
+import { AppointmentTypeSeed } from './seeds/appointment-type.seed';
+import { OccurrencesSeed } from './seeds/ccurrences.seed';
+import { StatusSeed } from './seeds/status.seed';
+import { UsersStatusSeed } from './seeds/users-status.seed';
+import { WorkdaySeed } from './seeds/workday.seed';
+import { PositionsSeed } from './seeds/positions.seed';
 
 export class MainSeeder implements Seeder {
   public async run(dataSource: DataSource): Promise<any> {
     await runSeeders(dataSource, {
-      seeds: [ActionsSeed, MenuGroupsSeed, MenusSeed, RolesSeed, ActionsMenuSeed, PrivilegesSeed],
+      seeds: [
+        ActionsSeed,
+        MenuGroupsSeed,
+        MenusSeed,
+        RolesSeed,
+        ActionsMenuSeed,
+        PrivilegesSeed,
+        AppointmentTypeSeed,
+        OccurrencesSeed,
+        StatusSeed,
+        UsersStatusSeed,
+        WorkdaySeed,
+        PositionsSeed,
+      ],
     });
   }
 }
