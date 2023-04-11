@@ -12,6 +12,7 @@ import { StatusModule } from '../modules/status/status.module';
 import { UsersStatusModule } from '../modules/users-status/users-status.module';
 import { WorkdayModule } from '../modules/workday/workday.module';
 import { PositionsModule } from '../modules/positions/positions.module';
+import { UsersModule } from '../modules/users/users.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PositionsModule } from '../modules/positions/positions.module';
     AppointmentTypeModule,
     OccurrencesModule,
     StatusModule,
+    UsersModule,
     UsersStatusModule,
     WorkdayModule,
     PositionsModule,
