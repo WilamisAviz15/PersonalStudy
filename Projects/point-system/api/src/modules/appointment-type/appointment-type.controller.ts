@@ -1,33 +1,41 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+
 import { AppointmentTypeService } from './appointment-type.service';
-import { CreateAppointmentTypeDto } from './dto/create-appointment-type.dto';
+import { AppointmentTypeCreateDto } from './dto/appointment-type-create.dto';
+import { AppointmentTypeUpdateDto } from './dto/appointment-type-update.dto';
+import { AppointmentTypeInterface } from './interfaces/AppointmentType.interface';
 
 @Controller('appointment-type')
 export class AppointmentTypeController {
-  constructor(private readonly appointmentTypeService: AppointmentTypeService) {}
+  constructor(private readonly service: AppointmentTypeService) {}
 
   @Post()
-  create(@Body() createAppointmentTypeDto: CreateAppointmentTypeDto) {
-    return this.appointmentTypeService.create(createAppointmentTypeDto);
+  create(
+    @Body() data: AppointmentTypeCreateDto,
+  ): Promise<{ appointmentType: AppointmentTypeInterface; message: string }> {
+    return this.service.create(data);
   }
 
   @Get()
-  findAll() {
-    return this.appointmentTypeService.findAll();
+  findAll(): Promise<AppointmentTypeInterface[]> {
+    return this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.appointmentTypeService.findOne(+id);
+  findOne(@Param('id') id: number): Promise<AppointmentTypeInterface> {
+    return this.service.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAppointmentTypeDto: any) {
-    return this.appointmentTypeService.update(+id, updateAppointmentTypeDto);
+  update(
+    @Body() data: AppointmentTypeUpdateDto,
+    @Param('id') id: number,
+  ): Promise<{ appointmentType: AppointmentTypeInterface; message: string }> {
+    return this.service.update(data, id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.appointmentTypeService.remove(+id);
+  delete(@Param('id') id: number): Promise<{ message: string }> {
+    return this.service.delete(id);
   }
 }

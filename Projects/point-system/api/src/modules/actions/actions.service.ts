@@ -1,8 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ActionInterface } from './interfaces/action.interface';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ActionEntity } from './entities/action.entity';
 import { In, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+
+import { ActionInterface } from './interfaces/action.interface';
+import { ActionEntity } from './entities/action.entity';
 import { PrivilegeEntity } from '../menus/entities/privilege.entity';
 import { ActionsMenuEntity } from './entities/action-menu.entity';
 import { ActionCreateDto } from './dtos/action-create.dto';
@@ -25,7 +26,6 @@ export class ActionsService {
   async create(data: ActionCreateDto) {
     try {
       const entity = Object.assign(new ActionEntity(), data);
-      console.log(entity);
       const action = await this.actionsRepository.save(entity);
       const menus = await this.menuRepository.find();
       const actionsMenuCreate = menus.map((menu) => ({ actionId: action.id, menuId: menu.id }));

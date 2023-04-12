@@ -1,66 +1,66 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class CreateTableUsers1681249127848 implements MigrationInterface {
-  private userTable = new Table({
-    name: 'users',
-    columns: [
-      {
-        name: 'id',
-        type: 'INTEGER',
-        isPrimary: true,
-        isGenerated: true,
-        generationStrategy: 'increment',
-      },
-      {
-        name: 'registration_number',
-        type: 'VARCHAR',
-        length: '255',
-        isUnique: true,
-      },
-      {
-        name: 'name',
-        type: 'VARCHAR',
-        length: '255',
-      },
-      {
-        name: 'cpf',
-        type: 'VARCHAR',
-        length: '255',
-        isUnique: true,
-      },
-      {
-        name: 'password',
-        type: 'VARCHAR',
-        length: '255',
-      },
-      {
-        name: 'accepted_at',
-        type: 'TIMESTAMP',
-        isNullable: true,
-      },
-      {
-        name: 'last_access',
-        type: 'TIMESTAMP',
-        default: 'CURRENT_TIMESTAMP()',
-        isNullable: true,
-      },
-      {
-        name: 'created_at',
-        type: 'TIMESTAMP',
-        default: 'NOW()',
-      },
-      {
-        name: 'updated_at',
-        type: 'TIMESTAMP',
-        default: 'NOW() ON UPDATE CURRENT_TIMESTAMP()',
-      },
-      {
-        name: 'deleted_at',
-        type: 'TIMESTAMP',
-        isNullable: true,
-      },
-    ],
-  });
+  // private userTable = new Table({
+  //   name: 'users',
+  //   columns: [
+  //     {
+  //       name: 'id',
+  //       type: 'INTEGER',
+  //       isPrimary: true,
+  //       isGenerated: true,
+  //       generationStrategy: 'increment',
+  //     },
+  //     {
+  //       name: 'registration_number',
+  //       type: 'VARCHAR',
+  //       length: '255',
+  //       isUnique: true,
+  //     },
+  //     {
+  //       name: 'name',
+  //       type: 'VARCHAR',
+  //       length: '255',
+  //     },
+  //     {
+  //       name: 'cpf',
+  //       type: 'VARCHAR',
+  //       length: '255',
+  //       isUnique: true,
+  //     },
+  //     {
+  //       name: 'password',
+  //       type: 'VARCHAR',
+  //       length: '255',
+  //     },
+  //     {
+  //       name: 'accepted_at',
+  //       type: 'TIMESTAMP',
+  //       isNullable: true,
+  //     },
+  //     {
+  //       name: 'last_access',
+  //       type: 'TIMESTAMP',
+  //       default: 'CURRENT_TIMESTAMP()',
+  //       isNullable: true,
+  //     },
+  //     {
+  //       name: 'created_at',
+  //       type: 'TIMESTAMP',
+  //       default: 'NOW()',
+  //     },
+  //     {
+  //       name: 'updated_at',
+  //       type: 'TIMESTAMP',
+  //       default: 'NOW() ON UPDATE CURRENT_TIMESTAMP()',
+  //     },
+  //     {
+  //       name: 'deleted_at',
+  //       type: 'TIMESTAMP',
+  //       isNullable: true,
+  //     },
+  //   ],
+  // });
 
   //   private regionalIdForeignKey = new TableForeignKey({
   //     name: 'fk_users_position',
@@ -71,12 +71,12 @@ export class CreateTableUsers1681249127848 implements MigrationInterface {
   //   });
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(this.userTable);
-    await queryRunner.createForeignKey(this.userTable, this.regionalIdForeignKey);
+    // await queryRunner.createTable(this.userTable);
+    // await queryRunner.createForeignKey(this.userTable, this.regionalIdForeignKey);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey(this.userTable, this.regionalIdForeignKey);
-    await queryRunner.dropTable(this.userTable);
+    // await queryRunner.dropForeignKey(this.userTable, this.regionalIdForeignKey);
+    // await queryRunner.dropTable(this.userTable);
   }
 }

@@ -1,33 +1,39 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+
 import { MenusGroupsService } from './menus-groups.service';
-import { CreateMenusGroupDto } from './dto/create-menus-group.dto';
+import { MenusGroupCreateDto } from './dto/menus-group-create.dto';
+import { MenusGroupUpdateDto } from './dto/menus-group-update.dto';
+import { MenusGroupInterface } from './interfaces/menus-group.interface';
 
 @Controller('menus-groups')
 export class MenusGroupsController {
-  constructor(private readonly menusGroupsService: MenusGroupsService) {}
+  constructor(private readonly service: MenusGroupsService) {}
 
   @Post()
-  create(@Body() createMenusGroupDto: CreateMenusGroupDto) {
-    return this.menusGroupsService.create(createMenusGroupDto);
+  create(@Body() data: MenusGroupCreateDto): Promise<{ menusGroup: MenusGroupInterface; message: string }> {
+    return this.service.create(data);
   }
 
   @Get()
-  findAll() {
-    return this.menusGroupsService.findAll();
+  findAll(): Promise<MenusGroupInterface[]> {
+    return this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.menusGroupsService.findOne(+id);
+  findOne(@Param('id') id: number): Promise<MenusGroupInterface> {
+    return this.service.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMenusGroupDto: any) {
-    return this.menusGroupsService.update(+id, updateMenusGroupDto);
+  update(
+    @Param('id') id: number,
+    @Body() data: MenusGroupUpdateDto,
+  ): Promise<{ menusGroup: MenusGroupInterface; message: string }> {
+    return this.service.update(data, id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.menusGroupsService.remove(+id);
+  delete(@Param('id') id: number): Promise<{ message: string }> {
+    return this.service.delete(id);
   }
 }
