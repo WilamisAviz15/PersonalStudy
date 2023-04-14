@@ -1,3 +1,4 @@
+import { PrivilegeInterface } from './../../menus/interfaces/privilege.interface';
 import { MenuInterface } from './../../menus/interfaces/menus.interface';
 import { ActionInterface } from './action.interface';
 
@@ -7,7 +8,7 @@ export interface ActionsMenuInterface {
   menuId: number;
   menu?: MenuInterface;
   action?: ActionInterface;
-  // privileges?: PrivilegeInterface[];
+  privileges?: PrivilegeInterface[];
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;

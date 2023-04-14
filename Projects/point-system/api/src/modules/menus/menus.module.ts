@@ -12,5 +12,6 @@ import { PrivilegeEntity } from './entities/privilege.entity';
   imports: [TypeOrmModule.forFeature([ActionEntity, ActionsMenuEntity, MenuEntity, PrivilegeEntity])],
   controllers: [MenusController],
   providers: [MenusService],
+  //exports menuservice
 })
 export class MenusModule {}
