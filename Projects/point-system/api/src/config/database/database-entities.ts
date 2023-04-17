@@ -10,6 +10,7 @@ import { StatusEntity } from '../../modules/status/entities/status.entity';
 import { UsersStatusEntity } from '../../modules/users-status/entities/users-status.entity';
 import { WorkdayEntity } from '../../modules/workday/entities/workday.entity';
 import { PositionEntity } from '../../modules/positions/entities/positions.entity';
+import { UserEntity } from '../../modules/users/entities/user.entity';
 
 export const entities = [
   ActionEntity,
@@ -24,4 +25,5 @@ export const entities = [
   UsersStatusEntity,
   WorkdayEntity,
   PositionEntity,
+  UserEntity,
 ];

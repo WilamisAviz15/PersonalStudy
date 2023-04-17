@@ -1,5 +1,3 @@
-import { PositionEntity } from './../../positions/entities/positions.entity';
-import { RoleEntity } from '../../roles/entities/role.entity';
 import {
   Column,
   CreateDateColumn,
@@ -13,8 +11,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { PositionEntity } from './../../positions/entities/positions.entity';
+import { RoleEntity } from '../../roles/entities/role.entity';
+
 @Entity({ name: 'users' })
-export class User {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -39,8 +40,8 @@ export class User {
   roles: RoleEntity[];
 
   @OneToOne(() => PositionEntity)
-  @JoinColumn()
-  position: PositionEntity;
+  @JoinColumn({ name: 'position_id' })
+  positionId: number;
 
   @Column({ name: 'last_access' })
   lastAccess?: Date;

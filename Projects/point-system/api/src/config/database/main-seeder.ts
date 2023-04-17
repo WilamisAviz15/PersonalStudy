@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Seeder, runSeeders } from 'typeorm-extension';
+
 import { ActionsSeed } from './seeds/actions.seed';
 import { MenuGroupsSeed } from './seeds/menu-groups.seed';
 import { MenusSeed } from './seeds/menus.seeds';
@@ -12,6 +13,7 @@ import { StatusSeed } from './seeds/status.seed';
 import { UsersStatusSeed } from './seeds/users-status.seed';
 import { WorkdaySeed } from './seeds/workday.seed';
 import { PositionsSeed } from './seeds/positions.seed';
+import { UsersSeed } from './seeds/users.seed';
 
 export class MainSeeder implements Seeder {
   public async run(dataSource: DataSource): Promise<any> {
@@ -29,6 +31,7 @@ export class MainSeeder implements Seeder {
         UsersStatusSeed,
         WorkdaySeed,
         PositionsSeed,
+        UsersSeed,
       ],
     });
   }
