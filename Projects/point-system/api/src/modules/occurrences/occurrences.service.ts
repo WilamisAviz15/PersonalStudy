@@ -5,10 +5,15 @@ import { OccurrenceEntity } from './entities/occurrence.entity';
 import { OccurrenceCreateDto } from './dto/occurrence-create.dto';
 import { OccurrenceInterface } from './interfaces/occurrence.interface';
 import { MenusGroupEntity } from '../menus-groups/entities/menus-group.entity';
+import { OccurrenceUpdateDto } from './dto/occurrence-update.dto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class OccurrencesService {
-  constructor(private readonly occurrenceRepository: Repository<OccurrenceEntity>) {}
+  constructor(
+    @InjectRepository(OccurrenceEntity)
+    private readonly occurrenceRepository: Repository<OccurrenceEntity>,
+  ) {}
 
   async create(data: OccurrenceCreateDto): Promise<{ occurrence: OccurrenceInterface; message: string }> {
     try {
@@ -43,7 +48,7 @@ export class OccurrencesService {
     }
   }
 
-  async update(data: OccurrenceCreateDto, id: number): Promise<{ occurrence: OccurrenceInterface; message: string }> {
+  async update(data: OccurrenceUpdateDto, id: number): Promise<{ occurrence: OccurrenceInterface; message: string }> {
     try {
       const entity = Object.assign(new MenusGroupEntity(), data);
       await this.occurrenceRepository.save(entity);
