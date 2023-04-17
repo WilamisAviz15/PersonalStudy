@@ -41,7 +41,7 @@ export class UserEntity {
 
   @OneToOne(() => PositionEntity)
   @JoinColumn({ name: 'position_id' })
-  positionId: number;
+  position?: PositionEntity;
 
   @Column({ name: 'last_access' })
   lastAccess?: Date;

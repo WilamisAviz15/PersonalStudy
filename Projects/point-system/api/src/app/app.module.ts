@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 
 import { ActionsModule } from '../modules/actions/actions.module';
 import { DatabaseModule } from '../modules/database/database.module';
@@ -13,10 +12,12 @@ import { UsersStatusModule } from '../modules/users-status/users-status.module';
 import { WorkdayModule } from '../modules/workday/workday.module';
 import { PositionsModule } from '../modules/positions/positions.module';
 import { UsersModule } from '../modules/users/users.module';
+import { AuthenticationModule } from './../authentication/authentication.module';
+import { ConfigProvidersModule } from './../providers/enviroment/enviroment.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    ConfigProvidersModule,
     DatabaseModule,
     ActionsModule,
     MenusModule,
@@ -29,6 +30,7 @@ import { UsersModule } from '../modules/users/users.module';
     UsersStatusModule,
     WorkdayModule,
     PositionsModule,
+    AuthenticationModule,
   ],
 })
 export class AppModule {}

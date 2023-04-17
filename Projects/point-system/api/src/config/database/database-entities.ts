@@ -1,3 +1,4 @@
+import { ViewMenusByRolesEntity } from '../../modules/users/entities/view-menu-by-roles.entity';
 import { ActionsMenuEntity } from '../../modules/actions/entities/action-menu.entity';
 import { ActionEntity } from '../../modules/actions/entities/action.entity';
 import { MenusGroupEntity } from '../../modules/menus-groups/entities/menus-group.entity';
@@ -26,4 +27,5 @@ export const entities = [
   WorkdayEntity,
   PositionEntity,
   UserEntity,
+  ViewMenusByRolesEntity,
 ];

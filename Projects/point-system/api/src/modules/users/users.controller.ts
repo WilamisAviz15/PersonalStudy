@@ -1,33 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { UserCreateDto } from './dto/user-create.dto';
+import { UserInterface } from './interfaces/user.interface';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly service: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  create(@Body() data: UserCreateDto): Promise<{ user: UserInterface; message: string }> {
+    return this.service.create(data);
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAll(): Promise<UserInterface[]> {
+    return this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  findOne(@Param('id') id: number): Promise<UserInterface> {
+    return this.service.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: any) {
-    return this.usersService.update(+id, updateUserDto);
+  update(@Param('id') id: number, @Body() updateUserDto: any): Promise<{ user: UserInterface; message: string }> {
+    return this.service.update(updateUserDto, id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  delete(@Param('id') id: number): Promise<{ message: string }> {
+    return this.service.delete(id);
   }
 }

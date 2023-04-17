@@ -13,7 +13,6 @@ export class UsersSeed implements Seeder {
         registrationNumber: '20220001',
         password: '123',
         cpf: '11111111111',
-        positionId: 1,
       },
     ]);
   }
