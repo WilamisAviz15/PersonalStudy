@@ -1,10 +1,11 @@
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+
 import { MenusGroupCreateDto } from './dto/menus-group-create.dto';
 import { MenusGroupEntity } from './entities/menus-group.entity';
-import { Repository } from 'typeorm';
 import { MenusGroupInterface } from './interfaces/menus-group.interface';
 import { MenusGroupUpdateDto } from './dto/menus-group-update.dto';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class MenusGroupsService {
@@ -52,7 +53,6 @@ export class MenusGroupsService {
   async update(body: MenusGroupUpdateDto, id: number): Promise<{ menusGroup: MenusGroupInterface; message: string }> {
     try {
       const entity = Object.assign(new MenusGroupEntity(), body);
-      console.log(entity);
       await this.menusGroupsRepository.save(entity);
 
       const menusGroup = await this.menusGroupsRepository.findOne({ where: { id } });
