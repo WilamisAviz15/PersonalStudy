@@ -14,6 +14,7 @@ import { UsersStatusSeed } from './seeds/users-status.seed';
 import { WorkdaySeed } from './seeds/workday.seed';
 import { PositionsSeed } from './seeds/positions.seed';
 import { UsersSeed } from './seeds/users.seed';
+import { UsersRolesSeed } from './seeds/users-roles.seed';
 
 export class MainSeeder implements Seeder {
   public async run(dataSource: DataSource): Promise<any> {
@@ -32,6 +33,7 @@ export class MainSeeder implements Seeder {
         WorkdaySeed,
         PositionsSeed,
         UsersSeed,
+        UsersRolesSeed,
       ],
     });
   }
