@@ -36,6 +36,7 @@ export class CreateTableUsers1681249127848 implements MigrationInterface {
       {
         name: 'position_id',
         type: 'INTEGER',
+        isNullable: true,
       },
       {
         name: 'last_access',

@@ -31,6 +31,7 @@ export class AuthenticationService {
       if (user && bcrypt.compareSync(data.password, user.password)) {
         await this.userRepository.update(user.id, { lastAccess: new Date() });
         const accessToken = await this.signToken(user);
+        delete user.password;
 
         return { user, accessToken, id: user.id };
       } else {
@@ -60,5 +61,28 @@ export class AuthenticationService {
       menus,
     };
     return this.jwtService.sign(payload);
+  }
+
+  async refreshToken(token: string): Promise<{ accessToken: string; user: UserInterface; id: number }> {
+    try {
+      const currentUser = this.jwtService.decode(token) as AuthJwtInterface;
+
+      const user = await this.userRepository.findOne({
+        where: { registrationNumber: currentUser.registrationNumber },
+        relations: ['roles'],
+      });
+      const accessToken = await this.signToken(user);
+      await this.userRepository.update(
+        { registrationNumber: currentUser.registrationNumber },
+        { lastAccess: new Date() },
+      );
+
+      return { user, accessToken, id: user.id };
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException({ message: 'Não foi possível atualizar o token.' }, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 }
