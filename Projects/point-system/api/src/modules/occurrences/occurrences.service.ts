@@ -4,7 +4,6 @@ import { Repository } from 'typeorm';
 import { OccurrenceEntity } from './entities/occurrence.entity';
 import { OccurrenceCreateDto } from './dto/occurrence-create.dto';
 import { OccurrenceInterface } from './interfaces/occurrence.interface';
-import { MenusGroupEntity } from '../menus-groups/entities/menus-group.entity';
 import { OccurrenceUpdateDto } from './dto/occurrence-update.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -17,7 +16,7 @@ export class OccurrencesService {
 
   async create(data: OccurrenceCreateDto): Promise<{ occurrence: OccurrenceInterface; message: string }> {
     try {
-      const entity = Object.assign(new MenusGroupEntity(), data);
+      const entity = Object.assign(new OccurrenceEntity(), data);
       const occurrence = await this.occurrenceRepository.save(entity);
 
       return { occurrence, message: 'A ocorrência foi criada com sucesso.' };
@@ -50,7 +49,7 @@ export class OccurrencesService {
 
   async update(data: OccurrenceUpdateDto, id: number): Promise<{ occurrence: OccurrenceInterface; message: string }> {
     try {
-      const entity = Object.assign(new MenusGroupEntity(), data);
+      const entity = Object.assign(new OccurrenceEntity(), data);
       await this.occurrenceRepository.save(entity);
 
       const occurrence = await this.occurrenceRepository.findOne({ where: { id } });

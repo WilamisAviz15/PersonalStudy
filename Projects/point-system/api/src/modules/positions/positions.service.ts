@@ -2,7 +2,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { PositionEntity } from './entities/positions.entity';
-import { MenusGroupEntity } from '../menus-groups/entities/menus-group.entity';
 import { PositionCreateDto } from './dto/position-create.dto';
 import { PositionInterface } from './interfaces/Position.interface';
 import { PositionUpdateDto } from './dto/position-update.dto';
@@ -17,7 +16,7 @@ export class PositionsService {
 
   async create(data: PositionCreateDto): Promise<{ position: PositionInterface; message: string }> {
     try {
-      const entity = Object.assign(new MenusGroupEntity(), data);
+      const entity = Object.assign(new PositionEntity(), data);
       const position = await this.positionRepository.save(entity);
 
       return { position, message: 'A posição foi criada com sucesso.' };
@@ -44,7 +43,7 @@ export class PositionsService {
 
   async update(data: PositionUpdateDto, id: number): Promise<{ position: PositionInterface; message: string }> {
     try {
-      const entity = Object.assign(new MenusGroupEntity(), data);
+      const entity = Object.assign(new PositionEntity(), data);
       await this.positionRepository.save(entity);
 
       const position = await this.positionRepository.findOne({ where: { id } });
