@@ -65,8 +65,11 @@ export class AuthenticationService {
 
   async refreshToken(token: string): Promise<{ accessToken: string; user: UserInterface; id: number }> {
     try {
-      const currentUser = this.jwtService.decode(token) as AuthJwtInterface;
+      if (!this.isTokenValid(token)) {
+        throw new HttpException({ message: 'Não foi possível atualizar o token.' }, HttpStatus.INTERNAL_SERVER_ERROR);
+      }
 
+      const currentUser = this.jwtService.decode(token) as AuthJwtInterface;
       const user = await this.userRepository.findOne({
         where: { registrationNumber: currentUser.registrationNumber },
         relations: ['roles'],
@@ -83,6 +86,20 @@ export class AuthenticationService {
         throw error;
       }
       throw new HttpException({ message: 'Não foi possível atualizar o token.' }, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  isTokenValid(token: string): boolean {
+    try {
+      return !!this.jwtService.verify(token);
+    } catch (error) {
+      if (error.name === 'JsonWebTokenError') {
+        throw new UnauthorizedException('Assinatura Inválida');
+      }
+      if (error.name === 'TokenExpiredError') {
+        throw new UnauthorizedException('Token Expirado');
+      }
+      throw new UnauthorizedException(error.name);
     }
   }
 }
