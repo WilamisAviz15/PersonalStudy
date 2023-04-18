@@ -38,7 +38,8 @@ export class UserCreateDto {
   @IsString({ message: 'O campo senha deve ser uma string!' })
   @MinLength(8, { message: 'O campo senha precisa ter pelo menos 8 caracteres.' })
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: 'A senha precisa conter 1 letra maiúscula, 1 letra minúscula e 1 caractere especial ou número',
+    message:
+      'A senha deve conter pelo menos uma letra maiúscula, um caractere especial, um número e uma letra minúscula.',
   })
   password: string;
 

@@ -53,7 +53,7 @@ export class AuthenticationService {
     }
   }
 
-  private async signToken(user: UserInterface): Promise<string> {
+  async signToken(user: UserInterface): Promise<string> {
     const { id, name, registrationNumber, cpf, roles, position } = user;
     const menus = await this.viewMenusByRolesRepository.find({
       where: { roleId: In(roles.map((role: RoleInterface) => role.id)) },
@@ -110,7 +110,7 @@ export class AuthenticationService {
     }
   }
 
-  isTokenValid(token: string): boolean {
+  private isTokenValid(token: string): boolean {
     try {
       return !!this.jwtService.verify(token);
     } catch (error) {

@@ -14,6 +14,7 @@ import { PositionsModule } from '../modules/positions/positions.module';
 import { UsersModule } from '../modules/users/users.module';
 import { AuthenticationModule } from './../authentication/authentication.module';
 import { ConfigProvidersModule } from './../providers/enviroment/enviroment.module';
+import { ProfileModule } from '../modules/profile/profile.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ConfigProvidersModule } from './../providers/enviroment/enviroment.modu
     UsersStatusModule,
     WorkdayModule,
     PositionsModule,
+    ProfileModule,
     UsersModule,
   ],
 })
