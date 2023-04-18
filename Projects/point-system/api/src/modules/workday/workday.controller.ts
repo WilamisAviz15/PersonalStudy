@@ -1,11 +1,13 @@
-import { Controller, Post, Get, Patch, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Post, Get, Patch, Delete, Body, Param, UseGuards } from '@nestjs/common';
 
 import { WorkdayService } from './workday.service';
 import { WorkdayCreateDto } from './dto/workday-create.dto';
 import { WorkdayInterface } from './interfaces/workday.interface';
 import { WorkdayUpdateDto } from './dto/workday-update.dto';
+import { RoleGuard } from './../../common/guards/auth-guard.guard';
 
 @Controller('workday')
+@UseGuards(RoleGuard)
 export class WorkdayController {
   constructor(private readonly service: WorkdayService) {}
 

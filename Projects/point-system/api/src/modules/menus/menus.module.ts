@@ -7,9 +7,13 @@ import { MenuEntity } from './entities/menu.entity';
 import { ActionsMenuEntity } from '../actions/entities/action-menu.entity';
 import { ActionEntity } from '../actions/entities/action.entity';
 import { PrivilegeEntity } from './entities/privilege.entity';
+import { AuthenticationModule } from '../../authentication/authentication.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ActionEntity, ActionsMenuEntity, MenuEntity, PrivilegeEntity])],
+  imports: [
+    AuthenticationModule,
+    TypeOrmModule.forFeature([ActionEntity, ActionsMenuEntity, MenuEntity, PrivilegeEntity]),
+  ],
   controllers: [MenusController],
   providers: [MenusService],
   //exports menuservice

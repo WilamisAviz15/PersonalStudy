@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 
 import { StatusService } from './status.service';
 import { StatusCreateDto } from './dto/status-create.dto';
 import { StatusInterface } from './interfaces/status.interface';
 import { StatusUpdateDto } from './dto/status-update.dto';
+import { RoleGuard } from './../../common/guards/auth-guard.guard';
 
 @Controller('status')
+@UseGuards(RoleGuard)
 export class StatusController {
   constructor(private readonly service: StatusService) {}
   @Post()

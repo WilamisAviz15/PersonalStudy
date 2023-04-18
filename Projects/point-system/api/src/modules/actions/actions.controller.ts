@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+
 import { ActionsService } from './actions.service';
 import { ActionInterface } from './interfaces/action.interface';
 import { ActionCreateDto } from './dtos/action-create.dto';
 import { ActionUpdateDto } from './dtos/action-update.dto';
+import { RoleGuard } from './../../common/guards/auth-guard.guard';
 
 @Controller('actions')
+@UseGuards(RoleGuard)
 export class ActionsController {
   constructor(private readonly service: ActionsService) {}
 

@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 
 import { OccurrencesService } from './occurrences.service';
 import { OccurrenceCreateDto } from './dto/occurrence-create.dto';
 import { OccurrenceInterface } from './interfaces/occurrence.interface';
 import { OccurrenceUpdateDto } from './dto/occurrence-update.dto';
+import { RoleGuard } from './../../common/guards/auth-guard.guard';
 
 @Controller('occurrences')
+@UseGuards(RoleGuard)
 export class OccurrencesController {
   constructor(private readonly service: OccurrencesService) {}
 

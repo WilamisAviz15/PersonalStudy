@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppointmentTypeService } from './appointment-type.service';
@@ -7,9 +7,13 @@ import { AppointmentTypeEntity } from './entities/appointment-type.entity';
 import { ActionsMenuEntity } from '../actions/entities/action-menu.entity';
 import { MenuEntity } from '../menus/entities/menu.entity';
 import { PrivilegeEntity } from '../menus/entities/privilege.entity';
+import { AuthenticationModule } from './../../authentication/authentication.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AppointmentTypeEntity, ActionsMenuEntity, MenuEntity, PrivilegeEntity])],
+  imports: [
+    forwardRef(() => AuthenticationModule),
+    TypeOrmModule.forFeature([AppointmentTypeEntity, ActionsMenuEntity, MenuEntity, PrivilegeEntity]),
+  ],
   controllers: [AppointmentTypeController],
   providers: [AppointmentTypeService],
 })

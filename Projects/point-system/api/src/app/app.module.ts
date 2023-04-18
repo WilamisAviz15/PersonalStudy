@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { ActionsModule } from '../modules/actions/actions.module';
-import { DatabaseModule } from '../modules/database/database.module';
+import { DatabaseModule } from '../providers/database/database.module';
 import { MenusGroupsModule } from '../modules/menus-groups/menus-groups.module';
 import { MenusModule } from '../modules/menus/menus.module';
 import { RolesModule } from '../modules/roles/roles.module';
@@ -19,18 +19,18 @@ import { ConfigProvidersModule } from './../providers/enviroment/enviroment.modu
   imports: [
     ConfigProvidersModule,
     DatabaseModule,
+    AuthenticationModule,
     ActionsModule,
     MenusModule,
+    AppointmentTypeModule,
     RolesModule,
     MenusGroupsModule,
-    AppointmentTypeModule,
     OccurrencesModule,
     StatusModule,
-    UsersModule,
     UsersStatusModule,
     WorkdayModule,
     PositionsModule,
-    AuthenticationModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

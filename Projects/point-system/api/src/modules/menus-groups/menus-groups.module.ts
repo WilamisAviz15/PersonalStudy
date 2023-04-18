@@ -4,9 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MenusGroupsService } from './menus-groups.service';
 import { MenusGroupsController } from './menus-groups.controller';
 import { MenusGroupEntity } from './entities/menus-group.entity';
+import { AuthenticationModule } from './../../authentication/authentication.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([MenusGroupEntity])],
+  imports: [AuthenticationModule, TypeOrmModule.forFeature([MenusGroupEntity])],
   controllers: [MenusGroupsController],
   providers: [MenusGroupsService],
 })
