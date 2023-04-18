@@ -10,14 +10,22 @@ import { RoleInterface } from '../modules/roles/interfaces/role.interface';
 import { UserEntity } from '../modules/users/entities/user.entity';
 import { AuthJwtInterface } from './interfaces/auth-jwt.interface';
 import { SignInDto } from './dto/sign-in.dto';
+import { ViewPrivilegeByRoleInterface } from './../modules/menus/interfaces/view-privilege-by-role.interface';
+import { ViewPrivilegesByRolesEntity } from './../modules/users/entities/view-privileges-by-roles.entity';
+import { log } from 'console';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
     @InjectRepository(ViewMenusByRolesEntity)
     private readonly viewMenusByRolesRepository: Repository<ViewMenusByRolesEntity>,
+
+    @InjectRepository(ViewPrivilegesByRolesEntity)
+    private readonly viewPrivilegesByRolesRepository: Repository<ViewPrivilegesByRolesEntity>,
+
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+
     private readonly jwtService: JwtService,
   ) {}
 
@@ -86,6 +94,19 @@ export class AuthenticationService {
         throw error;
       }
       throw new HttpException({ message: 'Não foi possível atualizar o token.' }, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  async getUserPrivileges(rolesId: number[]): Promise<ViewPrivilegeByRoleInterface[]> {
+    try {
+      return await this.viewPrivilegesByRolesRepository.find({
+        where: {
+          roleId: In(rolesId),
+        },
+        select: ['key'],
+      });
+    } catch (error) {
+      throw new HttpException({ message: 'Não foi possível obter os privilégios.' }, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 

@@ -1,3 +1,4 @@
+import { ViewPrivilegesByRolesEntity } from './../../modules/users/entities/view-privileges-by-roles.entity';
 import { ViewMenusByRolesEntity } from '../../modules/users/entities/view-menu-by-roles.entity';
 import { ActionsMenuEntity } from '../../modules/actions/entities/action-menu.entity';
 import { ActionEntity } from '../../modules/actions/entities/action.entity';
@@ -28,4 +29,5 @@ export const entities = [
   PositionEntity,
   UserEntity,
   ViewMenusByRolesEntity,
+  ViewPrivilegesByRolesEntity,
 ];

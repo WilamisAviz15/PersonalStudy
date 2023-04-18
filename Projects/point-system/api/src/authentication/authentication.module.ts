@@ -10,12 +10,13 @@ import { ViewMenusByRolesEntity } from './../modules/users/entities/view-menu-by
 import { RolesModule } from './../modules/roles/roles.module';
 import { UsersModule } from './../modules/users/users.module';
 import { JwtStrategy } from './../providers/authentication/jwt.strategy';
+import { ViewPrivilegesByRolesEntity } from './../modules/users/entities/view-privileges-by-roles.entity';
 
 @Module({
   imports: [
     forwardRef(() => UsersModule),
     forwardRef(() => RolesModule),
-    TypeOrmModule.forFeature([UserEntity, ViewMenusByRolesEntity]),
+    TypeOrmModule.forFeature([UserEntity, ViewMenusByRolesEntity, ViewPrivilegesByRolesEntity]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.APP_SECRET,
