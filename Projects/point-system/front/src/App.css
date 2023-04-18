@@ -1,0 +1,13 @@
+:root {
+  background-color: #292929;
+  color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

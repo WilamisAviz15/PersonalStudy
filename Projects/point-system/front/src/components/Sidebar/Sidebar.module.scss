@@ -1,0 +1,97 @@
+@mixin pointer() {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 16px;
+  left: 25px;
+  background-color: #b88af3;
+}
+
+.sidebar {
+  display: block;
+  position: relative;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #3d3d3d;
+  color: #e0e0e0;
+
+  &__menu {
+    padding: 16px;
+  }
+  font-family: "Roboto", sans-serif;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  &__header {
+    margin: 15px 0px;
+
+    h3 {
+      padding-left: 25px;
+      padding-bottom: 8px;
+    }
+    padding-bottom: 18px;
+  }
+
+  &__header > div {
+    content: "";
+    position: absolute;
+    background-color: #4f4f4f;
+    width: 90%;
+    height: 2px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 25px;
+  }
+
+  li {
+    padding-bottom: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+
+    &:hover::before {
+      @include pointer;
+    }
+
+    &:last-child {
+    }
+  }
+
+  &__header--active::before {
+    @include pointer;
+  }
+
+  &__footer {
+    bottom: 0;
+    position: fixed;
+    width: 190px;
+    padding: 30px;
+    background-color: #1c1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-right-radius: 10px;
+
+    &__profile-icon {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
+
+@media (max-width: 512px) {
+}

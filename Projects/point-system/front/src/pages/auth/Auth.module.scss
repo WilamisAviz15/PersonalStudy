@@ -1,0 +1,42 @@
+.container {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin: 500px auto;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  &__form {
+    background-color: #3d3d3d;
+    border-radius: 6px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    form {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 25px;
+      padding: 2rem 1rem;
+
+      a {
+        color: #b88af3;
+        font-weight: 700;
+        text-align: initial;
+        font-size: 0.8rem;
+      }
+
+      a:nth-last-child(1) {
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      a:hover {
+        color: #cda6ff;
+      }
+    }
+  }
+}
