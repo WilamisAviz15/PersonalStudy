@@ -7,11 +7,12 @@ import InputText from "./components/InputText";
 import Login from "./pages/auth";
 import Navbar from "./components/Sidebar";
 import Sidebar from "./components/Sidebar";
+import Card from "./components/Card";
 
 function App() {
   return (
     <>
-      <Sidebar />
+      <Card type="double" params={{ title: "a", description: "a", ass: "dfd" }} />
     </>
   );
 }

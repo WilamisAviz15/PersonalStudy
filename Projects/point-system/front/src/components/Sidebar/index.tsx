@@ -8,7 +8,7 @@ const Sidebar = () => {
     <nav className={styles.sidebar}>
       <div className={styles.sidebar__menu}>
         <div className={styles["sidebar__header"]}>
-          <h3>Menu Nome</h3>
+          <h3>Colaborador </h3>
           <div></div>
         </div>
         <ul>
