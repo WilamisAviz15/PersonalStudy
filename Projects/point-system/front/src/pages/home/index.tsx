@@ -33,7 +33,17 @@ const Home = () => {
         <div className={style.container__cards__countdown}>
           <Card type="textCard" params={{ description: "00:00:00" }} styles={{ maxWidth: "none", width: "100%" }} />
         </div>
-        <Table />
+        <Table
+          data={{
+            title: "Histórico de marcações feitas hoje",
+            headers: ["Colaborador", "Descrição", "Horário", "Alterador por", "Ações"],
+            rows: [
+              { Colaborador: "Wilamis A.", Descrição: "Entrada", Horario: "13:00:00", "Alterado Por": "Sistema" },
+              { Colaborador: "Wilamis A.", Descrição: "Entrada", Horario: "13:00:00", "Alterado Por": "Sistema" },
+              { Colaborador: "Wilamis A.", Descrição: "Entrada", Horario: "13:00:00", "Alterado Por": "Sistema" },
+            ],
+          }}
+        />
       </div>
     </main>
   );

@@ -1,7 +1,9 @@
 import React from "react";
 
-const TBodyRow = () => {
-  return <div>TBodyRow</div>;
+import style from "./TBodyRow.module.scss";
+
+const TBodyRow = ({ value }: { value: string | number }) => {
+  return <span className={style.item}>{value}</span>;
 };
 
 export default TBodyRow;
