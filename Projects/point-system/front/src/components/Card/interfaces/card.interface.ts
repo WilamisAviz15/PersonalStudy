@@ -10,5 +10,5 @@ export interface IParamsDoubleCard extends IParamsCard {
   img: keyof IconType;
 }
 
-export type TypeCard = "simple" | "double" | "textCard";
+export type TypeCard = "simple" | "double" | "textCard" | "customCard";
 export type ParamsTypeCard<T> = T extends "simple" ? IParamsSimpleCard : IParamsDoubleCard;

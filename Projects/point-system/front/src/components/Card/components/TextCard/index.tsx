@@ -1,12 +1,9 @@
 import React from "react";
 
 import style from "./TextCard.module.scss";
+import { CustomStyles } from "../../interfaces/custom-style.interface";
 
-interface customStyles {
-  [key: string]: string;
-}
-
-function TextCard({ description, styles }: { description: string; styles?: customStyles }) {
+function TextCard({ description, styles }: { description: string; styles?: CustomStyles }) {
   return (
     <div className={style.container} style={styles}>
       <span>{description}</span>

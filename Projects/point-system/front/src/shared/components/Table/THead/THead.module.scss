@@ -1,0 +1,14 @@
+.thead {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}

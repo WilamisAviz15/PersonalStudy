@@ -26,7 +26,6 @@ const Sidebar = () => {
             Perfil
           </li>
           <li>
-            {" "}
             <MdDashboard />
             Sair
           </li>

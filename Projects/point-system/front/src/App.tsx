@@ -9,9 +9,17 @@ import Sidebar from "./components/Sidebar";
 import Card from "./components/Card";
 import TextCard from "./components/Card/components/TextCard";
 import Home from "./pages/home";
+import Sidenav from "./shared/components/Sidenav";
+import Auth from "./pages/auth";
 
 function App() {
-  return <Home />;
+  return (
+    <>
+      <Sidenav>
+        <Home />
+      </Sidenav>
+    </>
+  );
 }
 
 export default App;
