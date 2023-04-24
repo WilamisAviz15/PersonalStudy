@@ -12,13 +12,14 @@ const Card = ({ type, params }: { type: TypeCard; params: any }) => {
       if (isOfType<IParamsSimpleCard>(params, ["title", "description"])) {
         return <SimpleCard title={params.title} description={params.description} />;
       }
+
     case "double":
       if (isOfType<IParamsDoubleCard>(params, ["title", "img"])) {
         return <DoubleCard title={params.title} img={params.img} />;
       }
 
     case "textCard":
-      return <TextCard description={params.description} />;
+      return <TextCard description={params.description} styles={{ maxWidth: "none", width: "100%" }} />;
     default:
       return <></>;
   }
