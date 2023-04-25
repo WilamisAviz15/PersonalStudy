@@ -1,16 +1,12 @@
-main {
-  width: 100%;
-  grid-area: content;
+@import "../../shared/styles/styles.scss";
+@include content;
 
-  .container {
-    margin: 30px;
-
-    &__list__cards {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 100px;
-      align-items: center;
-      justify-content: space-around;
-    }
+.container {
+  &__list__cards {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 100px;
+    align-items: center;
+    justify-content: space-around;
   }
 }

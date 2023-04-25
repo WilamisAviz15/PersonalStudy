@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 30px;
+
+  & > span {
+    font-family: "Roboto", sans-serif;
+    color: #e0e0e0;
+  }
+}

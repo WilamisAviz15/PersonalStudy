@@ -11,12 +11,13 @@ import TextCard from "./components/Card/components/TextCard";
 import Home from "./pages/home";
 import Sidenav from "./shared/components/Sidenav";
 import Auth from "./pages/auth";
+import Appointments from "./pages/appointments";
 
 function App() {
   return (
     <>
       <Sidenav>
-        <Home />
+        <Appointments />
       </Sidenav>
     </>
   );
