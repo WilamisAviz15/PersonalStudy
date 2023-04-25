@@ -1,6 +1,6 @@
 import React from "react";
 
-import InputText from "../../components/InputText";
+import Input from "../../components/Input";
 import styles from "./Auth.module.scss";
 import Button from "../../components/Button";
 
@@ -10,10 +10,13 @@ const Login = () => {
       <h1>Entre agora na sua conta</h1>
       <div className={styles.container__form}>
         <form>
-          <InputText type="text" placeholder="Sua matrícula" />
-          <InputText type="password" placeholder="Sua senha" />
+          <Input type="text" placeholder="Sua matrícula" />
+          <Input type="password" placeholder="Sua senha" />
           <a href="#">Esqueci minha senha</a>
-          <Button name="Entrar" />
+          <Button
+            name="Entrar"
+            styles={{ borderRadius: "12px", padding: "16px 30px", border: "none", width: "100%", fontWeight: "700" }}
+          />
           <a href="#">Faça seu cadastro</a>
         </form>
       </div>

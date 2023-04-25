@@ -1,0 +1,23 @@
+.form {
+  // width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Open Sans", sans-serif;
+
+  &__access-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    & > div {
+      display: flex;
+      gap: 15px;
+    }
+  }
+  & > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+}

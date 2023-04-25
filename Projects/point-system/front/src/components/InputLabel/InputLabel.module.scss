@@ -1,0 +1,7 @@
+.input__label {
+  font-family: "Open Sans", sans-serif;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.5fr 2fr;
+  grid-template-areas: "label input";
+}

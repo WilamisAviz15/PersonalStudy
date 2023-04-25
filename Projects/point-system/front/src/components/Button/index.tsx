@@ -1,8 +1,14 @@
 import React from "react";
-import styles from "./Button.module.scss";
+import style from "./Button.module.scss";
 
-const Button = ({ name }: { name: string }) => {
-  return <button className={styles.btn}>{name}</button>;
+import { CustomStyles } from "../Card/interfaces/custom-style.interface";
+
+const Button = ({ name, styles }: { name: string; styles?: CustomStyles }) => {
+  return (
+    <button className={style.btn} style={styles}>
+      {name}
+    </button>
+  );
 };
 
 export default Button;

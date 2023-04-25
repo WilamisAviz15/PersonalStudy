@@ -1,10 +1,12 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import { MdDashboard, MdAddAPhoto } from "react-icons/md";
 
 import styles from "./Sidebar.module.scss";
 
 const Sidebar = () => {
+  const isRouteActive = (isActive: boolean) => (isActive ? styles["sidebar__header--active"] : "");
+
   return (
     <nav className={styles.sidebar}>
       <div className={styles.sidebar__menu}>
@@ -13,21 +15,29 @@ const Sidebar = () => {
           <div></div>
         </div>
         <ul>
-          <li className={styles["sidebar__header--active"]}>
-            <MdDashboard />
-            Início
+          <li>
+            <NavLink className={({ isActive }) => isRouteActive(isActive)} to="/">
+              <MdDashboard />
+              Início
+            </NavLink>
           </li>
           <li>
-            <MdDashboard />
-            Marcações
+            <NavLink className={({ isActive }) => isRouteActive(isActive)} to="/marcacoes">
+              <MdDashboard />
+              Marcações
+            </NavLink>
           </li>
           <li>
-            <MdDashboard />
-            Perfil
+            <NavLink className={({ isActive }) => isRouteActive(isActive)} to="/perfil">
+              <MdDashboard />
+              Perfil
+            </NavLink>
           </li>
           <li>
-            <MdDashboard />
-            Sair
+            <NavLink to="/logout">
+              <MdDashboard />
+              Sair
+            </NavLink>
           </li>
         </ul>
       </div>

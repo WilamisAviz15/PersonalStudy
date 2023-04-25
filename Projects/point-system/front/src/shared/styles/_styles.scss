@@ -6,9 +6,15 @@
     .container {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
       height: 100%;
       margin: 30px;
+    }
+
+    @media (min-width: 1368px) {
+      .container {
+        margin: 30px 10vw;
+      }
     }
   }
 }
