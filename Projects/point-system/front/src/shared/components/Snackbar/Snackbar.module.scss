@@ -1,0 +1,26 @@
+.snackbar {
+  display: flex;
+  padding: 15px;
+  text-align: center;
+  max-width: 300px;
+  min-width: 150px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.5);
+
+  & > span {
+    font-family: "Roboto", sans-serif;
+    & > svg {
+      cursor: pointer;
+    }
+  }
+
+  &--success {
+    background-color: #04ad9e;
+  }
+
+  &--danger {
+    background-color: #e13510;
+  }
+}
