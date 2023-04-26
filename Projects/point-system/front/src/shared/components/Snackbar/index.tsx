@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
 import style from "./Snackbar.module.scss";
 import Icon from "../Icons";
+import { SnackbarInterface } from "./interfaces/snackbar.interface";
 
-type snackBarClassType = "success" | "danger";
-
-const Snackbar = ({
-  message,
-  duration = 5000,
-  type,
-}: {
-  message: string;
-  duration?: number;
-  type: snackBarClassType;
-}) => {
-  const typeSnackbar = () => (type === "success" ? style["snackbar--success"] : style["snackbar--danger"]);
-  const [isActive, setIsActive] = useState(true);
+const Snackbar = ({ message, type, duration = 99999999999, isActive, setIsActive }: SnackbarInterface) => {
   const closeSnackbar = () => setIsActive(false);
+
+  const typeSnackbar = () => (type === "success" ? style["snackbar--success"] : style["snackbar--danger"]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,15 +16,16 @@ const Snackbar = ({
     }, duration);
   }, []);
 
-  return (
+  return ReactDOM.createPortal(
     <>
-      {isActive && (
+      {isActive ? (
         <div className={`${style.snackbar} ${typeSnackbar()}`}>
           <span>{message}</span>
           <Icon nameIcon="MdClose" click={closeSnackbar} />
         </div>
-      )}
-    </>
+      ) : null}
+    </>,
+    document.getElementById("snackbar__root") as HTMLElement
   );
 };
 

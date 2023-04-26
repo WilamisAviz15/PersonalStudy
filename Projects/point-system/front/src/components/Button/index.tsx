@@ -3,9 +3,9 @@ import style from "./Button.module.scss";
 
 import { CustomStyles } from "../Card/interfaces/custom-style.interface";
 
-const Button = ({ name, styles }: { name: string; styles?: CustomStyles }) => {
+const Button = ({ name, styles, click }: { name: string; styles?: CustomStyles; click?: () => void }) => {
   return (
-    <button className={style.btn} style={styles}>
+    <button className={style.btn} style={styles} onClick={click}>
       {name}
     </button>
   );

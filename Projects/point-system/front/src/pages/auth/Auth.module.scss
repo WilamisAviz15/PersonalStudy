@@ -1,7 +1,13 @@
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .container {
   text-align: center;
   font-family: "Roboto", sans-serif;
-  margin: 500px auto;
 
   h1 {
     font-size: 2rem;

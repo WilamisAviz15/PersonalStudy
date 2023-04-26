@@ -4,8 +4,8 @@ import { SignInInterface } from "./interfaces/signIn.interface";
 import { environment } from "../../environments/environment";
 
 const authService = {
-  async autenticate(data: SignInInterface) {
-    const response = axios.post(environment.api, data);
+  async authenticate(data: SignInInterface) {
+    return axios.post(environment.api, data);
   },
 };
 
