@@ -5,10 +5,10 @@ import { AxiosError } from "axios";
 import Input from "../../components/Input";
 import styles from "./Auth.module.scss";
 import Button from "../../components/Button";
-import authService from "./auth.service";
 import { SignInInterface } from "./interfaces/signIn.interface";
 import Snackbar from "../../shared/components/Snackbar";
 import useResponseAPI from "../../shared/components/ResponseAPI";
+import authService from "./auth.service";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,12 +19,16 @@ const Login = () => {
     event.preventDefault();
     try {
       const res = await authService.authenticate(data);
-      console.log(res);
-      authService.handleCurrentUser(res.data.user, res.data.accessToken);
-      navigate("/");
+      if (res) {
+        authService.handleCurrentUser(res?.data, res?.data.accessToken);
+        navigate("/");
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
-        setResponseAPI({ message: error.message, type: "danger" });
+        setResponseAPI({ message: error.response?.data.message, type: "danger" });
+        setShowMessage(true);
+      } else {
+        setResponseAPI({ message: "Erro interno", type: "danger" });
         setShowMessage(true);
       }
     }
