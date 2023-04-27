@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
 
 import Input from "../../components/Input";
 import styles from "./Auth.module.scss";
@@ -7,22 +8,26 @@ import Button from "../../components/Button";
 import authService from "./auth.service";
 import { SignInInterface } from "./interfaces/signIn.interface";
 import Snackbar from "../../shared/components/Snackbar";
-import { ResponseAPIInterface } from "./interfaces/responseAPI.interface";
+import useResponseAPI from "../../shared/components/ResponseAPI";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formSignIn, setFormSignIn] = useState<SignInInterface>({ login: "", password: "" });
-  const [ResponseAPI, setResponseAPI] = useState<ResponseAPIInterface>();
-  const [showMessage, setShowMessage] = useState(false);
+  const [responseAPI, setResponseAPI, showMessage, setShowMessage] = useResponseAPI();
+
   const authLogin = async (event: React.FormEvent<HTMLFormElement>, data: SignInInterface) => {
     event.preventDefault();
     try {
       const res = await authService.authenticate(data);
       console.log(res);
+      authService.handleCurrentUser(res.data.user, res.data.accessToken);
+      navigate("/");
     } catch (error) {
-      console.log("catch");
-      setResponseAPI({ isError: true, message: error.message, type: "danger" });
+      if (error instanceof AxiosError) {
+        setResponseAPI({ message: error.message, type: "danger" });
+        setShowMessage(true);
+      }
     }
-    setShowMessage(true);
   };
 
   const handleInputChanges = (field: string) => {
@@ -60,8 +65,8 @@ const Login = () => {
       </div>
       {showMessage && (
         <Snackbar
-          message={ResponseAPI!.message}
-          type={ResponseAPI!.type}
+          message={responseAPI!.message}
+          type={responseAPI!.type}
           isActive={showMessage}
           setIsActive={setShowMessage}
         />
