@@ -20,7 +20,7 @@ const Login = () => {
     try {
       const res = await authService.authenticate(data);
       if (res) {
-        authService.handleCurrentUser(res?.data, res?.data.accessToken);
+        await authService.getPrivileges();
         navigate("/");
       }
     } catch (error) {

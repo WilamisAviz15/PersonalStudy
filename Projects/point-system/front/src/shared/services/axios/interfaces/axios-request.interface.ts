@@ -10,3 +10,8 @@ export type AxiosRequest =
       data?: D | undefined,
       config?: AxiosRequestConfig<D> | undefined
     ) => Promise<R>);
+
+export interface ArgsInterface<T, D> {
+  data?: T;
+  config?: AxiosRequestConfig<D> | undefined;
+}
