@@ -32,7 +32,6 @@ class AuthService extends Singleton<AuthService> {
   saveUser(accessToken: string): boolean | unknown {
     try {
       const jwtDecoded = JwtServiceUtil.getDecodedAccessToken(accessToken);
-      console.log(jwtDecoded);
       if (!jwtDecoded) {
         throw new Error();
       }
