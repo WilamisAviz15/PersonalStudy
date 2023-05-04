@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../../components/Card";
 
 import style from "./Home.module.scss";
 import Table from "../../shared/components/Table";
 import Container from "../../shared/components/Container";
+import { UserContext, UserType } from "../../contexts/User.context";
 
 const Home: React.FC = () => {
+  const { currentUser } = useContext(UserContext) as UserType;
+  console.log(currentUser);
+
   return (
     <Container nameIcon="MdDashboard" titleComponent="Home">
       <div className={style.container__list__cards}>

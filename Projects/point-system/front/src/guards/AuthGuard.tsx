@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Sidenav from "../shared/components/Sidenav";
 import { UserInfoInterface } from "../pages/auth/interfaces/user.interface";
