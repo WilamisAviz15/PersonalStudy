@@ -38,6 +38,9 @@ class AuthService extends Singleton<AuthService> {
 
       localStorage.setItem("access_token", accessToken);
       localStorage.setItem("user", JSON.stringify(jwtDecoded));
+      this.user.next(JSON.stringify(jwtDecoded));
+      this.bearer.next(accessToken);
+
       return true;
     } catch (error) {
       return error;

@@ -36,11 +36,11 @@ function handleRequest(descriptor: PropertyDescriptor) {
   const originalRequest = descriptor.value;
 
   return (descriptor.value = function (...args: any[]) {
-    const bearer = authService.getBearer();
-    axios.interceptors.request.use(async (config) => {
+    axios.interceptors.request.use((config) => {
       if (!config.url?.endsWith("login") && !config.url?.endsWith("refresh-token") && !config.url?.endsWith("logout")) {
-        config.headers["Authorization"] = `Bearer ${bearer}`;
+        config.headers["Authorization"] = `Bearer ${authService.getBearer()}`;
       }
+
       return config;
     });
 
