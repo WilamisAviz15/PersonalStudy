@@ -10,3 +10,14 @@ export interface UserInterface {
   updatedAt?: Date;
   deletedAt?: Date;
 }
+
+export interface UserInfoInterface {
+  id: number;
+  cpf: string;
+  exp: number;
+  iat: number;
+  menus: any[];
+  name: string;
+  registrationNumber: string;
+  rolesId: number[];
+}

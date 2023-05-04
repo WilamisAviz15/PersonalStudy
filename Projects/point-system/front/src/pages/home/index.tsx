@@ -5,7 +5,7 @@ import style from "./Home.module.scss";
 import Table from "../../shared/components/Table";
 import Container from "../../shared/components/Container";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <Container nameIcon="MdDashboard" titleComponent="Home">
       <div className={style.container__list__cards}>

@@ -20,6 +20,7 @@ class AuthService extends Singleton<AuthService> {
     const jwt = await http.post<SignInInterface, UserInterface & { accessToken: string }>("auth/login", {
       data,
     });
+
     return this.saveUser(jwt.data.accessToken);
   }
 
