@@ -63,6 +63,10 @@ class AuthService extends Singleton<AuthService> {
   getBearer(): string {
     return this.bearer.getValue();
   }
+
+  getUser(): any {
+    return this.user.getValue();
+  }
 }
 
 const authService = AuthService.getInstance(AuthService);

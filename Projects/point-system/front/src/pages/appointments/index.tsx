@@ -1,8 +1,6 @@
 import React from "react";
 
 import Table from "../../shared/components/Table";
-import Header from "../../shared/components/Header";
-import style from "./Appointments.module.scss";
 import Footer from "../../shared/components/Footer";
 import Container from "../../shared/components/Container";
 

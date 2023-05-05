@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { MdDashboard, MdAddAPhoto } from "react-icons/md";
 
 import styles from "./Sidebar.module.scss";
+import { UserContext, UserContextType } from "../../contexts/UserContext";
 
+// TODO: LER OS MENUS DO USUARIO E RENDERIZA-LOS
 const Sidebar = () => {
   const isRouteActive = (isActive: boolean) => (isActive ? styles["sidebar__header--active"] : "");
 
